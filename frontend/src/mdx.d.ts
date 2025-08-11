@@ -3,6 +3,7 @@ declare module "*.mdx" {
   export const frontmatter: {
     title: string;
     date: string;
+    wordCount: number;
     tags?: string[];
   };
   import * as React from "react";

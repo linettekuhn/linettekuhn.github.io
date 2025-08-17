@@ -5,14 +5,14 @@
 }
 
 .postPreview {
-  border: 2px solid darkgreen;
+  border: 2px solid rgb(0, 41, 0);
   padding: 1rem;
   text-align: center;
   border-radius: 1rem;
   background-color: rgb(160, 233, 160);
   margin: 1rem;
   text-decoration: none;
-  color: darkgreen;
+  color: rgb(0, 41, 0);
 }
 
 .postPreview:hover {

@@ -31,13 +31,15 @@ export default function BlogPost() {
   return (
     <>
       <Navbar />
-      <article className="content">
-        <h1>{frontmatter.title}</h1>
-        <h3 className="italic">
-          by Linette Kühn - {formattedDate.toDateString()}
-        </h3>
-        <Content />
-      </article>
+      <div className="content">
+        <article className="blog-content">
+          <h1>{frontmatter.title}</h1>
+          <h3 className="italic">
+            by Linette Kühn - {formattedDate.toDateString()}
+          </h3>
+          <Content />
+        </article>
+      </div>
     </>
   );
 }

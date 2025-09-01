@@ -1,0 +1,34 @@
+---
+title: "Kotlin Fundamentals & Adding Functionality"
+date: 8/31/2025
+wordCount: 495
+---
+
+This week, I kept following the [Android Basics with Compose](https://developer.android.com/courses/android-basics-compose/course) course from last week, this time working on Unit 2. I took some time to focus more on Kotlin itself and how it compares to what I already know from JavaScript. Since Kotlin will be my main language for Android development, I wanted to really understand its quirks and how it interacts with the designs created with Compose.
+
+![Screenshot showing completed courses](/images/unit-2.png)
+_Unit 2 of Android Basics with Compose Course_
+
+Right away I recognized some similar concepts from JavaScript, but they look a little different with Kotlin. For example, the Elvis operator `(?:)` basically works like the ternary operator, which makes null-safety a lot cleaner. Classes in Kotlin automatically come with hidden getters and setters, and when it comes to variables, `var` makes them mutable while `val` locks them down as immutable (const). Inheritance also works differently; if you want a class or a function to be extended or overridden, you have to explicitly mark it with the `open` keyword. Another thing I noticed is how Kotlin treats functions as values. Instead of just passing the name, you need to use the function reference operator (`::`). And finally, trailing lambda functions are… interesting!
+
+I also reviewed how the four core pillars of OOP translate into Kotlin:
+
+- Encapsulation is handled through visibility modifiers, just like in other languages, using `public`, `private`, `protected`, and `internal` keywords.
+- Polymorphism shows up when overriding functions and variables.
+- Inheritance works with `extends` but again only if the parent class is marked `open`.
+- Abstraction comes into play with interfaces, which let you define _what_ needs to be done without specifying down _how_ it’s implemented.
+
+Knowing the Kotlin fundamentals, I put them to work through two practice apps. The first app is a dice roller, which is pretty self-explanatory.
+Here’s the dice roller app in action:
+![GIF of Dice Roller Application](/gifs/dice_roller_app.gif)
+_Dice Roller Application_
+
+The second app is called Lemonade. In this simple app, the user clicks the image button to traverse through the stages of making a lemonade. The first screen is a lemon tree that, once clicked, takes you to the next screen with a lemon. In this second screen the user must click the lemon a random number of times to proceed to the next screen. In the third screen, the glass of lemonade can be clicked to “drink” it and move on to the fourth screen. Lastly, the user can click the empty glass to return back to the first screen and restart the process.
+
+It might look simple, but this practice let me explore how to set up buttons and state variables, which basically make up the declarative UI design principle of Compose.
+
+Here’s a little GIF showing the flow of the app:
+![GIF of Lemonade Application](/gifs/lemonade_app.gif)
+_Lemonade Application_
+
+The first month of my capstone project is coming to an end, and I can now move on to working on the Echelon AI Class Card now that a branch has been set up for us to develop in. I’m excited to see what the rest of this journey brings and what I’ll learn along the way!

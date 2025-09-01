@@ -38,6 +38,7 @@ dd {
 h1 {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -75,6 +76,8 @@ body {
 }
 
 .blog-content {
+  max-width: 70%;
+  margin-top: 1rem;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
@@ -93,6 +96,11 @@ body {
   display: block;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.blog-content code {
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 #root {

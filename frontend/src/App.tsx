@@ -15,9 +15,9 @@ function App() {
           </h1>
           <h2>
             Hi, I'm <span className="bold">Linette!</span> I'm a{" "}
-            <span className="bold">CompSci student into web development</span>{" "}
-            and I like building cool projects and sharing what I learn along the
-            way.
+            <span className="bold">CompSci student into web development.</span>
+            <br />I like building cool projects and sharing what I learn along
+            the way!
           </h2>
         </div>
         <div className={styles.links}>

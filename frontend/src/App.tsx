@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="content">
+      <main>
         <div className={styles.app}>
           <div className={styles.header}>
             <h1>
@@ -34,7 +34,7 @@ function App() {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

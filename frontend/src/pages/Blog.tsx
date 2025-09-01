@@ -31,7 +31,7 @@ export default function Blog() {
   return (
     <>
       <Navbar />
-      <div className="content">
+      <main>
         <h1>
           <BsCursorText /> My Blog Posts
         </h1>
@@ -49,7 +49,7 @@ export default function Blog() {
             );
           })}
         </div>
-      </div>
+      </main>
     </>
   );
 }

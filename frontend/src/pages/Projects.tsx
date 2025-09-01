@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <>
       <Navbar />
-      <div className="content">
+      <main>
         <h1>
           <FaCode />
           My Projects
@@ -69,7 +69,7 @@ export default function Projects() {
             </ul>
           </a>
         </div>
-      </div>
+      </main>
     </>
   );
 }

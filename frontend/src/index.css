@@ -65,7 +65,7 @@ body {
   color: rgb(0, 41, 0);
 }
 
-.content {
+main {
   flex: 1 1 auto;
   min-height: 0;
   width: 100vw;
@@ -271,7 +271,7 @@ h1 {
     flex-direction: row;
   }
 
-  .content {
+  main {
     padding: var(--space-m) var(--space-3xl);
   }
 }

@@ -31,7 +31,7 @@ export default function BlogPost() {
   return (
     <>
       <Navbar />
-      <div className="content">
+      <main>
         <h1>{frontmatter.title}</h1>
         <h3 className="italic">
           by Linette Kühn - {formattedDate.toDateString()}
@@ -39,7 +39,7 @@ export default function BlogPost() {
         <article className="blog-content">
           <Content />
         </article>
-      </div>
+      </main>
     </>
   );
 }

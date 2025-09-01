@@ -1,15 +1,17 @@
 /* Nav element */
 nav {
-  flex: 0 1 64px;
+  height: var(--space-2xl);
   display: flex;
+  gap: var(--space-2xs);
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: var(--space-xs) var(--space-l);
-  flex-direction: column;
 }
 
 nav * {
   text-decoration: none;
+  font-size: var(--space-m);
 }
 
 /* Navbar Links */
@@ -35,6 +37,7 @@ nav a:hover {
 
 @media (min-width: 700px) {
   nav {
+    height: var(--space-m);
     margin: var(--space-m) var(--space-2xl);
     flex-direction: row;
   }

@@ -1,27 +1,45 @@
+.app {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .header {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   text-align: center;
-  margin: 2rem 0;
+  margin: var(--space-2xs) 0;
 }
 
 .links {
   display: flex;
+  flex-direction: column;
 }
 
 .link {
-  border: 2px solid rgb(0, 41, 0);
-  padding: 1rem;
+  padding: var(--space-s);
   text-align: center;
-  border-radius: 1rem;
+  border: var(--space-4xs) solid rgb(0, 41, 0);
+  border-radius: var(--space-s);
   background-color: rgb(160, 233, 160);
-  margin: 1rem;
+  margin: var(--space-s);
   text-decoration: none;
   color: rgb(0, 41, 0);
+  font-weight: 600;
 }
 
 .link:hover {
   background-color: rgb(124, 238, 124);
   cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  .links {
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
 }

@@ -4,23 +4,41 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 5rem;
-  font-size: 1.5rem;
+  margin: 0 2rem;
+}
+
+nav * {
+  text-decoration: none;
 }
 
 /* Navbar Links */
 .links {
   display: flex;
-  width: 30%;
+  width: 55%;
   justify-content: space-between;
 }
 
 .links a {
   display: flex;
-  place-content: center;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.links p {
+  margin: 0;
 }
 
 nav a:hover {
   font-weight: 800;
+}
+
+@media (min-width: 700px) {
+  nav {
+    font-size: 1.5rem;
+    margin: 1rem 5rem;
+  }
+
+  .links {
+    width: 30%;
+  }
 }

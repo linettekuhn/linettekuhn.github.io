@@ -10,11 +10,11 @@ export default function Navbar() {
       <div className={styles.links}>
         <Link to={"/blog"}>
           <BsCursorText />
-          <p>Blog</p>
+          Blog
         </Link>
         <Link to={"/projects"}>
           <FaCode />
-          <p>Projects</p>
+          Projects
         </Link>
       </div>
     </nav>

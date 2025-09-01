@@ -174,3 +174,87 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+/* Fluid spacing scale generated with Utopia */
+/* https://utopia.fyi/space/calculator?c=320,16,1.2,2560,40,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|7,s-l&g=s,l,xl,12 */
+
+:root {
+  /* Space 3xs: 4px → 10px */
+  --space-3xs: clamp(0.25rem, 0.1964rem + 0.2679vw, 0.625rem);
+  /* Space 2xs: 8px → 20px */
+  --space-2xs: clamp(0.5rem, 0.3929rem + 0.5357vw, 1.25rem);
+  /* Space xs: 12px → 30px */
+  --space-xs: clamp(0.75rem, 0.5893rem + 0.8036vw, 1.875rem);
+  /* Space s: 16px → 40px */
+  --space-s: clamp(1rem, 0.7857rem + 1.0714vw, 2.5rem);
+  /* Space m: 24px → 60px */
+  --space-m: clamp(1.5rem, 1.1786rem + 1.6071vw, 3.75rem);
+  /* Space l: 32px → 80px */
+  --space-l: clamp(2rem, 1.5714rem + 2.1429vw, 5rem);
+  /* Space xl: 48px → 120px */
+  --space-xl: clamp(3rem, 2.3571rem + 3.2143vw, 7.5rem);
+  /* Space 2xl: 64px → 160px */
+  --space-2xl: clamp(4rem, 3.1429rem + 4.2857vw, 10rem);
+  /* Space 3xl: 96px → 240px */
+  --space-3xl: clamp(6rem, 4.7143rem + 6.4286vw, 15rem);
+  /* Space 4xl: 112px → 280px */
+  --space-4xl: clamp(7rem, 5.5rem + 7.5vw, 17.5rem);
+
+  /* One-up pairs */
+  /* Space 3xs-2xs: 4px → 20px */
+  --space-3xs-2xs: clamp(0.25rem, 0.1071rem + 0.7143vw, 1.25rem);
+  /* Space 2xs-xs: 8px → 30px */
+  --space-2xs-xs: clamp(0.5rem, 0.3036rem + 0.9821vw, 1.875rem);
+  /* Space xs-s: 12px → 40px */
+  --space-xs-s: clamp(0.75rem, 0.5rem + 1.25vw, 2.5rem);
+  /* Space s-m: 16px → 60px */
+  --space-s-m: clamp(1rem, 0.6071rem + 1.9643vw, 3.75rem);
+  /* Space m-l: 24px → 80px */
+  --space-m-l: clamp(1.5rem, 1rem + 2.5vw, 5rem);
+  /* Space l-xl: 32px → 120px */
+  --space-l-xl: clamp(2rem, 1.2143rem + 3.9286vw, 7.5rem);
+  /* Space xl-2xl: 48px → 160px */
+  --space-xl-2xl: clamp(3rem, 2rem + 5vw, 10rem);
+  /* Space 2xl-3xl: 64px → 240px */
+  --space-2xl-3xl: clamp(4rem, 2.4286rem + 7.8571vw, 15rem);
+  /* Space 3xl-4xl: 96px → 280px */
+  --space-3xl-4xl: clamp(6rem, 4.3571rem + 8.2143vw, 17.5rem);
+
+  /* Custom pairs */
+  /* Space s-l: 16px → 80px */
+  --space-s-l: clamp(1rem, 0.4286rem + 2.8571vw, 5rem);
+}
+
+/* Font sizes */
+p {
+  font-size: var(--space-s);
+}
+
+h6,
+button,
+input,
+label,
+li,
+a {
+  font-size: var(--space-s-m);
+}
+
+h5 {
+  font-size: var(--space-m);
+}
+
+h4 {
+  font-size: var(--space-m-l);
+}
+
+h3 {
+  font-size: var(--space-l);
+}
+
+h2 {
+  font-size: var(--space-l-xl);
+}
+
+h1 {
+  font-size: var(--space-xl);
+}

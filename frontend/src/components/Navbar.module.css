@@ -4,7 +4,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 2rem;
+  margin: var(--space-xs) var(--space-l);
+  flex-direction: column;
 }
 
 nav * {
@@ -14,14 +15,14 @@ nav * {
 /* Navbar Links */
 .links {
   display: flex;
-  width: 55%;
+  width: 80%;
   justify-content: space-between;
 }
 
 .links a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2xs);
 }
 
 .links p {
@@ -34,11 +35,12 @@ nav a:hover {
 
 @media (min-width: 700px) {
   nav {
-    font-size: 1.5rem;
-    margin: 1rem 5rem;
+    margin: var(--space-m) var(--space-2xl);
+    flex-direction: row;
   }
 
   .links {
-    width: 30%;
+    width: auto;
+    gap: var(--space-l);
   }
 }

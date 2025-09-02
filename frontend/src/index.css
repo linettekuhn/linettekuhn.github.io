@@ -70,7 +70,7 @@ main {
   flex: 1 1 auto;
   min-height: 0;
   width: 100vw;
-  background-color: rgb(105, 174, 76);
+  background-color: rgb(135, 220, 140);
   border-radius: var(--space-2xl) var(--space-2xl) 0 0;
   padding: var(--space-m) var(--space-2xs);
   display: flex;

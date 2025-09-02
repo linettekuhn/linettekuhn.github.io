@@ -12,25 +12,21 @@ function App() {
           <div className={styles.header}>
             <h1>
               <MdWavingHand />
-              Welcome!
+              Hi, I'm <span className="bold">Linette!</span>
             </h1>
-            <h2>
-              Hi, I'm <span className="bold">Linette!</span> I'm a{" "}
-              <span className="bold">
-                CompSci student into web development.
-              </span>
-            </h2>
             <h3>
-              I like building cool projects and sharing what I learn along the
-              way!
+              I'm a <span className="bold">CompSci student </span>
+              into
+              <span className="bold"> web development</span>
             </h3>
+            <h4>Check out my work and what I learn along the way!</h4>
           </div>
           <div className={styles.links}>
-            <Link className={styles.link} to={"/blog"}>
-              My Blog
-            </Link>
             <Link className={styles.link} to={"/projects"}>
               My Projects
+            </Link>
+            <Link className={styles.link} to={"/blog"}>
+              My Blog
             </Link>
           </div>
         </div>

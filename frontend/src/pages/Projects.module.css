@@ -1,23 +1,20 @@
 .projects {
   width: 100%;
-  padding: 2rem 15rem;
+  padding: var(--space-s) var(--space-s);
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-color: darkgreen rgba(0, 0, 0, 0);
 }
 
 .projectPreview {
-  min-width: 50vw;
-  max-width: 50vw;
-  border: 2px solid rgb(0, 41, 0);
-  padding: 1rem;
+  padding: var(--space-s);
   text-align: center;
-  border-radius: 1rem;
+  border: var(--space-4xs) solid rgb(0, 41, 0);
+  border-radius: var(--space-s);
   background-color: rgb(160, 233, 160);
-  margin: 1rem;
+  margin: var(--space-s);
   text-decoration: none;
   color: rgb(0, 41, 0);
 }
@@ -32,5 +29,13 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 0.5rem;
+  gap: var(--space-xs);
+  padding-left: var(--space-s);
+}
+
+@media (min-width: 700px) {
+  .projectPreview {
+    min-width: 50vw;
+    max-width: 50vw;
+  }
 }

@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import styles from "./BlogPost.module.css";
 import Navbar from "./Navbar";
 
 // import all posts using vite as components and metadata
@@ -32,11 +33,13 @@ export default function BlogPost() {
     <>
       <Navbar />
       <main>
-        <h1>{frontmatter.title}</h1>
-        <h3 className="italic">
-          by Linette Kühn - {formattedDate.toDateString()}
-        </h3>
-        <article className="blog-content">
+        <article className={styles.blogContent}>
+          <header className={styles.blogHeader}>
+            <h2>{frontmatter.title}</h2>
+            <h4 className="italic">
+              by Linette Kühn - {formattedDate.toDateString()}
+            </h4>
+          </header>
           <Content />
         </article>
       </main>

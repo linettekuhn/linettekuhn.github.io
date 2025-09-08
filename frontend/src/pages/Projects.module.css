@@ -1,8 +1,6 @@
 .projects {
   width: 100%;
   padding: var(--space-s) var(--space-s);
-  flex-direction: column;
-  align-items: center;
   overflow-y: scroll;
   overflow-x: hidden;
   gap: var(--space-4xl);

@@ -1,0 +1,41 @@
+/* Default */
+.smiley {
+  height: var(--space-m);
+  fill: currentColor;
+  transition: transform 0.1s;
+}
+
+.smiley .right_winking_eye {
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.smiley .right_eye {
+  opacity: 1;
+  transition: opacity 0.1s;
+}
+
+/* Wink */
+.smiley.wink .right_eye {
+  opacity: 0;
+}
+
+.smiley.wink .right_winking_eye {
+  opacity: 1;
+}
+
+.smiley.wink .mouth {
+  transform: rotateZ(-6deg) translate(-3px, 2px);
+}
+
+.smiley:hover .right_eye {
+  opacity: 0;
+}
+
+.smiley:hover .right_winking_eye {
+  opacity: 1;
+}
+
+.smiley:hover .mouth {
+  transform: rotateZ(-6deg) translate(-3px, 2px);
+}

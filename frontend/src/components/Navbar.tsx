@@ -1,28 +1,18 @@
 import { Link } from "react-router";
 import styles from "./Navbar.module.css";
-import { BsCursorText } from "react-icons/bs";
-import { FaCode } from "react-icons/fa6";
+import Menu from "./Menu";
 import Smiley from "./Smiley";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
     <nav>
+      <Menu />
       <Link to={"/"} className={styles.logo}>
         Linette K<Smiley />
         hn
       </Link>
       <ThemeToggle />
-      <div className={styles.links}>
-        <Link to={"/blog"}>
-          <BsCursorText />
-          Blog
-        </Link>
-        <Link to={"/projects"}>
-          <FaCode />
-          Projects
-        </Link>
-      </div>
     </nav>
   );
 }

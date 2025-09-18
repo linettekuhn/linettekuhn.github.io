@@ -1,12 +1,16 @@
 /* Nav element */
 nav {
-  height: var(--space-2xl);
+  height: var(--space-4xl);
+  width: 100vw;
   display: flex;
-  gap: var(--space-2xs);
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: var(--space-xs) var(--space-l);
+  gap: var(--space-2xs);
+  padding: var(--space-s) var(--space-m);
+  position: fixed;
+  z-index: 99;
+  backdrop-filter: blur(10px);
 }
 
 nav * {
@@ -15,29 +19,12 @@ nav * {
   color: rgb(var(--color-text));
 }
 
-/* Navbar Links */
-.links {
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
-}
-
-.links a {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2xs);
-}
-
 nav a:visited {
   color: rgb(var(--color-text));
 }
 
-.links p {
-  margin: 0;
-}
-
 .logo {
-  font-size: var(--space-l);
+  font-size: var(--space-xl);
 }
 
 @media (min-width: 700px) {
@@ -45,10 +32,5 @@ nav a:visited {
     height: var(--space-m);
     margin: var(--space-m) var(--space-2xl);
     flex-direction: row;
-  }
-
-  .links {
-    width: auto;
-    gap: var(--space-l);
   }
 }

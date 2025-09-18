@@ -8,16 +8,16 @@
 .postPreview {
   padding: var(--space-s);
   text-align: center;
-  border: 2px solid rgb(0, 41, 0);
+  border: 2px solid rgb(var(--color-primary-3));
   border-radius: var(--space-s);
-  background-color: rgb(183, 229, 186);
+  background-color: rgb(var(--color-primary-3), 0.5);
   margin: var(--space-s);
   text-decoration: none;
-  color: rgb(0, 41, 0);
+  color: rgb(var(--color-btn-text));
 }
 
 .postPreview:hover {
-  background-color: rgb(164, 219, 168);
+  background-color: rgb(var(--color-primary-3));
   cursor: pointer;
 }
 

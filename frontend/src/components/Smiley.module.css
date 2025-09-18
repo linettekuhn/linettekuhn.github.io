@@ -3,6 +3,7 @@
   height: var(--space-m);
   fill: currentColor;
   transition: transform 0.1s;
+  color: rgb(var(--color-text));
 }
 
 .smiley .right_winking_eye {

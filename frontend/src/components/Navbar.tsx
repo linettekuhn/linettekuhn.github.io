@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import { BsCursorText } from "react-icons/bs";
 import { FaCode } from "react-icons/fa6";
 import Smiley from "./Smiley";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
@@ -11,6 +12,7 @@ export default function Navbar() {
         Linette K<Smiley />
         hn
       </Link>
+      <ThemeToggle />
       <div className={styles.links}>
         <Link to={"/blog"}>
           <BsCursorText />

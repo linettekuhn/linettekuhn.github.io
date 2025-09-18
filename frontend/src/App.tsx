@@ -14,12 +14,8 @@ function App() {
               <MdWavingHand />
               Hi, I'm <span className="bold">Linette!</span>
             </h1>
-            <h3>
-              I'm a <span className="bold">CompSci student </span>
-              into
-              <span className="bold"> web development</span>
-            </h3>
-            <h4>Check out my work and what I learn along the way!</h4>
+            <h4>Full Stack Developer</h4>
+            <h5>Check out my work and what I learn along the way!</h5>
           </div>
           <div className={styles.links}>
             <Link className={styles.link} to={"/projects"}>

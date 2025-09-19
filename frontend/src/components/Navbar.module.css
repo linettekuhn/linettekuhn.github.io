@@ -7,7 +7,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: var(--space-2xs);
-  padding: var(--space-s) var(--space-m);
+  padding: var(--space-s) var(--space-xl);
   position: fixed;
   z-index: 99;
   backdrop-filter: blur(10px);
@@ -30,7 +30,8 @@ nav a:visited {
 @media (min-width: 700px) {
   nav {
     height: var(--space-m);
-    margin: var(--space-m) var(--space-2xl);
+    padding: var(--space-3xl) 0;
     flex-direction: row;
+    justify-content: space-evenly;
   }
 }

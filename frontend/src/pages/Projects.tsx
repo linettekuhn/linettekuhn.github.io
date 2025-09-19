@@ -1,19 +1,16 @@
 import Navbar from "../components/Navbar";
 import ProjectCard from "../components/ProjectCard";
 import styles from "./Projects.module.css";
-import { FaCode } from "react-icons/fa6";
 
 export default function Projects() {
   return (
     <>
       <Navbar />
-      <main>
-        <h1>
-          <FaCode />
-          My Projects
-        </h1>
+      <main className={styles.projectsWrapper}>
+        <h1>My Projects</h1>
         <div className={styles.projects}>
           <ProjectCard
+            key={"EasyCook"}
             name="EasyCook"
             projectLink="https://linettekuhn.github.io/easy-cook"
             description="My first website! A recipe and meal planning web app built with
@@ -27,6 +24,7 @@ export default function Projects() {
             ]}
           />
           <ProjectCard
+            key={"ZeroLio"}
             name="ZeroLío"
             projectLink="https://linettekuhn.github.io/zero-lio"
             description=" A location-based sports field reservation platform built with
@@ -39,6 +37,7 @@ export default function Projects() {
             ]}
           />
           <ProjectCard
+            key={"TCPChatApp"}
             name="TCP Chat App"
             projectLink="https://linettekuhn.github.io/tcp-chat"
             description="A real-time chat application with a C++ TCP server backend and

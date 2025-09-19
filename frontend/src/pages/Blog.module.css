@@ -1,8 +1,14 @@
+.postsWrapper {
+  min-height: 100%;
+  justify-content: flex-start;
+}
+
 .posts {
+  width: 100%;
   padding: var(--space-s) var(--space-s);
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  align-items: center;
 }
 
 .postPreview {
@@ -24,5 +30,9 @@
 @media (min-width: 700px) {
   .posts {
     padding: var(--space-s) var(--space-4xl);
+  }
+  .postPreview {
+    min-width: 50vw;
+    max-width: 50vw;
   }
 }

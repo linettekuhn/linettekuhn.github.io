@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import Navbar from "../components/Navbar";
 import styles from "./Blog.module.css";
-import { BsCursorText } from "react-icons/bs";
 
 // import all posts using vite as components and metadata
 const posts = import.meta.glob("../posts/*.mdx", { eager: true }) as Record<
@@ -31,10 +30,8 @@ export default function Blog() {
   return (
     <>
       <Navbar />
-      <main>
-        <h1>
-          <BsCursorText /> My Blog Posts
-        </h1>
+      <main className={styles.postsWrapper}>
+        <h1>My Blog Posts</h1>
         <div className={styles.posts}>
           {postList.map((post) => {
             const formattedDate = new Date(post.date);

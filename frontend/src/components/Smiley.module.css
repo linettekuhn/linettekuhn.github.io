@@ -2,18 +2,18 @@
 .smiley {
   height: var(--space-m);
   fill: currentColor;
-  transition: transform 0.1s;
+  transition: transform 0.05s ease, opacity 0.05s ease;
   color: rgb(var(--color-text));
 }
 
 .smiley .right_winking_eye {
   opacity: 0;
-  transition: opacity 0.1s;
+  transition: opacity 0.05s;
 }
 
 .smiley .right_eye {
   opacity: 1;
-  transition: opacity 0.1s;
+  transition: opacity 0.05s;
 }
 
 /* Wink */

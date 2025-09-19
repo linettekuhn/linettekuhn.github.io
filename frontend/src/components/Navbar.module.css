@@ -29,8 +29,7 @@ nav a:visited {
 
 @media (min-width: 700px) {
   nav {
-    height: var(--space-m);
-    padding: var(--space-3xl) 0;
+    height: var(--space-4xl);
     flex-direction: row;
     justify-content: space-evenly;
   }

@@ -42,7 +42,7 @@ h1 {
 html,
 body,
 #root {
-  height: 100%;
+  height: auto;
   background: var(--color-bg);
 }
 
@@ -67,12 +67,10 @@ body {
 }
 
 main {
-  margin-top: var(--space-4xl);
   width: 100vw;
-  min-height: 90%;
+  min-height: 100vh;
   flex: 1;
-  border-radius: var(--space-2xl) var(--space-2xl) 0 0;
-  padding: var(--space-m) var(--space-2xs);
+  padding: var(--space-4xl) var(--space-m) var(--space-2xs) var(--space-2xs);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -302,7 +300,7 @@ h1 {
   }
 
   main {
-    padding-bottom: 0;
-    padding: var(--space-m) var(--space-3xl);
+    padding: 0 var(--space-3xl);
+    padding-top: var(--space-4xl);
   }
 }

@@ -2,7 +2,8 @@
   color: rgb(var(--color-text));
   perspective: 1000px;
   width: 60vw;
-  height: 55vh;
+  min-height: 30vh;
+  flex: 1 0 55vh;
   position: relative;
 }
 

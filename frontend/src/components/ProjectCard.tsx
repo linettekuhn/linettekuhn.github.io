@@ -26,8 +26,8 @@ export default function ProjectCard({
         <div className={styles.projectBack}>
           <ul>
             <h4>Features:</h4>
-            {features.map((feature) => (
-              <li>{feature}</li>
+            {features.map((feature, i) => (
+              <li key={i}>{feature}</li>
             ))}
           </ul>
         </div>

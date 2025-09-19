@@ -37,7 +37,11 @@ export default function Blog() {
             const formattedDate = new Date(post.date);
 
             return (
-              <Link className={styles.postPreview} to={`/blog/${post.slug}`}>
+              <Link
+                key={post.date}
+                className={styles.postPreview}
+                to={`/blog/${post.slug}`}
+              >
                 <h3>{post.title}</h3>
                 <p>
                   {formattedDate.toDateString()} - {post.wordCount} words

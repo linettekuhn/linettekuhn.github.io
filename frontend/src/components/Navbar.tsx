@@ -1,17 +1,18 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import styles from "./Navbar.module.css";
 import Menu from "./Menu";
 import Smiley from "./Smiley";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <nav>
       <Menu />
-      <Link to={"/"} className={styles.logo}>
+      <div onClick={() => navigate("/")} className={styles.logo}>
         Linette K<Smiley />
         hn
-      </Link>
+      </div>
       <ThemeToggle />
     </nav>
   );

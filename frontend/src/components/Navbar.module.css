@@ -24,7 +24,17 @@ nav a:visited {
 }
 
 .logo {
+  display: inline-block;
   font-size: var(--space-xl);
+  padding: var(--space-3xs);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.logo:hover {
+  border-color: var(--color-text);
+  cursor: pointer;
 }
 
 @media (min-width: 700px) {

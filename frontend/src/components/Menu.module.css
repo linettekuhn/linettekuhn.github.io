@@ -4,6 +4,10 @@
   border: none;
 }
 
+.menuButton:hover {
+  cursor: pointer;
+}
+
 .menuButton svg {
   font-size: var(--space-xl);
 }
@@ -30,10 +34,18 @@
   gap: var(--space-m);
   font-size: var(--space-xl);
   text-decoration: none;
+  padding-bottom: var(--space-3xs);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease-in-out;
 }
 
 .links p {
   margin: 0;
+}
+
+.links a:hover {
+  border-color: var(--color-text);
+  cursor: pointer;
 }
 
 @media (min-width: 700) {

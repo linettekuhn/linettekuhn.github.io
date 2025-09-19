@@ -16,10 +16,10 @@ function App() {
         </div>
         <div className={styles.links}>
           <Link className={styles.link} to={"/projects"}>
-            My Projects
+            Projects
           </Link>
           <Link className={styles.link} to={"/blog"}>
-            My Blog
+            Blog
           </Link>
         </div>
       </main>

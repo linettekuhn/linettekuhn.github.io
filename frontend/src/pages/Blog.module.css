@@ -20,11 +20,18 @@
   margin: var(--space-s);
   text-decoration: none;
   color: rgb(var(--color-btn-text));
+  transition: box-shadow 0.4s ease, background-color 0.35s ease;
 }
 
 .postPreview:hover {
-  background-color: rgb(var(--color-primary-3));
+  background-color: rgba(var(--color-primary-3), 0.9);
   cursor: pointer;
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-3);
+}
+
+.postPreview:active {
+  background-color: rgba(var(--color-primary-3));
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-3);
 }
 
 @media (min-width: 700px) {

@@ -2,7 +2,6 @@
   color: rgb(var(--color-text));
   perspective: 1000px;
   width: 60vw;
-  min-height: 30vh;
   flex: 1 0 55vh;
   position: relative;
 }
@@ -64,5 +63,6 @@
   .projectPreview {
     min-width: 30vw;
     max-width: 30vw;
+    min-height: 45vh;
   }
 }

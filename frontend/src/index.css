@@ -41,7 +41,7 @@ h1 {
 /* Set core body defaults */
 html,
 #root {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 body,
@@ -70,11 +70,11 @@ main {
   width: 100vw;
   min-height: 100vh;
   flex: 1;
-  padding: var(--space-4xl) var(--space-m) var(--space-2xs) var(--space-2xs);
+  padding: var(--space-4xl) var(--space-2xs) var(--space-m) var(--space-2xs);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #root {

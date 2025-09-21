@@ -17,9 +17,9 @@ export default function Projects() {
               React, TypeScript, and Node.js."
             features={[
               "Recipe lookup with Spoonacular API",
-              "Create, manage and save weekly meal plans",
+              "Create, manage and save meal plans",
               "Store and manage pantry ingredients",
-              "Automatic grocery list generation from meal plan",
+              "Automatic grocery list generation",
               "User authentication",
             ]}
           />

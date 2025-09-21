@@ -178,6 +178,8 @@ textarea:not([rows]) {
   --space-xs: clamp(0.5625rem, 0.5089rem + 0.2679vw, 0.9375rem);
   /* Space s: 12px → 20px */
   --space-s: clamp(0.75rem, 0.6786rem + 0.3571vw, 1.25rem);
+  /* Font size: 16px → 24px */
+  --font-default: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
   /* Space m: 18px → 30px */
   --space-m: clamp(1.125rem, 1.0179rem + 0.5357vw, 1.875rem);
   /* Space l: 20px → 34px */
@@ -276,7 +278,7 @@ li,
 input,
 label,
 button {
-  font-size: var(--space-s);
+  font-size: var(--font-default);
 }
 
 h6 {

@@ -1,0 +1,67 @@
+.contactPage {
+  justify-content: space-evenly;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(var(--color-secondary-2), 0.3);
+  border: 2px solid rgba(var(--color-secondary-2));
+  border-radius: var(--space-s);
+  padding: var(--space-m) var(--space-s);
+  gap: var(--space-s);
+}
+
+.input {
+  transition: box-shadow 0.3s ease;
+  background-color: rgba(var(--color-secondary-2), 0.25);
+  border: 1px solid rgba(var(--color-primary-1));
+  border-radius: var(--space-m);
+  padding: var(--space-xs) var(--space-s);
+  color: rgb(var(--text-color));
+}
+.input:focus {
+  outline: none;
+  border-radius: var(--space-m);
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
+}
+
+.contactForm label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.contactForm .message {
+  flex-direction: column;
+  align-items: start;
+  gap: var(--space-xs);
+}
+
+.contactForm textarea {
+  width: 100%;
+  resize: none;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  align-items: center;
+}
+
+.linkedin,
+.github {
+  font-size: var(--space-m);
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.linkedin:visited,
+.github:visited {
+  color: rgb(var(--text-color));
+}

@@ -15,10 +15,10 @@ function App() {
           <h5>Check out my work and what I learn along the way!</h5>
         </div>
         <div className={styles.links}>
-          <Link className={styles.link} to={"/projects"}>
+          <Link className="button" to={"/projects"}>
             Projects
           </Link>
-          <Link className={styles.link} to={"/blog"}>
+          <Link className="button" to={"/blog"}>
             Blog
           </Link>
         </div>

@@ -33,7 +33,7 @@ nav a:visited {
 }
 
 .logo:hover {
-  border-color: var(--color-text);
+  border-color: rgba(var(--color-secondary-1));
   cursor: pointer;
 }
 

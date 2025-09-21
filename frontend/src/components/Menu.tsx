@@ -31,7 +31,7 @@ export default function Menu() {
               <FaCode />
               Projects
             </Link>
-            <Link to={"/projects"}>
+            <Link to={"/contact"}>
               <MdContactPhone />
               Contact
             </Link>

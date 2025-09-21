@@ -237,11 +237,13 @@ textarea:not([rows]) {
   --font-display: "Arima";
   --line-height: 1.3;
   --font-size-adjust: 1.5;
-  --box-shadow-hover: 0 5px 4px;
-  --box-shadow-pressed: 0 2px 2px;
-  --box-shadow-color-primary-1: rgba(0, 0, 0, 0.25);
-  --box-shadow-color-primary-2: rgba(0, 0, 0, 0.25);
-  --box-shadow-color-primary-3: rgba(0, 0, 0, 0.25);
+  --box-shadow-hover: 0 var(--space-2xs) var(--space-3xs);
+  --box-shadow-pressed: 0 var(--space-3xs) var(--space-3xs);
+  --box-shadow-color-primary-1: rgba(0, 0, 0, 0.2);
+  --box-shadow-color-primary-2: rgba(0, 0, 0, 0.2);
+  --box-shadow-color-primary-3: rgba(0, 0, 0, 0.2);
+  --box-shadow-color-secondary-1: rgba(0, 0, 0, 0.2);
+  --box-shadow-color-secondary-2: rgba(0, 0, 0, 0.2);
 }
 
 /* Dark Theme */
@@ -258,11 +260,13 @@ textarea:not([rows]) {
   --font-display: "Rock Salt";
   --line-height: 1.9;
   --font-size-adjust: 1;
-  --box-shadow-hover: 0 0 16px;
-  --box-shadow-pressed: 0 0 30px;
+  --box-shadow-hover: 0 0 var(--space-m);
+  --box-shadow-pressed: 0 0 var(--space-xl);
   --box-shadow-color-primary-1: rgba(var(--color-primary-1));
   --box-shadow-color-primary-2: rgba(var(--color-primary-2));
   --box-shadow-color-primary-3: rgba(var(--color-primary-3));
+  --box-shadow-color-secondary-1: rgba(var(--color-secondary-1));
+  --box-shadow-color-secondary-2: rgba(var(--color-secondary-2));
 }
 
 /* Font sizes */

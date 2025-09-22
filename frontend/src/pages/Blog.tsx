@@ -35,7 +35,7 @@ export default function Blog() {
         <div
           className={styles.postTimeline}
           style={{
-            gridTemplateColumns: `repeat(${postList.length}, minmax(25vw, 1fr))`,
+            gridTemplateColumns: `repeat(${postList.length}, minmax(37vw, 1fr))`,
           }}
         >
           <div className={styles.timelineLine}></div>

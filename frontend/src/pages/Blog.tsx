@@ -32,8 +32,14 @@ export default function Blog() {
       <Navbar />
       <main className={styles.postsWrapper}>
         <h1>My Blog Posts</h1>
-        <div className={styles.posts}>
-          {postList.map((post) => {
+        <div
+          className={styles.postTimeline}
+          style={{
+            gridTemplateColumns: `repeat(${postList.length}, minmax(25vw, 1fr))`,
+          }}
+        >
+          <div className={styles.timelineLine}></div>
+          {postList.map((post, i) => {
             const formattedDate = new Date(post.date);
 
             return (
@@ -41,6 +47,7 @@ export default function Blog() {
                 key={post.date}
                 className={styles.postPreview}
                 to={`/blog/${post.slug}`}
+                style={{ gridColumn: i + 1 }}
               >
                 <h3>{post.title}</h3>
                 <p>

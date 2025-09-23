@@ -29,6 +29,26 @@ export default function Blog() {
   }));
 
   const timelineRef = useRef<HTMLDivElement | null>(null);
+
+  // add event listener for scrolling horizontally in the timeline
+  useEffect(() => {
+    const element = timelineRef.current;
+    if (!element) return;
+
+    const handleWheelScroll = (event: WheelEvent) => {
+      if (window.innerWidth >= 700) {
+        event.preventDefault();
+        element.scrollLeft += event.deltaY;
+      }
+    };
+
+    element.addEventListener("wheel", handleWheelScroll);
+
+    return () => {
+      element.removeEventListener("wheel", handleWheelScroll);
+    };
+  }, []);
+
   useEffect(() => {
     if (timelineRef.current) {
       timelineRef.current.scrollTo({

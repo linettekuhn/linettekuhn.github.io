@@ -65,7 +65,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   color: rgb(var(--color-text));
-  scrollbar-color: rgb(var(--color-text)) rgba(0, 0, 0, 0);
+  scrollbar-color: rgb(var(--color-secondary-2)) rgba(0, 0, 0, 0);
 }
 
 main {
@@ -257,7 +257,7 @@ textarea:not([rows]) {
   --color-bg: linear-gradient(160deg, rgb(27, 31, 47) 0%, rgb(11, 12, 16) 50%);
   --color-primary-1: 47, 247, 227;
   --color-primary-2: 162, 89, 255;
-  --color-primary-3: 255, 93, 162;
+  --color-primary-3: 255, 93, 233;
   --color-secondary-1: 191, 255, 0;
   --color-secondary-2: 0, 166, 255;
   --font-display: "Rock Salt";

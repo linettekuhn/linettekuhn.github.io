@@ -55,6 +55,10 @@
     margin: var(--space-s) 0;
   }
 
+  .postPreview p {
+    white-space: nowrap;
+  }
+
   .postPreview:nth-child(odd) {
     grid-row: top;
     align-self: flex-end;

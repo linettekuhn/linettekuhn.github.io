@@ -35,7 +35,7 @@ export default function Blog() {
         <div
           className={styles.postTimeline}
           style={{
-            gridTemplateColumns: `repeat(${postList.length}, minmax(37vw, 1fr))`,
+            gridTemplateColumns: `repeat(${postList.length}, minmax(min-content, 40vw))`,
           }}
         >
           <div className={styles.timelineLine}></div>
@@ -49,7 +49,7 @@ export default function Blog() {
                 to={`/blog/${post.slug}`}
                 style={{ gridColumn: i + 1 }}
               >
-                <h3>{post.title}</h3>
+                <h4>{post.title}</h4>
                 <p>
                   {formattedDate.toDateString()} - {post.wordCount} words
                 </p>

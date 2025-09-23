@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import Navbar from "../components/Navbar";
 import styles from "./Blog.module.css";
+import { useEffect, useRef } from "react";
 
 // import all posts using vite as components and metadata
 const posts = import.meta.glob("../posts/*.mdx", { eager: true }) as Record<
@@ -27,6 +28,15 @@ export default function Blog() {
     tags: module.frontmatter.tags,
   }));
 
+  const timelineRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (timelineRef.current) {
+      timelineRef.current.scrollTo({
+        left: timelineRef.current.scrollWidth,
+        behavior: "smooth",
+      });
+    }
+  }, [postList]);
   return (
     <>
       <Navbar />
@@ -37,6 +47,7 @@ export default function Blog() {
           style={{
             gridTemplateColumns: `repeat(${postList.length}, minmax(min-content, 40vw))`,
           }}
+          ref={timelineRef}
         >
           <div className={styles.timelineLine}></div>
           {postList.map((post, i) => {
@@ -49,7 +60,7 @@ export default function Blog() {
                 to={`/blog/${post.slug}`}
                 style={{ gridColumn: i + 1 }}
               >
-                <h4>{post.title}</h4>
+                <h5>{post.title}</h5>
                 <p>
                   {formattedDate.toDateString()} - {post.wordCount} words
                 </p>

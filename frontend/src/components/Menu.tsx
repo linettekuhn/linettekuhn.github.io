@@ -20,24 +20,23 @@ export default function Menu() {
           <IoMenu onClick={() => setMenuOpen(true)} />
         )}
       </button>
-      {menuOpen &&
-        createPortal(
-          <div className={styles.links}>
-            <Link to={"/blog"}>
-              <BsCursorText />
-              Blog
-            </Link>
-            <Link to={"/projects"}>
-              <FaCode />
-              Projects
-            </Link>
-            <Link to={"/contact"}>
-              <MdContactPhone />
-              Contact
-            </Link>
-          </div>,
-          document.body
-        )}
+      {createPortal(
+        <div className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
+          <Link to={"/blog"}>
+            <BsCursorText />
+            Blog
+          </Link>
+          <Link to={"/projects"}>
+            <FaCode />
+            Projects
+          </Link>
+          <Link to={"/contact"}>
+            <MdContactPhone />
+            Contact
+          </Link>
+        </div>,
+        document.body
+      )}
     </>
   );
 }

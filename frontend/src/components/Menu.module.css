@@ -26,6 +26,17 @@
   justify-content: space-evenly;
   background: var(--color-bg);
   overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(-1500px);
+  transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.links.open {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: auto;
 }
 
 .links a {

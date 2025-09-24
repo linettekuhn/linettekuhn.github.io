@@ -36,9 +36,11 @@ export default function Blog() {
     if (!element) return;
 
     const handleWheelScroll = (event: WheelEvent) => {
-      if (window.innerWidth >= 700) {
+      const isTrackpad = Math.abs(event.deltaY) < 30;
+      if (window.innerWidth >= 700 && !isTrackpad) {
         event.preventDefault();
-        element.scrollLeft += event.deltaY;
+        const scrollValue = event.deltaY * 0.4;
+        element.scrollLeft += scrollValue;
       }
     };
 

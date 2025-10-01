@@ -2,19 +2,18 @@
   height: var(--space-2xl);
   fill: currentColor;
   color: rgb(var(--color-text));
-  transition: opacity 0.1s ease, transform 0.1s ease;
+  transition: transform 0.2s ease;
+  align-self: flex-end;
 }
 
 .lamp:hover {
   cursor: pointer;
+  transform-origin: center;
+  transform: scale(1.05);
 }
 
 .lamp .shade {
   stroke: currentColor;
-}
-
-.lamp .glow {
-  stroke: yellow;
 }
 
 .lamp.unlit .shade {
@@ -55,6 +54,11 @@
 .lamp.lit:hover .string {
   transform: translateY(1.3px);
   animation: none;
+}
+
+.glow {
+  stroke: yellow;
+  transition: opacity 0.2s ease;
 }
 
 .lamp.unlit .glow {

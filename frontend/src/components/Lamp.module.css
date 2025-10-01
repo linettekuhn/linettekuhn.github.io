@@ -7,7 +7,6 @@
 }
 
 .lamp:hover {
-  cursor: pointer;
   transform-origin: center;
   transform: scale(1.05);
 }

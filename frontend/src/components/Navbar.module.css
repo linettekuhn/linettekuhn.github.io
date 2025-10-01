@@ -27,18 +27,30 @@ nav a:visited {
   color: rgb(var(--color-text));
 }
 
+nav *:hover {
+  cursor: pointer;
+}
+
 .logo {
   display: inline-block;
   font-size: var(--space-xl);
   padding: var(--space-3xs);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease-in-out;
   z-index: 100;
 }
 
-.logo:hover {
-  border-color: rgba(var(--color-secondary-1));
-  cursor: pointer;
+.logo::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  border-radius: 1rem;
+  margin: 0 auto;
+  background-color: rgba(var(--color-secondary-1));
+  transition: width 0.2s ease;
+}
+
+.logo:hover::after {
+  width: 100%;
 }
 
 @media (min-width: 700px) {

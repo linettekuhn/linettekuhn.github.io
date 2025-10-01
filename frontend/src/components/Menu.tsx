@@ -23,15 +23,15 @@ export default function Menu() {
 
       {createPortal(
         <div className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
-          <Link to={"/blog"}>
+          <Link className={styles.link} to={"/blog"}>
             <BsCursorText />
             Blog
           </Link>
-          <Link to={"/projects"}>
+          <Link className={styles.link} to={"/projects"}>
             <FaCode />
             Projects
           </Link>
-          <Link to={"/contact"}>
+          <Link className={styles.link} to={"/contact"}>
             <MdContactPhone />
             Contact
           </Link>

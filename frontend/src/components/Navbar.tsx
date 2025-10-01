@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import styles from "./Navbar.module.css";
 import Menu from "./Menu";
 import Smiley from "./Smiley";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./Lamp";
 
 export default function Navbar() {
   const navigate = useNavigate();

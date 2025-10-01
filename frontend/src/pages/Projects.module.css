@@ -5,7 +5,7 @@
 
 .projects {
   width: 100%;
-  padding: var(--space-s) var(--space-s);
+  padding: var(--space-m) var(--space-s);
   display: flex;
   flex-direction: column;
   gap: var(--space-4xl);

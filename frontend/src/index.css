@@ -52,9 +52,38 @@ main {
   transition-duration: 0.6s, 0.3s, 0.4s, 0.4s;
 }
 
+[data-theme="dark"] body {
+  background: linear-gradient(160deg, rgb(27, 31, 47) 0%, rgb(11, 12, 16) 50%);
+  background-size: 150%;
+  animation: gradientMove 10s infinite;
+}
+
+[data-theme="dark"] h1 {
+  text-shadow: 0 0 var(--space-3xs) rgb(var(--color-text));
+}
+
+[data-theme="light"] body {
+  background: rgb(242, 242, 237);
+}
+
+[data-theme="light"] h1 {
+  text-shadow: 1px 1px var(--space-3xs) rgb(var(--color-secondary-1));
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0%, 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0%, 0%;
+  }
+}
+
 body {
   height: auto;
-  background: var(--color-bg);
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -230,7 +259,6 @@ textarea:not([rows]) {
 [data-theme="light"] {
   --color-text: 43, 43, 43;
   --color-btn-text: 43, 43, 43;
-  --color-bg: rgb(242, 242, 237);
   --color-bg-solid: 242, 242, 237;
   --color-primary-1: 106, 159, 120;
   --color-primary-2: 122, 175, 201;
@@ -240,7 +268,7 @@ textarea:not([rows]) {
   --font-display: "Arima";
   --line-height: 1.3;
   --font-size-adjust: 1.5;
-  --box-shadow-hover: 0 var(--space-2xs) var(--space-3xs);
+  --box-shadow-hover: 0 var(--space-2xs) var(--space-2xs);
   --box-shadow-pressed: 0 var(--space-3xs) var(--space-3xs);
   --box-shadow-color-primary-1: rgba(0, 0, 0, 0.2);
   --box-shadow-color-primary-2: rgba(0, 0, 0, 0.2);
@@ -254,7 +282,6 @@ textarea:not([rows]) {
   --color-text: 234, 234, 234;
   --color-btn-text: 27, 31, 47;
   --color-bg-solid: 27, 31, 47;
-  --color-bg: linear-gradient(160deg, rgb(27, 31, 47) 0%, rgb(11, 12, 16) 50%);
   --color-primary-1: 47, 247, 227;
   --color-primary-2: 162, 89, 255;
   --color-primary-3: 255, 93, 233;

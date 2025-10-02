@@ -53,6 +53,28 @@
   margin: 0;
 }
 
+.link svg {
+  fill: currentColor;
+  height: var(--space-m);
+  transition: transform 0.2s ease;
+}
+
+.link:hover .caret {
+  animation: blinking 1s infinite;
+  transform: scale(1.1);
+}
+
+@keyframes blinking {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .link:visited {
   color: rgb(var(--color-text));
 }

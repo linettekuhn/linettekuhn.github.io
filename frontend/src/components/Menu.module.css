@@ -59,19 +59,52 @@
   transition: transform 0.2s ease;
 }
 
-.link:hover .caret {
-  animation: blinking 1s infinite;
+.link:hover svg {
   transform: scale(1.1);
 }
 
-@keyframes blinking {
+.link:hover .caret {
+  animation: wiggle 1s infinite ease-in-out;
+}
+
+@keyframes wiggle {
   0%,
   100% {
-    opacity: 1;
+    transform: translateX(0px) rotate(-10deg);
   }
 
   50% {
-    opacity: 0.5;
+    transform: translateX(1px) rotate(10deg);
+  }
+}
+
+.link:hover .code :global(.left) {
+  animation: breatheLeft 1s infinite;
+}
+
+@keyframes breatheLeft {
+  0%,
+  100% {
+    transform: translateX(-1px);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+}
+
+.link:hover .code :global(.right) {
+  animation: breatheRight 1s infinite;
+}
+
+@keyframes breatheRight {
+  0%,
+  100% {
+    transform: translateX(1px);
+  }
+
+  50% {
+    transform: translateX(5px);
   }
 }
 

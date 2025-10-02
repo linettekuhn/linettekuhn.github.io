@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { FaCode } from "react-icons/fa6";
 import { MdContactPhone } from "react-icons/md";
 import { Link } from "react-router";
 import styles from "./Menu.module.css";
 import { createPortal } from "react-dom";
 import MenuIcon from "./icons/MenuIcon";
 import Caret from "./icons/Caret";
+import Code from "./icons/Code";
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,7 +28,7 @@ export default function Menu() {
             Blog
           </Link>
           <Link className={styles.link} to={"/projects"}>
-            <FaCode />
+            <Code className={styles.code} />
             Projects
           </Link>
           <Link className={styles.link} to={"/contact"}>

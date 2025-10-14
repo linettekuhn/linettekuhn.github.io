@@ -20,13 +20,15 @@ const posts = import.meta.glob("../posts/*.mdx", { eager: true }) as Record<
 export default function Blog() {
   const moduleArr = Object.entries(posts);
   // extract metadata from imported mdx files
-  const postList = moduleArr.map(([path, module]) => ({
-    slug: path.split("/").pop()?.replace(".mdx", ""),
-    title: module.frontmatter.title,
-    date: module.frontmatter.date,
-    wordCount: module.frontmatter.wordCount,
-    tags: module.frontmatter.tags,
-  }));
+  const postList = moduleArr
+    .map(([path, module]) => ({
+      slug: path.split("/").pop()?.replace(".mdx", ""),
+      title: module.frontmatter.title,
+      date: module.frontmatter.date,
+      wordCount: module.frontmatter.wordCount,
+      tags: module.frontmatter.tags,
+    }))
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   const timelineRef = useRef<HTMLDivElement | null>(null);
 
@@ -59,6 +61,9 @@ export default function Blog() {
       });
     }
   }, [postList]);
+
+  console.log("Imported posts:", Object.keys(posts));
+
   return (
     <>
       <Navbar />

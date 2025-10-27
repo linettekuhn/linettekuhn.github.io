@@ -1,0 +1,38 @@
+---
+title: "More Development on the Budgeting App"
+date: 10/27/2025
+wordCount: 499
+---
+
+During this week, I continued developing my budgeting app, this time implementing much of the functionality through storage and routing. I first created login and registration screens that use Firebase to authenticate users and allow them to access the app. Later, I added an offline mode, meaning Firebase now serves only as a backup and sync method, while the actual user data is stored locally.
+
+After completing that, I resumed work on the transaction screen, adding functionality to the UI I had previously designed. This process included building a custom component for the number input, ensuring correct money formatting with two decimal places for cents and commas for thousands. Once I had all the required information, I needed a way to store it. My usual approach is to use Firestore as a database, but that requires an internet connection and a signed-in user. I decided this was a great opportunity to demonstrate my database skills by storing data in an SQL database. Fortunately, Expo provides a library that uses the SQLite API to execute queries and manage tables. I created the following tables to hold the core data of the app.
+
+##### Categories Table:
+
+```
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    color TEXT NOT NULL
+```
+
+##### Transactions Table:
+
+```
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    amount DECIMAL(13, 2) NOT NULL,
+    type TEXT NOT NULL,
+    date TEXT DEFAULT (datetime('now')),
+    categoryId INTEGER,
+    FOREIGN KEY (categoryId) REFERENCES categories(id)
+
+```
+
+After setting up the tables, I was able to finish the transactions page by inserting records into the transactions table with all the values from the form. For categories, I added some default options users can choose from, but I plan to include a feature for creating custom categories in the future. I also developed several screens that retrieve data from the transactions table, filtered by category or month, to display spending.
+
+Lastly, I worked on designing an onboarding process for new users to input their budget goals, spending categories, and other settings so the app can be tailored to their needs. This process is completed only once, the first time a user opens the app. It involves five screens prompting you to select or add categories, set budgets for each one, and optionally provide your salary. Unfortunately, while working on this, I encountered a bug I couldn’t resolve, that I spent a lot of time trying to figure out. I wanted a loading icon to appear over the screen during the brief moment the app loads the onboarding questionnaire, preventing users from seeing the home screen before finishing it. However, this caused the app to crash or become stuck on infinite loading, so I decided to drop the idea after trying every solution I could find online.
+
+Overall, I made solid progress this week, and with each day, the app feels closer to the vision I have in mind. Here’s a preview of its current state:
+![Preview of onboarding process](/gifs/budget_app_onboarding.gif)
+_Preview of onboarding process_

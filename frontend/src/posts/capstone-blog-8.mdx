@@ -9,6 +9,7 @@ For the start of this final week of my second month working with Echelon, I work
 With that, the timeline came to life: a scrollable horizontal line with blog posts scattered on top and underneath in chronological order. I did this using a CSS grid, which had three rows: one for the top posts, one for the middle line, and one for the bottom posts. Then, I used some animations to scroll to the end of the list (the most recent post) when loading onto the page.
 
 A little problem arose when the user tried to scroll using a scroll wheel. When scrolling on the list, it scrolled the page up and down rather than left to right. Fixing this caused another problem where the scroll gesture on the trackpad now scrolled in the opposite direction. To fix both of these issues, I simply figured out whether a scroll was caused by a scroll wheel versus a trackpad depending on the delta of the distance in the scroll event. With all this done, the timeline was complete:
+
 ![Blog timeline scroll](/gifs/blog_timeline.gif)
 _Blog timeline result_
 

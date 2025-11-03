@@ -5,17 +5,21 @@ wordCount: 427
 ---
 
 This week continued my journey redesigning my EasyCook website. For the first half of the week, I worked on the layout and spacing of the meal planner page. On this page, there is a week selection, then a day selection within the week that outputs the planned meals for that day. The problem was that the output varied in width depending on its content, which, as a consequence, scaled the day selection and made it look unpolished. I quickly fixed this layout issue by forcing stricter constraints on the width of the paper behind the output. I also wanted this output to look more handmade than the rest of the site, to mimic writing down your plans on a piece of paper. To achieve this look, I started by changing the fonts, picking two handwritten fonts: one for the date, which is in print, and another for the meal headers (breakfast, lunch, dinner), which is in cursive. The rest of the content I left with the default font so it is easily readable. I also jagged the edges of the paper using the clip-path CSS property to make it look more realistic. Here is the final result of the meal planner page:
+
 ![Final result of meal planner page](/images/easycook-meal-planner.png)
 _Final result of meal planner page_
 
-Next, I worked on redesigning the recipe cards, which are components I made with a lot of functionality for saving and viewing recipe previews, but could use a little pick-me-up. The version I started with had empty values, spacing issues, and didn’t have animations. So to start, I changed the content of the cards to be simpler and removed redundant information. With this, I pictured the front of the card showing the title of the recipe and an image, while the back showed the instructions, similar to study index cards. I created the rotation similar to how I did the cards on the homepage and then moved on to fixing some pending layout issues.  
+Next, I worked on redesigning the recipe cards, which are components I made with a lot of functionality for saving and viewing recipe previews, but could use a little pick-me-up. The version I started with had empty values, spacing issues, and didn’t have animations. So to start, I changed the content of the cards to be simpler and removed redundant information. With this, I pictured the front of the card showing the title of the recipe and an image, while the back showed the instructions, similar to study index cards. I created the rotation similar to how I did the cards on the homepage and then moved on to fixing some pending layout issues.
+
 ![Recipe card before redesign](/images/easycook-recipe-card-before.png)
 _Recipe card before redesign_
 
 I figured that creating my own paper background would make the card look a lot cleaner than using a lined paper image, so I did that using a combination of the CSS grid and custom background-image. Then, I added the grid on top so that it matches its rows to the rows on the paper, allowing me to align the content with the lines. Since I created this paper and grid using the fluid scaling system, it also meant it would correctly scale up to match the font size on different screens.
+
 ![Recipe card grid matches lines on paper](/images/easycook-recipe-card-grid.png)
 _Recipe card grid matches lines on paper_
 
 The difference in the final result is slight, but it makes it look a lot cleaner and more legible:
+
 ![Final result of recipe card](/gifs/easy_cook_recipe_card.gif)
 _Final result of recipe card_

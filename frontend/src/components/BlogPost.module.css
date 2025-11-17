@@ -38,6 +38,26 @@
   font-weight: 500;
 }
 
+.blogContent table {
+  border-collapse: collapse;
+  border: 2px rgb(var(--color-secondary-1)) solid;
+  box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-secondary-1);
+  margin: var(--space-2xl);
+}
+
+.blogContent th {
+  border: 2px rgb(var(--color-secondary-1)) solid;
+  padding: var(--space-xs) 0;
+  background-color: rgba(var(--color-secondary-1), 0.5);
+}
+
+.blogContent td {
+  border: 2px rgb(var(--color-secondary-1)) solid;
+  padding: var(--space-xs) var(--space-xs);
+  text-align: left;
+  min-width: 16ch;
+}
+
 .blogHeader {
   display: flex;
   flex-direction: column;

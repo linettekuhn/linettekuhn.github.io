@@ -42,7 +42,7 @@
   border-collapse: collapse;
   border: 2px rgb(var(--color-secondary-1)) solid;
   box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-secondary-1);
-  margin: var(--space-2xl);
+  margin: var(--space-2xl) auto;
 }
 
 .blogContent th {

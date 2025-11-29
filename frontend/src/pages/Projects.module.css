@@ -12,16 +12,29 @@
   align-items: center;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 850px) and (max-width: 1920px) {
   .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 30vw));
+    gap: var(--space-xl);
     justify-items: center;
+    justify-content: center;
     align-items: normal;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   .projectsWrapper {
     overflow-y: clip;
+  }
+}
+
+@media (min-width: 1921px) {
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 576px);
+    justify-items: center;
+    justify-content: center;
+    width: 50%;
   }
 }

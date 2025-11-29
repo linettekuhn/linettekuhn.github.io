@@ -1,9 +1,14 @@
 import styles from "./ProjectCard.module.css";
+import { FaGithub } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
 type Props = {
   name: string;
   description: string;
   features: string[];
+  highlights: string[];
+  image: string;
+  githubLink: string;
   projectLink: string;
 };
 
@@ -11,25 +16,47 @@ export default function ProjectCard({
   name,
   description,
   features,
+  highlights,
+  image,
+  githubLink,
   projectLink,
 }: Props) {
   return (
-    <div
-      className={styles.projectPreview}
-      onClick={() => window.open(projectLink, "_blank", "noopener, noreferrer")}
-    >
+    <div className={styles.projectPreview}>
       <div className={styles.projectInner}>
         <div className={styles.projectFront}>
-          <h3>{name}</h3>
-          <p>{description}</p>
+          <img src={image} />
+          <div className={styles.projectDetails}>
+            <h3>{name}</h3>
+            <p>{description}</p>
+          </div>
         </div>
         <div className={styles.projectBack}>
-          <ul>
-            <h4>Features:</h4>
-            {features.map((feature, i) => (
-              <li key={i}>{feature}</li>
+          <div className={styles.projectDetails}>
+            <div className={styles.projectHeader}>
+              <h3>{name}</h3>
+              <div className={styles.projectLinks}>
+                <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                  <FaGithub />
+                </a>
+                <a href={projectLink} target="_blank" rel="noopener noreferrer">
+                  <FaLink />
+                </a>
+              </div>
+            </div>
+            <ul className={styles.projectFeatures}>
+              {features.map((feature, i) => (
+                <li key={i}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.projectHighlights}>
+            {highlights.map((item, i) => (
+              <p className={styles.projectHighlight} key={i}>
+                {item}
+              </p>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

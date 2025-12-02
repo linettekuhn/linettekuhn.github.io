@@ -1,0 +1,20 @@
+---
+title: "Polishing Website and Piggy Streak"
+date: 12/01/2025
+wordCount: 305
+---
+
+This week’s work involved polishing both my portfolio website and budgeting app. As I am coming close to finishing Piggy, I was about to create a project card like I had previously had with all my other projects on my website. There I realized the design could use some work, and I jumped straight to Figma. From my research, viewing other developer sites, I noticed a common pattern is to display the project’s title, brief description, image preview, and provide links to the repository and project demo.
+
+I liked the idea of having a card that flips, so I kept this format while compressing as much of the project information as possible into these cards. The front of the card includes the name of the project, a short description, and an image, while the back includes a feature list, the technologies used, and the links. I implemented this design into my already existing project cards and ended up with this:
+
+![Projects page in portfolio website](/gifs/projects_page.gif)
+_Projects page in portfolio website_
+
+Next, I worked on the app, where I wanted to focus on implementing the streak, my last remaining core feature. The system for the streak was relatively simple, as I just had to store the user’s last active date and increment or reset the streak according to how often they use the app. So, I created the Streak Service, which did exactly that, and stored the streak and the last active date in my database as metadata, to update the streak whenever the app is opened. For the design, I wanted a fire icon with the streak in front of it, similar to how Duolingo handles their infamous streak. After searching for one, I ended up creating my own icon in Figma, which gave me some perspective on how much appreciation I have for designers. Therefore, the final UI for the streak looks as follows:
+
+![Streak in light mode](/images/piggy-streak-light.jpg)
+_Streak in light mode_
+
+![Streak in dark mode](/images/piggy-streak-dark.jpg)
+_Streak in dark mode_

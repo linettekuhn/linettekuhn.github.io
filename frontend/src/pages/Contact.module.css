@@ -44,11 +44,20 @@
   resize: none;
 }
 
-.socialLinks {
+.socialLinks,
+.about {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
   align-items: center;
+  justify-content: center;
+}
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .linkedin,
@@ -64,4 +73,26 @@
 .linkedin:visited,
 .github:visited {
   color: rgb(var(--text-color));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  padding: 0 var(--space-l);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: var(--space-m);
+}
+
+@media (min-width: 1000px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 80%;
+  }
 }

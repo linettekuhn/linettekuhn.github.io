@@ -1,0 +1,17 @@
+---
+title: "Profile Page Functionality in Piggy"
+date: 12/14/2025
+wordCount: 300
+---
+
+This past few days, I worked on implementing the profile page settings functionality, where I left off last week. The first section of settings is for the account, which all involved the Firebase authentication I had in place. At this point, all the user could do was log in or create an account, but the local storage was never synced with the Firestore cloud storage, so I figured now’s the time to do it. This was a multiple-day process, as I had to basically recreate Git while building my SyncService, which pushed local changes and pulled remote changes. I also had to refactor the DatabaseService so all tables had at least one unique ID column to use as document names in Firestore.
+
+It was a struggle, with a lot of errors related to inconsistent naming across SQL and Firestore databases. Luckily, I found [this tool](https://orm.drizzle.team/drizzle-studio/overview), which lets me visualize the local SQL database as I use the app, so I could spot inconsistencies. But eventually, I finished the sync function, which pushes and pulls and handles conflicts when the user is authenticated. Now, users can open the app on a different device and sign in to see all the data from their account restored.
+
+Some other settings I worked on were the edit name and salary options. For simple settings like these, a modal pops up asking the user to input their changes. Since each setting has its own functionality, I decided to create a component for each, especially for the complex ones, to handle their own states without crowding the profile page component. Below are some examples of the modal-style settings. Currently, I am working on creating a page to manage recurring transactions so users can edit or delete them in one place.
+
+![Edit name setting in profile page](/gifs/edit_name_setting_piggy.gif)
+_Edit name setting in profile page_
+
+![Edit salary setting in profile page](/images/budget-app-profile-edit-salary.png)
+_Edit salary setting in profile page_

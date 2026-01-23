@@ -35,8 +35,8 @@ export default function Projects() {
           <ProjectCard
             key={"Piggy"}
             name="Piggy"
-            projectLink="https://linettekuhn.github.io/piggy"
-            githubLink="https://github.com/linettekuhn/piggy"
+            projectLink="https://github.com/linettekuhn/budget-app"
+            githubLink="https://github.com/linettekuhn/budget-app"
             image="/images/piggy-project-preview.png"
             description="A mobile budgeting app for tracking expenses and visualizing financial built with React Native and Expo."
             features={[

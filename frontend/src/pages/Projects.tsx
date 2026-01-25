@@ -97,6 +97,27 @@ export default function Projects() {
               "Express.js Bridge",
             ]}
           />
+          <ProjectCard
+            key={"GameOfLife"}
+            name="Game of Life"
+            projectLink="https://linettekuhn.github.io/game-of-life/"
+            githubLink="https://github.com/linettekuhn/game-of-life"
+            image="/gifs/game_of_life_preview.gif"
+            description="An interactive simulation of Conway's Game of Life with a React + Vite frontend and a C++ core compiled to WebAssembly."
+            features={[
+              "Real-time cellular automaton simulation",
+              "Interactive grid with draw and edit controls",
+              "Play, pause, step, and reset simulation states",
+              "Adjustable simulation settings",
+              "Runs native C++ logic directly in the browser via WebAssembly",
+            ]}
+            highlights={[
+              "C++ Core Logic",
+              "WebAssembly",
+              "Emscripten",
+              "React",
+            ]}
+          />
         </div>
       </main>
     </>

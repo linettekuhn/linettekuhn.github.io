@@ -54,7 +54,7 @@ main {
 }
 
 [data-theme="dark"] h1 {
-  text-shadow: 0 0 var(--space-3xs) rgb(var(--color-text));
+  text-shadow: 0 0 var(--space-3xs) rgb(var(--color-secondary-2));
 }
 
 [data-theme="light"] h1 {
@@ -86,7 +86,11 @@ body {
   min-height: 100vh;
   color: rgb(var(--color-text));
   scrollbar-color: rgb(var(--color-secondary-2)) rgba(0, 0, 0, 0);
-  background-color: rgb(var(--color-bg-solid));
+  background: linear-gradient(
+    120deg,
+    rgb(var(--color-bg-1)) 40%,
+    rgb(var(--color-bg-2))
+  );
 }
 
 main {
@@ -247,12 +251,14 @@ textarea:not([rows]) {
   /* Custom pairs */
   /* Space s-l: 12px → 34px */
   --space-s-l: clamp(0.75rem, 0.5536rem + 0.9821vw, 2.125rem);
+  --gradient-size: calc(var(--space-3xl) * 20);
 }
 
 [data-theme="light"] {
   --color-text: 43, 43, 43;
   --color-btn-text: 43, 43, 43;
-  --color-bg-solid: 242, 242, 237;
+  --color-bg-1: 242, 242, 237;
+  --color-bg-2: 242, 238, 237;
   --color-primary-1: 106, 159, 120;
   --color-primary-2: 122, 175, 201;
   --color-primary-3: 163, 143, 201;
@@ -274,7 +280,8 @@ textarea:not([rows]) {
 [data-theme="dark"] {
   --color-text: 234, 234, 234;
   --color-btn-text: 27, 31, 47;
-  --color-bg-solid: 27, 31, 47;
+  --color-bg-1: 27, 31, 47;
+  --color-bg-2: 64, 31, 84;
   --color-primary-1: 47, 247, 227;
   --color-primary-2: 162, 89, 255;
   --color-primary-3: 255, 93, 233;

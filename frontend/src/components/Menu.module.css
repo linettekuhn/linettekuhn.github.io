@@ -22,12 +22,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background: rgb(var(--color-bg-solid));
+  background: rgb(var(--color-bg-1));
   overflow: hidden;
 
   opacity: 0;
   transform: translateY(-1000px);
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease;
   pointer-events: none;
 }
 

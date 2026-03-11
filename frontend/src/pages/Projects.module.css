@@ -35,6 +35,5 @@
     grid-template-columns: repeat(auto-fit, 576px);
     justify-items: center;
     justify-content: center;
-    width: 50%;
   }
 }

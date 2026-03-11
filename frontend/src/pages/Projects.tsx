@@ -54,6 +54,29 @@ export default function Projects() {
             ]}
           />
           <ProjectCard
+            key={"Contexto"}
+            name="Contexto"
+            projectLink="https://contexto.linettekuhn.com"
+            githubLink="https://github.com/linettekuhn/contexto-frontend"
+            image="/images/contexto-project-preview.png"
+            description="An AI-powered dialect-aware translation web app that generates culturally authentic translations with control over regional dialect and tone."
+            features={[
+              "AI-powered translations with regional dialect support",
+              "Language and dialect selection",
+              "Automatic or manual original language detection",
+              "Formality slider to control tone and translation style",
+              "Copy-to-clipboard and toast notifications",
+              "Responsive UI with dark and light themes",
+            ]}
+            highlights={[
+              "React",
+              "TypeScript",
+              "Node.js Backend",
+              "OpenAI API",
+              "PostgreSQL",
+            ]}
+          />
+          <ProjectCard
             key={"ZeroLio"}
             name="ZeroLío"
             projectLink="https://linettekuhn.github.io/zero-lio"

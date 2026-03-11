@@ -51,7 +51,7 @@ function App() {
         </div>
         <div className={styles.header}>
           <div className={styles.nameWrapper}>
-            <h1>
+            <h1 className="name">
               LINETTE <br /> KÜHN
             </h1>
           </div>

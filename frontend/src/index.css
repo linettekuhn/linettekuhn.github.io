@@ -111,22 +111,6 @@ main {
   min-height: 0;
 }
 
-h1 {
-  font-weight: 700;
-  margin-top: var(--space-m);
-}
-
-h2 {
-  font-weight: 600;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 500;
-}
-
 /* Class to bold and italicize text */
 .bold {
   font-weight: 800;
@@ -335,9 +319,28 @@ h2 {
 }
 
 h1 {
+  font-weight: 700;
+  margin-top: var(--space-m);
+  font-family: var(--font-display);
+  font-size: calc(var(--space-3xl) * var(--font-size-adjust));
+}
+
+.name {
+  font-family: "Nunito";
   font-size: var(--space-3xl);
   font-weight: 300;
   margin: 0;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
 }
 
 .button {

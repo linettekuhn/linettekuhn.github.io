@@ -8,13 +8,64 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   text-align: center;
   margin: var(--space-2xs) 0;
+  background-color: rgb(var(--color-bg-solid));
+  border-radius: var(--space-m);
+  padding: var(--space-xl) var(--space-2xl);
 }
 
 .links {
   display: flex;
   flex-direction: column;
+}
+
+.nameWrapper {
+  padding: var(--space-xl) var(--space-2xl);
+  border-radius: var(--space-s);
+  box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-secondary-2);
+  margin: var(--space-s) auto;
+  position: relative;
+  isolation: isolate;
+}
+
+/* The comet — a rotating conic-gradient with a bright head and fading tail */
+.nameWrapper::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0deg,
+    transparent 260deg,
+    rgb(var(--color-secondary-1)) 310deg,
+    rgb(var(--color-secondary-2)) 355deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: border-trace 3s linear infinite;
+  z-index: -1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-trace {
+  to {
+    --angle: 360deg;
+  }
 }
 
 @media (min-width: 700px) {

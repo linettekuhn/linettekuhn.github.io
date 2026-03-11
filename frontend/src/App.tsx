@@ -8,19 +8,23 @@ function App() {
       <Navbar />
       <main className={styles.app}>
         <div className={styles.header}>
-          <h1>
-            LINETTE <br /> KÜHN
-          </h1>
-          <h4>Full Stack Developer</h4>
-          <h5>Check out my work and what I learn along the way!</h5>
-        </div>
-        <div className={styles.links}>
-          <Link className="button" to={"/projects"}>
-            Projects
-          </Link>
-          <Link className="button" to={"/blog"}>
-            Blog
-          </Link>
+          <div className={styles.nameWrapper}>
+            <h1>
+              LINETTE <br /> KÜHN
+            </h1>
+          </div>
+          <div className={styles.subHeading}>
+            <h4>Full Stack Developer</h4>
+            <h5>Check out my work and what I learn along the way!</h5>
+          </div>
+          <div className={styles.links}>
+            <Link className="button" to={"/projects"}>
+              Projects
+            </Link>
+            <Link className="button" to={"/blog"}>
+              Blog
+            </Link>
+          </div>
         </div>
       </main>
     </>

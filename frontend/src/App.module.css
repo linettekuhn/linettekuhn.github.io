@@ -163,7 +163,7 @@
   left: var(--mouse-x, 50%);
   top: var(--mouse-y, 50%);
 
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -50%);
   transition:
     left 0.1s ease,
     top 0.1s ease;

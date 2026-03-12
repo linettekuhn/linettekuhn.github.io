@@ -36,8 +36,14 @@ function App() {
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!bubbleRef.current) return;
-      bubbleRef.current.style.setProperty("--mouse-x", `${e.clientX}px`);
-      bubbleRef.current.style.setProperty("--mouse-y", `${e.clientY}px`);
+      const container = bubbleRef.current.parentElement;
+      if (!container) return;
+
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      bubbleRef.current.style.setProperty("--mouse-x", `${x}px`);
+      bubbleRef.current.style.setProperty("--mouse-y", `${y}px`);
     };
 
     window.addEventListener("mousemove", handleMouseMove);

@@ -10,7 +10,7 @@
   height: 100%;
   z-index: -1;
   position: relative;
-  filter: url(#goo) blur(40px);
+  filter: url(#goo) blur(15px);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -68,7 +68,7 @@ function App() {
                 values="1 0 0 0 0
                         0 1 0 0 0
                         0 0 1 0 0
-                        0 0 0 18 -8"
+                        0 0 0 30 -12"
                 result="goo"
               />
               <feBlend in="SourceGraphic" in2="goo" />

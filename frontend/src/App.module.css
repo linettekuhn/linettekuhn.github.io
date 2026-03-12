@@ -178,9 +178,15 @@
   align-items: center;
   text-align: center;
   margin: var(--space-2xs) 0;
-  background-color: rgb(var(--color-bg-1));
   border-radius: var(--space-m);
   padding: var(--space-xl) var(--space-2xl);
+
+  background: rgba(var(--color-bg-1), 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(164, 164, 164, 0.4);
 }
 
 .links {
@@ -195,6 +201,7 @@
   margin: var(--space-s) auto;
   position: relative;
   isolation: isolate;
+  background-color: rgba(var(--color-bg-1), 0.8);
 }
 
 /* The comet — a rotating conic-gradient with a bright head and fading tail */

@@ -2,21 +2,48 @@ import { Link } from "react-router";
 import Navbar from "./components/Navbar";
 import styles from "./App.module.css";
 import { useEffect, useRef } from "react";
+
+function hasHardwareAcceleration(): boolean {
+  try {
+    const canvas = document.createElement("canvas");
+    const gl =
+      canvas.getContext("webgl") ||
+      (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
+    if (!gl) return false;
+    const debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
+    if (debugInfo) {
+      const renderer = gl.getParameter(
+        debugInfo.UNMASKED_RENDERER_WEBGL,
+      ) as string;
+      if (/SwiftShader|llvmpipe|softpipe|ANGLE.*SwiftShader/i.test(renderer)) {
+        return false;
+      }
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function App() {
   const bubbleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!hasHardwareAcceleration()) {
+      document.documentElement.classList.add("no-gpu");
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!bubbleRef.current) return;
-
       bubbleRef.current.style.setProperty("--mouse-x", `${e.clientX}px`);
       bubbleRef.current.style.setProperty("--mouse-y", `${e.clientY}px`);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
   return (
     <>
       <Navbar />
@@ -33,9 +60,9 @@ function App() {
                 in="blur"
                 mode="matrix"
                 values="1 0 0 0 0
-                                                      0 1 0 0 0
-                                                      0 0 1 0 0
-                                                      0 0 0 18 -8"
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 18 -8"
                 result="goo"
               />
               <feBlend in="SourceGraphic" in2="goo" />

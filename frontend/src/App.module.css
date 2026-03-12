@@ -13,6 +13,28 @@
   filter: url(#goo) blur(40px);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .g1,
+  .g2,
+  .g3,
+  .g4 {
+    animation: none;
+  }
+}
+
+:global(.no-gpu) .g1,
+:global(.no-gpu) .g2,
+:global(.no-gpu) .g3,
+:global(.no-gpu) .g4,
+:global(.no-gpu) .interactive {
+  animation: none;
+  transition: none;
+}
+
+:global(.no-gpu) .nameWrapper::after {
+  animation: none;
+}
+
 .g1 {
   position: absolute;
   background: radial-gradient(

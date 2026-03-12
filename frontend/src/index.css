@@ -241,13 +241,13 @@ textarea:not([rows]) {
 [data-theme="light"] {
   --color-text: 43, 43, 43;
   --color-btn-text: 43, 43, 43;
-  --color-bg-1: 241, 223, 205;
-  --color-bg-2: 196, 220, 156;
+  --color-bg-1: 242, 242, 237;
+  --color-bg-2: 220, 230, 197;
   --color-primary-1: 106, 159, 120;
   --color-primary-2: 122, 175, 201;
   --color-primary-3: 163, 143, 201;
   --color-secondary-1: 199, 162, 124;
-  --color-secondary-2: 253, 190, 190;
+  --color-secondary-2: 232, 203, 139;
   --font-display: "Arima";
   --line-height: 1.3;
   --font-size-adjust: 1.5;

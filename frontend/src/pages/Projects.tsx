@@ -65,8 +65,6 @@ export default function Projects() {
               "Language and dialect selection",
               "Automatic or manual original language detection",
               "Formality slider to control tone and translation style",
-              "Copy-to-clipboard and toast notifications",
-              "Responsive UI with dark and light themes",
             ]}
             highlights={[
               "React",

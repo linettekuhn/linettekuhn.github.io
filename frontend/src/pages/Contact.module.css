@@ -64,15 +64,68 @@
 .github {
   font-size: var(--space-m);
   display: flex;
+  flex-direction: column;
   gap: var(--space-xs);
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+  color: currentColor;
+}
+
+.linkedin svg,
+.github svg {
+  font-size: var(--space-3xl);
+}
+
+.linkedin {
+  animation: hueAnimation 5s 1s infinite;
+}
+
+.github {
+  animation: hueAnimation 5s infinite;
+}
+
+.linkedin svg {
+  fill: rgb(var(--color-primary-1));
+  transition: filter 0.3s ease;
+}
+
+.github svg {
+  fill: rgb(var(--color-primary-2));
+  transition: filter 0.3s ease;
+}
+
+.linkedin:hover svg {
+  filter: drop-shadow(
+    var(--box-shadow-hover) var(--box-shadow-color-primary-1)
+  );
+}
+
+.github:hover svg {
+  filter: drop-shadow(
+    var(--box-shadow-hover) var(--box-shadow-color-primary-2)
+  );
 }
 
 .linkedin:visited,
 .github:visited {
   color: rgb(var(--text-color));
+}
+
+.linksWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: var(--space-m);
+}
+
+@keyframes hueAnimation {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
 }
 
 .content {

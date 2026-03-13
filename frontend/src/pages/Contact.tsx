@@ -17,7 +17,7 @@ export default function Contact() {
 
     console.log(
       "Submitting form data:",
-      Object.fromEntries(formData.entries())
+      Object.fromEntries(formData.entries()),
     );
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -86,22 +86,24 @@ export default function Contact() {
             </div>
             <div className={styles.socialLinks}>
               <h3>Social</h3>
-              <a
-                className={styles.github}
-                href="https://github.com/linettekuhn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithubSquare /> GitHub
-              </a>
-              <a
-                className={styles.linkedin}
-                href="https://www.linkedin.com/in/linette-k%C3%BChn-63b176324"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin /> LinkedIn
-              </a>
+              <div className={styles.linksWrapper}>
+                <a
+                  className={styles.github}
+                  href="https://github.com/linettekuhn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithubSquare /> GitHub
+                </a>
+                <a
+                  className={styles.linkedin}
+                  href="https://www.linkedin.com/in/linette-k%C3%BChn-63b176324"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin /> LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>

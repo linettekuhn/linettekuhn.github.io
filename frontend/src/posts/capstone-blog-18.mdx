@@ -1,0 +1,22 @@
+---
+title: "Creating the Profile Page in Piggy"
+date: 12/07/2025
+wordCount: 358
+---
+
+My focus for the work this week was the profile page for the Piggy app. This is the last big tab of the app that hasn’t been completed, so I’m excited to finally get it done. As usual, I opened up Figma and worked on getting a design done for the page. At that point, I thought to have the users submit a photo to use as their profile picture. However, I decided to scrap this idea, because this avatar is not really used anywhere else in the app.
+
+So, I started researching creative ways to have avatars generated for the users. I found [this React library](https://boringavatars.com/) that randomly generates SVGs using a string as the seed. This way, I could have avatars be generated based on the user’s name, so everyone has their own custom profile picture. As I was about to implement it, though, I realized the library wasn’t supported for React Native, so I found [DiceBear](https://www.dicebear.com/), where the same concept of using strings as seeds is used to generate avatars. I chose the Notionists Neutral style and tweaked the colors a little to match the design of the app. Here’s the final design in Figma for my profile page:
+
+![Figma design for profile page](/images/budget-app-profile-design.png)
+_Figma design for profile page_
+
+After getting the design done, I started implementing it. If the user was not logged in, there was no record of their name, so I added an option for name input in the onboarding questionnaire. I also fixed up the onboarding process to use a context and provider of a state that only saves to the database once the process is complete. This way, users can reset the form or go back to a previous step without resetting their progress.
+
+Once I had the name from the user, I could retrieve it from the database and create the avatar through DiceBear. Under the name and avatar, there are the app settings, which include the following sub-categories: account, settings, notifications, and region, as well as, a logout button. Each one of these categories has its respective options collapsed within. Next, I will implement the functionality for these options, but the design is complete and looks as follows:
+
+![Profile page preview in light mode](/images/budget-app-profile-light.png)
+_Profile page preview in light mode_
+
+![Profile page preview in dark mode](/images/budget-app-profile-dark.png)
+_Profile page preview in dark mode_

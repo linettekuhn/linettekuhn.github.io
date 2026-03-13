@@ -1,0 +1,151 @@
+.contactPage {
+  justify-content: space-evenly;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(var(--color-secondary-2), 0.3);
+  border: 2px solid rgba(var(--color-secondary-2));
+  border-radius: var(--space-s);
+  padding: var(--space-m) var(--space-s) var(--space-2xs) var(--space-s);
+  gap: var(--space-s);
+}
+
+.input {
+  transition: box-shadow 0.3s ease;
+  background-color: rgba(var(--color-secondary-2), 0.25);
+  border: 1px solid rgba(var(--color-primary-1));
+  border-radius: var(--space-m);
+  padding: var(--space-xs) var(--space-s);
+  color: rgb(var(--text-color));
+}
+.input:focus {
+  outline: none;
+  border-radius: var(--space-m);
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
+}
+
+.contactForm label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.contactForm .message {
+  flex-direction: column;
+  align-items: start;
+  gap: var(--space-xs);
+}
+
+.contactForm textarea {
+  width: 100%;
+  resize: none;
+}
+
+.socialLinks,
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: center;
+  justify-content: center;
+}
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkedin,
+.github {
+  font-size: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: currentColor;
+}
+
+.linkedin svg,
+.github svg {
+  font-size: var(--space-3xl);
+}
+
+.linkedin {
+  animation: hueAnimation 5s 1s infinite;
+}
+
+.github {
+  animation: hueAnimation 5s infinite;
+}
+
+.linkedin svg {
+  fill: rgb(var(--color-primary-1));
+  transition: filter 0.3s ease;
+}
+
+.github svg {
+  fill: rgb(var(--color-primary-2));
+  transition: filter 0.3s ease;
+}
+
+.linkedin:hover svg {
+  filter: drop-shadow(
+    var(--box-shadow-hover) var(--box-shadow-color-primary-1)
+  );
+}
+
+.github:hover svg {
+  filter: drop-shadow(
+    var(--box-shadow-hover) var(--box-shadow-color-primary-2)
+  );
+}
+
+.linkedin:visited,
+.github:visited {
+  color: rgb(var(--text-color));
+}
+
+.linksWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: var(--space-m);
+}
+
+@keyframes hueAnimation {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  padding: 0 var(--space-l);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: var(--space-m);
+}
+
+@media (min-width: 1000px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 80%;
+  }
+}

@@ -1,0 +1,7 @@
+<svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Menu">
+<path id="Bottom Bar" d="M1 27.5H26" stroke="black" stroke-width="1.7" stroke-linecap="round"/>
+<path id="Center Bar" d="M1 14.5H26" stroke="black" stroke-width="1.7" stroke-linecap="round"/>
+<path id="Top Bar" d="M1 1.5L26 1.5" stroke="black" stroke-width="1.7" stroke-linecap="round"/>
+</g>
+</svg>

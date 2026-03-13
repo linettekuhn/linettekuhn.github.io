@@ -1,0 +1,18 @@
+---
+title: "Creating the Echelon Live Class Card UI"
+date: 11/09/2025
+wordCount: 259
+---
+
+During this week, my classmates and I had our previously completed tickets for Echelon merged in, which allowed me to proceed with the last remaining UI ticket: the live class cards. These cards were similar to the class cards I had worked on before, but with a few minor changes to the layout. Below is a comparison of the original class card design versus the live class card design:
+
+![Design for regular class cards](/images/class-card-ui-zeplin.png)
+_Design for regular class cards_
+
+![Design for live class cards](/images/live-class-card-ui-zeplin.png)
+_Design for live class cards_
+
+I began by creating a branch for these cards from the updated branch containing our recently merged work. Then, I took the code from before and refactored it to match the design for the live class cards. Instead of having a thumbnail with text below it, all the class information is now contained within a larger thumbnail. I used the previously created utility function from FeaturedPageHelper to set the card background as a random gradient featuring the Echelon logo. I also move all the class details, such as the date, time, instructor name, and class name, to the bottom right corner of the card. Beneath this text, there is a button prompting the user to join the live class, which has a handler attached for when we implement the functionality. Finally, I added tags to the upper left corner to indicate whether a class is New, Live, Encore, Upcoming, or Ended. The only element missing is the instructor image, which, as with the class cards, requires API integration and will be implemented once we work on the functionality. Thus, the final result of the live class card looks like this:
+
+![Preview of Live Class Card](/images/echelon-live-class-card-ui.png)
+_Preview of Live Class Card_

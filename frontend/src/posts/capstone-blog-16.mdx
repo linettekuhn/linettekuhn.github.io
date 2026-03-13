@@ -1,0 +1,32 @@
+---
+title: "Adding Badges and Recurring Transactions"
+date: 11/23/2025
+wordCount: 448
+---
+
+Continuing from last week, I spent time implementing badges in the Piggy app. Since this is a major feature that requires checking many requirements across different points in the app, I needed to figure out a solid approach. I wanted a central way to store the completed badges, badge definitions, and check functions for each badge. That’s when I remembered how I used the singleton pattern in a similar way when making my calculator app. So, I created the BadgeService class, a place that holds everything needed to implement the badges throughout the app.
+
+I started noticing how scattered the database interaction code was. To prepare for BadgeService, I refactored my code and built DatabaseService first. This class contains all the database functionality, which involved creating tables, updating, deleting, and fetching info. By defining all the functions as static methods, they're callable from anywhere in the app. And now, with all the database interactions combined in one file, the code feels cleaner and more modular.
+
+Next, I focused on BadgeService. Each badge in the service has several components: a definition, a check function, and a row in the awarded badges table. The definitions are stored in a JSON file and include a key, title, description, icon, and completion criteria for each badge. Every badge has a check handler that determines whether the badge has been awarded or if its requirements have been met to grant it. The check functions are triggered via the checkBadge() function, which is called whenever the app launches or a new transaction/category gets added.
+
+![Badges in light mode](/images/budget-app-badges-light.png)
+_Badges in light mode_
+
+![Badges in dark mode](/images/budget-app-badges-dark.png)
+_Badges in dark mode_
+
+When a badge is awarded, the user receives a toast notification inside the app as a heads-up. All awarded badges display in the rewards tab with their icon, and a badge preview with the unlock date.
+
+![Badge preview in light mode](/images/budget-app-badge-preview-light.png)
+_Badge preview in light mode_
+
+![Badge preview in dark mode](/images/budget-app-badge-preview-dark.png)
+_Badge preview in dark mode_
+
+After wrapping up badges, I also started implementing recurring transactions; a feature that's been on my list for a while. These transactions are ideal for subscriptions, letting users skip manual entry for regular payments. Through some research, I learned that RRULE (used by calendar apps for event recurrence) was the best way to handle this. RRULE encodes frequency, intervals, and start/end dates in one string, which then gets stored as the recurrence options for an event. I found [this library](https://github.com/jkbrzt/rrule) for constructing RRULE objects so I can calculate transaction dates. I added a table and new functions in DatabaseService for recurring transactions, and then worked on the UI.​
+
+I loosely modeled the design after Google Calendar's custom recurrence setup since it covered everything I needed. Now, users can mark any transaction as recurring and specify exact timing, saving time and removing the need for manual entries.
+
+![Recurring transaction options](/images/budget-app-recurring-transaction.png)
+_Recurring transaction options_

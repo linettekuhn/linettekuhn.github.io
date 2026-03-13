@@ -1,0 +1,25 @@
+---
+title: "Finalizing Piggy App Budgeting Categories"
+date: 11/2/2025
+wordCount: 466
+---
+
+For this week, I continued developing my budgeting app, which I’ve decided to name Piggy. The idea came from my sister’s request to make the app pink, so I figured, why not make a piggy bank the brand of the app? Building on my progress from last week, I started by adding a feature that lets users create custom spending categories beyond the default options provided. To do this, I built a modal screen that can be accessed from any part of the app through a global context provider. In this modal, users can input the name and color of their new category. The name is retrieved through my capsule text input component, while for the color picker I used a library called [Reanimated Color Picker](https://www.npmjs.com/package/reanimated-color-picker).
+
+Allowing users to select their own colors introduced some challenges. Since category colors are integrated into many UI components, I had to ensure they didn’t conflict with the app’s existing palette. My solution was to slightly adjust the user’s chosen color if it clashed with the theme. This means that when the user is in dark mode, light colors are darkened, and when in light mode, dark colors are brightened. I stored the selected color and, whenever it was displayed, used a utility function to adjust it with another library called [TinyColor](https://github.com/bgrins/TinyColor). Around this time, the app’s overall theme shifted to pink, so I also redesigned the color system for a more cohesive look across both light and dark modes.
+
+![Modal screen to add category](/images/budget-app-category-modal.jpg)
+_Modal screen to add category_
+
+Afterward, I created the budget preview progress bars shown on the budget screen. These are button components that display the category name, its monthly budget and spending, as well as a progress bar that fills as transactions are added. When clicked, the button reveals all transactions associated with that category. If a user exceeds their set budget, a red line appears above the progress bar to indicate overspending. I also plan to alert users about this once I implement notifications.
+
+![Preview button for categories](/images/budget-app-category-preview.jpg)
+_Preview button for categories_
+
+Finally, I developed the pie chart preview for the monthly budget and spending. Initially, I considered using a chart library like [Gifted Charts](https://gifted-charts.web.app), but realized it didn’t support pie charts with progress-bar-style slices, which was my goal. So, I decided to build one myself. Using some long forgotten trigonometry, I wrote a function that generates an SVG command to draw arcs as progress bars, which I then used to render all the pie slices. The top three categories are shown individually, while the remaining ones are grouped under “Other.” Each slice uses the same progress logic as the category previews, allowing users to see their budget and spending for their top categories visually. With a few final adjustments, the budget screen now looks like this:
+
+![Category page in light mode](/images/budget-app-category-page-light.jpg)
+_Category page in light mode_
+
+![Category page in dark mode](/images/budget-app-category-page-dark.jpg)
+_Category page in dark mode_

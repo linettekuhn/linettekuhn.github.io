@@ -1,0 +1,19 @@
+---
+title: "Creating the Timeline & Rest Day Class Card"
+date: 9/28/2025
+wordCount: 321
+---
+
+For the start of this final week of my second month working with Echelon, I worked on implementing a better design for the blog posts display on my website. I had in mind to keep the vertical scrolling list in mobile view but make it a little more interesting in desktop view.
+
+With that, the timeline came to life: a scrollable horizontal line with blog posts scattered on top and underneath in chronological order. I did this using a CSS grid, which had three rows: one for the top posts, one for the middle line, and one for the bottom posts. Then, I used some animations to scroll to the end of the list (the most recent post) when loading onto the page.
+
+A little problem arose when the user tried to scroll using a scroll wheel. When scrolling on the list, it scrolled the page up and down rather than left to right. Fixing this caused another problem where the scroll gesture on the trackpad now scrolled in the opposite direction. To fix both of these issues, I simply figured out whether a scroll was caused by a scroll wheel versus a trackpad depending on the delta of the distance in the scroll event. With all this done, the timeline was complete:
+
+![Blog timeline scroll](/gifs/blog_timeline.gif)
+_Blog timeline result_
+
+Next, I came back to work on my Echelon ticket on the rest day version of the class cards. I mostly worked on refactoring my class card code to adapt depending on whether it’s unavailable or if it is a rest day. In doing so, the list of parameters for the class cards was getting pretty big, and making them optional was tedious, so I created a data class to hold the card details in one object that can be passed down through functions easily. Then, completing the rest day class card was as easy as importing the background assets and changing the text beneath, resulting in this:
+
+![Rest day class card to the right of a regular class card](/images/rest-day-echelon-class-card-with-regular.png)
+_Rest day class card next to a regular class card_

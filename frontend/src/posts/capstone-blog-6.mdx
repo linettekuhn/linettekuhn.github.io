@@ -1,0 +1,28 @@
+---
+title: "Finishing up the Echelon Class Card UI"
+date: 9/14/2025
+wordCount: 493
+---
+
+I dedicated my time in this second week to finish up the UI for the class card I’ve been working on. To recap, what I was missing the following criteria to complete this ticket:
+
+- Tags in the top left corner, specifying the status of the class. For example, the “new” tag.
+- A checkmark marking the class as completed in the bottom right corner
+- A randomized gradient background
+- A picture of the instructor
+
+I started by working on the checkmark. The checkmark icon covers the bottom right corner of the card’s thumbnail in a semi-transparent triangle with a white checkmark in the middle. To achieve this, I created a Canvas composable where I used a path to create the triangle shape. Then, I added the icon on top and passed down a modifier so I could round out the corner to match the corner radius of the thumbnail.
+
+At this point in time, I had finished the checkmark icon and committed and pushed my code to call it a day… or so I thought. The next day, I opened Android Studio to continue working but could not find my work from before. After searching for a while through my Git branch and commit history, I gave up looking and rewrote what I remembered from my code. The following day, I had a chat with our Echelon advisor, Bobby (big shoutout), which helped me fix the mess I made. Turns out I never pushed my code, so I had to resolve a merge conflict and I also had to revert some code I had cherry-picked.
+
+With that out of the way, I moved on to working on the tags, which are displayed in the top-left corner of the thumbnail and at the bottom of the card. I borrowed some of the logic from the Workout Cards that are already implemented to complete this. For now, I made it so a list of tag strings can be passed into the card and displayed at the bottom. As for the thumbnail tags, the explicit tag is added based on an isExplicit flag parameter, and the new tag is added based on the result of the isNew function, which calculates whether a class is less than 7 days old. This is the result of the tags and checkmark implemented:
+
+![Preview of Class Card UI with checkmark and tags](/images/echelon-class-card-ui-tags-check.png)
+_Class Card UI with checkmark and tags_
+
+The last thing I worked on was the randomized gradient backgrounds for the thumbnail. There are 16 variants of the gradient background, all of which I imported into the drawable folder to reference them in the project. I created an object that holds a list containing references to each drawable gradient. Then I created a composable that simply sets the image to a random element from this list. And with that, we have our (almost) completed card:
+
+![Preview of complete Class Card UI](/images/echelon-class-card-ui-random-gradient.png)
+_Examples of complete class cards_
+
+At this point, the card is basically complete. The only thing missing is the instructor image, which will be implemented once the API is ready for us to use and pull from!

@@ -1,0 +1,141 @@
+/* Menu Button */
+.menuButton {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 0;
+  line-height: 0;
+}
+
+.menuButton svg {
+  font-size: var(--space-xl);
+}
+
+/* Links */
+.links {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: rgb(var(--color-bg-1));
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(-1000px);
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.links.open {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: auto;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  font-size: var(--space-xl);
+  text-decoration: none;
+  padding-bottom: var(--space-3xs);
+  position: relative;
+  color: rgb(var(--color-text));
+  transition: font-size 0.2s ease;
+}
+
+.links p {
+  margin: 0;
+}
+
+.link svg {
+  fill: currentColor;
+  height: var(--space-m);
+  transition: transform 0.2s ease;
+}
+
+.link:hover svg {
+  transform: scale(1.1);
+}
+
+.link:hover .caret {
+  animation: wiggle 1s infinite ease-in-out;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateX(0px) rotate(-10deg);
+  }
+
+  50% {
+    transform: translateX(1px) rotate(10deg);
+  }
+}
+
+.link:hover .code :global(.left) {
+  animation: breatheLeft 1s infinite;
+}
+
+@keyframes breatheLeft {
+  0%,
+  100% {
+    transform: translateX(-1px);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+}
+
+.link:hover .code :global(.right) {
+  animation: breatheRight 1s infinite;
+}
+
+@keyframes breatheRight {
+  0%,
+  100% {
+    transform: translateX(1px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.link:visited {
+  color: rgb(var(--color-text));
+}
+
+.link::after {
+  position: absolute;
+  content: "";
+  display: block;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  border-radius: 1rem;
+  margin: 0 auto;
+  background-color: rgba(var(--color-secondary-1));
+  transition: width 0.2s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 700) {
+  .links {
+    width: auto;
+    gap: var(--space-l);
+  }
+}

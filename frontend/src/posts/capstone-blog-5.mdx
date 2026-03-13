@@ -1,0 +1,39 @@
+---
+title: "Working on the Echelon Class Card UI"
+date: 9/7/2025
+wordCount: 357
+---
+
+This week marks the beginning of the second month of my capstone project! Now that the coding environment is set up for us and we’ve learned the foundations of Compose and Kotlin, we can get to actually work on the Echelon app. As I mentioned in previous blog posts, I assigned myself a ticket from the Jira board to work on the UI of the class cards. This week I started creating the composable functions that make up this card.
+
+After reviewing the design in Zeplin and looking at the ticket requirements, I split up the card into the following components:
+
+- The thumbnail, which includes the following:
+  - Tags in the top left corner, specifying the status of the class. For example, the “new” tag.
+  - The class duration in the bottom left corner
+  - A checkmark marking the class as completed in the bottom right corner
+  - A gradient background
+  - A picture of the instructor
+- The class description, which has the following elements:
+  - The date and time of the class, with a calendar icon to the left
+  - The difficulty level of the class, with a gauge icon to the left
+  - The class name
+  - The instructor name
+  - The workout type, with a representative icon to the left
+
+I started by creating the skeleton of the card to figure out the layout. I wanted the card to be a composable where you can just pass in all the class information as parameters. At this point, we didn’t have a folder for the assets of the project, so I just used white boxes as placeholders and ended up with this:
+
+![Preview of Class Card UI](/images/echelon-class-card-ui-skeleton.png)
+_First Version of Class Card UI_
+
+As you can see, I was struggling with the layout, especially with the text overflowing the width of the thumbnail and wrapping. I later discovered this issue happened when the preview of the composable did not have a fixed size.
+
+After we got access to the drawables folder, I imported some assets, like the thumbnail background and icons for the calendar and gauge, and implemented them to the card. I also added the class duration in the thumbnail, and now the card is a lot more like the intended design:
+
+![Preview of Class Card UI](/images/echelon-class-card-ui.png)
+_Current Version of Class Card UI_
+
+Lastly, I added a simple lazy row to preview how many cards would look like next to each other in a scrollable list:
+
+![Preview of many Class Cards](/images/echelon-class-card-ui-preview.png)
+_Preview of a Row of Class Cards_

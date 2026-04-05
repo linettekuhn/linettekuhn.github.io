@@ -54,7 +54,9 @@ jobs:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # silence warning
     permissions:
-      contents: write
+      contents: read
+      pages: write # allows deploying to GitHub Pages
+      id-token: write # allows the deploy action to authenticate with GitHub
 
     steps: # list of steps to do in order
       - name: Checkout code
@@ -71,13 +73,14 @@ jobs:
         working-directory: frontend
         run: npm ci # npm install for CI environment
 
-      - name: Configure git identity
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+      - name: Build
+        working-directory: frontend
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3 # packages dist folder for deployment
+        with:
+          path: frontend/dist
 
       - name: Deploy to GitHub Pages
-        working-directory: frontend
-        run: npm run predeploy && npm run deploy # run deploy scripts for gh pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/deploy-pages@v4 # deploys artifact via GitHub's official pages action

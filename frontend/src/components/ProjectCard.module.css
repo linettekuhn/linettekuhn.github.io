@@ -107,19 +107,17 @@
   gap: var(--space-3xs) var(--space-xs);
 }
 
-.projectPreview:hover .projectBack,
 .projectPreview.flipped .projectBack {
   background-color: rgb(var(--color-primary-2));
   box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-2);
 }
 
-.projectPreview:active .projectBack {
-  box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-primary-2);
-}
-
-.projectPreview:hover .projectInner,
 .projectPreview.flipped .projectInner {
   transform: rotateY(180deg);
+}
+
+.projectPreview:active .projectBack {
+  box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-primary-2);
 }
 
 .projectPreview ul {
@@ -129,6 +127,17 @@
   align-items: start;
   gap: var(--space-xs);
   padding-left: var(--space-s);
+}
+
+@media (hover: hover) {
+  .projectPreview:hover .projectBack {
+    background-color: rgb(var(--color-primary-2));
+    box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-2);
+  }
+
+  .projectPreview:hover .projectInner {
+    transform: rotateY(180deg);
+  }
 }
 
 @media (min-width: 700px) {
@@ -168,8 +177,7 @@
     gap: var(--space-2xs);
     text-transform: capitalize;
     position: absolute;
-    top: var(--space-xs);
-    left: 50%;
-    transform: translateX(-50%);
+    top: var(--space-3xs);
+    left: var(--space-xs);
   }
 }

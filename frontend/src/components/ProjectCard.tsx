@@ -25,6 +25,7 @@ export default function ProjectCard({
   const [flipped, setFlipped] = useState(false);
 
   const handleClick = () => {
+    console.log("flip");
     if (window.matchMedia("(hover: none)").matches) {
       setFlipped((prev) => !prev);
     }
@@ -47,9 +48,6 @@ export default function ProjectCard({
           </div>
         </div>
         <div className={styles.projectBack}>
-          <p className={styles.flipPrompt}>
-            <MdFlip /> Tap to flip!
-          </p>
           <div className={styles.projectDetails}>
             <div className={styles.projectHeader}>
               <h4>{name}</h4>

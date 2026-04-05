@@ -35,6 +35,68 @@
   animation: none;
 }
 
+:global(.no-gpu) .gradientsContainer {
+  filter: blur(15px);
+}
+
+.motionToggle {
+  position: fixed;
+  bottom: var(--space-m);
+  right: var(--space-m);
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+
+  padding: var(--space-xs);
+  border: 1px solid rgba(var(--color-primary-1), 0.4);
+  border-radius: var(--space-m);
+  background: rgba(var(--color-bg-1), 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgb(var(--color-text));
+  cursor: pointer;
+
+  max-width: var(--space-2xl);
+  transition:
+    max-width 0.4s ease,
+    gap 0.4s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.motionToggle:hover {
+  max-width: 280px;
+  gap: var(--space-xs);
+  background: rgba(var(--color-bg-1), 0.95);
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
+}
+
+.motionIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: var(--space-xs);
+}
+
+.motionLabel {
+  white-space: nowrap;
+  font-size: var(--space-xs);
+  overflow: hidden;
+  opacity: 0;
+  max-width: 0;
+  transition:
+    opacity 0.3s ease 0.1s,
+    max-width 0.4s ease;
+}
+
+.motionToggle:hover .motionLabel {
+  opacity: 1;
+  max-width: 200px;
+}
+
 .g1 {
   position: absolute;
   background: radial-gradient(

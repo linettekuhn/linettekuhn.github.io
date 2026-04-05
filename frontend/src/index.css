@@ -47,6 +47,10 @@ html,
   overflow-x: hidden;
 }
 
+html.ready {
+  opacity: 1;
+}
+
 body,
 main {
   transition-property: background-color, color, border, border-color;

@@ -1,39 +1,32 @@
 import { Link } from "react-router";
 import Navbar from "./components/Navbar";
 import styles from "./App.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FaPause, FaPlay } from "react-icons/fa6";
 
-function hasHardwareAcceleration(): boolean {
-  try {
-    const canvas = document.createElement("canvas");
-    const gl =
-      canvas.getContext("webgl") ||
-      (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
-    if (!gl) return false;
-    const debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
-    if (debugInfo) {
-      const renderer = gl.getParameter(
-        debugInfo.UNMASKED_RENDERER_WEBGL,
-      ) as string;
-      if (/SwiftShader|llvmpipe|softpipe|ANGLE.*SwiftShader/i.test(renderer)) {
-        return false;
-      }
-    }
-    return true;
-  } catch {
-    return false;
+function shouldReduceMotion(): boolean {
+  // check localStorage first — user preference overrides everything
+  const stored = localStorage.getItem("reduce-motion");
+  if (stored !== null) return stored === "true";
+
+  // fall back to OS-level preference
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function applyMotionPreference(reduce: boolean) {
+  if (reduce) {
+    document.documentElement.classList.add("no-gpu");
+  } else {
+    document.documentElement.classList.remove("no-gpu");
   }
+  localStorage.setItem("reduce-motion", String(reduce));
 }
 
 function App() {
   const bubbleRef = useRef<HTMLDivElement>(null);
+  const [reduceMotion, setReduceMotion] = useState(shouldReduceMotion);
 
   useEffect(() => {
-    if (!hasHardwareAcceleration()) {
-      document.documentElement.classList.add("no-gpu");
-      return;
-    }
-
     const handleMouseMove = (e: MouseEvent) => {
       if (!bubbleRef.current) return;
       const container = bubbleRef.current.parentElement;
@@ -46,9 +39,34 @@ function App() {
       bubbleRef.current.style.setProperty("--mouse-y", `${y}px`);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    applyMotionPreference(reduceMotion);
+
+    if (!reduceMotion) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
+
+    // reveal page after preference is applied
+    document.documentElement.style.opacity = "";
+    document.documentElement.classList.add("ready");
+
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    // sync with OS preference changes if user hasn't set a manual preference
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (localStorage.getItem("reduce-motion") === null) {
+        setReduceMotion(e.matches);
+      }
+    };
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
   }, []);
+
+  function handleToggle() {
+    setReduceMotion((prev) => !prev);
+  }
 
   return (
     <>
@@ -100,6 +118,21 @@ function App() {
               Blog
             </Link>
           </div>
+          <button
+            className={styles.motionToggle}
+            onClick={handleToggle}
+            aria-pressed={reduceMotion}
+            aria-label={
+              reduceMotion ? "Enable animations" : "Disable animations"
+            }
+          >
+            <span className={styles.motionIcon}>
+              {reduceMotion ? <FaPlay /> : <FaPause />}
+            </span>
+            <span className={styles.motionLabel}>
+              {reduceMotion ? "Enable animations" : "Disable animations"}
+            </span>
+          </button>
         </div>
       </main>
     </>

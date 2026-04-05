@@ -45,10 +45,6 @@ function App() {
       window.addEventListener("mousemove", handleMouseMove);
     }
 
-    // reveal page after preference is applied
-    document.documentElement.style.opacity = "";
-    document.documentElement.classList.add("ready");
-
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [reduceMotion]);
 

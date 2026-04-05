@@ -8,6 +8,9 @@ import Blog from "./pages/Blog.tsx";
 import Projects from "./pages/Projects.tsx";
 import Contact from "./pages/Contact.tsx";
 
+document.documentElement.style.opacity = "";
+document.documentElement.classList.add("ready");
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <HashRouter>
@@ -19,5 +22,5 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </HashRouter>
-  </StrictMode>
+  </StrictMode>,
 );

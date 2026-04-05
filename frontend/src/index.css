@@ -44,7 +44,7 @@ html,
 #root {
   min-height: 100%;
   overscroll-behavior: contain;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html.ready {

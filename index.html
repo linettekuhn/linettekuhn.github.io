@@ -1,6 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="no-gpu" style="transition: opacity 0.4s ease">
   <head>
+    <style>
+      html {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+    </style>
+    <script>
+      document.documentElement.style.opacity = "0";
+
+      (function () {
+        const stored = localStorage.getItem("reduce-motion");
+        const prefersReduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (stored === "true" || (stored === null && prefersReduced)) {
+          document.documentElement.classList.add("no-gpu");
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link
       rel="icon"
@@ -9,8 +28,8 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linette Kühn</title>
-    <script type="module" crossorigin src="/assets/index-C8R3LgMf.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BL5QQGoQ.css">
+    <script type="module" crossorigin src="/assets/index-CyTEXcUa.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DXIArmf2.css">
   </head>
   <body>
     <div id="root"></div>

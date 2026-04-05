@@ -59,6 +59,7 @@
   fill: currentColor;
   height: var(--space-m);
   transition: transform 0.2s ease;
+  overflow: visible;
 }
 
 .link:hover svg {

@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import styles from "./ProjectCard.module.css";
 import { FaGithub } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
@@ -21,8 +22,28 @@ export default function ProjectCard({
   githubLink,
   projectLink,
 }: Props) {
+  const [flipped, setFlipped] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) {
+      setFlipped((prev) => !prev);
+    }
+    touchStartX.current = null;
+  };
+
   return (
-    <div className={styles.projectPreview}>
+    <div
+      className={`${styles.projectPreview} ${flipped ? styles.flipped : ""}`}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className={styles.projectInner}>
         <div className={styles.projectFront}>
           <img src={image} />

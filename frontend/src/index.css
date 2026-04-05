@@ -240,6 +240,9 @@ textarea:not([rows]) {
   /* Space s-l: 12px → 34px */
   --space-s-l: clamp(0.75rem, 0.5536rem + 0.9821vw, 2.125rem);
   --gradient-size: calc(var(--space-3xl) * 20);
+  --orb-offset-large: clamp(80px, 12vh, 200px);
+  --orb-offset-small: clamp(50px, 8vw, 150px);
+  --orb-offset-main: clamp(100px, 15vw, 250px);
 }
 
 [data-theme="light"] {

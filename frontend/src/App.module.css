@@ -5,6 +5,8 @@
   position: relative;
   height: 100vh;
   overflow: clip;
+  display: flex;
+  align-items: center;
 }
 
 .gradientsContainer {
@@ -13,6 +15,8 @@
   z-index: -1;
   position: relative;
   filter: url(#goo) blur(15px);
+  position: absolute;
+  inset: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -128,12 +132,12 @@
 
   width: var(--gradient-size);
   height: var(--gradient-size);
-  top: calc(50% - var(--gradient-size) / 2 + 400px);
-  left: calc(50% - var(--gradient-size) / 2 - 200px);
+  top: calc(50% - var(--gradient-size) / 2 + var(--orb-offset-large));
+  left: calc(50% - var(--gradient-size) / 2 - var(--orb-offset-small));
 
   mix-blend-mode: hard-light;
 
-  transform-origin: calc(50% + 400px);
+  transform-origin: calc(50% + var(--orb-offset-main));
   animation: rotate 40s linear infinite;
 }
 
@@ -147,8 +151,8 @@
 
   width: var(--gradient-size);
   height: var(--gradient-size);
-  top: calc(50% - var(--gradient-size) / 2 + 300px);
-  left: calc(50% - var(--gradient-size) / 2 + 400px);
+  top: calc(50% - var(--gradient-size) / 2 + var(--orb-offset-large));
+  left: calc(50% - var(--gradient-size) / 2 + var(--orb-offset-main));
 
   mix-blend-mode: hard-light;
 
@@ -166,12 +170,12 @@
 
   width: var(--gradient-size);
   height: var(--gradient-size);
-  top: calc(50% - var(--gradient-size) / 2 + 300px);
-  left: calc(50% - var(--gradient-size) / 2 - 400px);
+  top: calc(50% - var(--gradient-size) / 2 + var(--orb-offset-large));
+  left: calc(50% - var(--gradient-size) / 2 - var(--orb-offset-main));
 
   mix-blend-mode: hard-light;
 
-  transform-origin: calc(50% - 400px);
+  transform-origin: calc(50% - var(--orb-offset-main));
   animation: moveHorizontal 30s ease-in infinite reverse;
 }
 

@@ -11,6 +11,8 @@ on:
 jobs:
   deploy: # name of job
     runs-on: ubuntu-latest # OS to use for runner
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # silence warning
 
     steps: # list of steps to do in order
       - name: Checkout code

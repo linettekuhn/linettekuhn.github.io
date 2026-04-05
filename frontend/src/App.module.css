@@ -3,6 +3,8 @@
   padding: 0 var(--space-xl);
   justify-content: center;
   position: relative;
+  height: 100vh;
+  overflow: clip;
 }
 
 .gradientsContainer {

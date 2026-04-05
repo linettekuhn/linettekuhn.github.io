@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import styles from "./ProjectCard.module.css";
 import { FaGithub } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
+import { MdFlip } from "react-icons/md";
 
 type Props = {
   name: string;
@@ -48,14 +49,17 @@ export default function ProjectCard({
         <div className={styles.projectFront}>
           <img src={image} />
           <div className={styles.projectDetails}>
-            <h3>{name}</h3>
+            <h4>{name}</h4>
             <p>{description}</p>
+            <p className={styles.flipPrompt}>
+              <MdFlip /> Swipe to flip!
+            </p>
           </div>
         </div>
         <div className={styles.projectBack}>
           <div className={styles.projectDetails}>
             <div className={styles.projectHeader}>
-              <h3>{name}</h3>
+              <h4>{name}</h4>
               <div className={styles.projectLinks}>
                 <a href={githubLink} target="_blank" rel="noopener noreferrer">
                   <FaGithub />

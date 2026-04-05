@@ -25,18 +25,36 @@ export default function ProjectCard({
 }: Props) {
   const [flipped, setFlipped] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const delta = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(delta) > 40) {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+
+    // only run on devices without hover
+    if (window.matchMedia("(hover: hover)").matches) {
+      return;
+    }
+
+    const deltaX = touchStartX.current - e.changedTouches[0].clientX;
+    const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+
+    // ignore if gesture is more vertical than horizontal
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      return;
+    }
+
+    // flip card if horizontal swipe
+    if (Math.abs(deltaX) > 40) {
       setFlipped((prev) => !prev);
     }
+
     touchStartX.current = null;
+    touchStartY.current = null;
   };
 
   return (

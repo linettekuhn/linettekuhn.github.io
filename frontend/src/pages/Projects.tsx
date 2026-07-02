@@ -75,6 +75,28 @@ export default function Projects() {
             ]}
           />
           <ProjectCard
+            key={"TCPChatApp"}
+            name="TCP Chat App"
+            projectLink="https://chat.linettekuhn.com"
+            githubLink="https://github.com/linettekuhn/tcp-chat"
+            image="/gifs/tcp_redesign.gif"
+            description="A real-time chat application with a custom C++ TCP server backend and
+      React/TypeScript frontend."
+            features={[
+              "Real-time messaging between clients",
+              "Custom length-prefixed binary protocol",
+              "Message history storage",
+              "Active user tracking",
+              "Node.js bridge between frontend and C++ server",
+              "User authentication",
+            ]}
+            highlights={[
+              "C++ TCP Server",
+              "React + Mantine",
+              "Express.js Bridge",
+            ]}
+          />
+          <ProjectCard
             key={"ZeroLio"}
             name="ZeroLío"
             projectLink="https://linettekuhn.github.io/zero-lio"
@@ -93,29 +115,6 @@ export default function Projects() {
               "React",
               "Nominatim API",
               "Geolocation Services",
-            ]}
-          />
-          <ProjectCard
-            key={"TCPChatApp"}
-            name="TCP Chat App"
-            projectLink="https://linettekuhn.github.io/tcp-chat"
-            githubLink="https://github.com/linettekuhn/tcp-chat"
-            image="/images/tcp-chat-project-preview.png"
-            description="A real-time chat application with a C++ TCP server backend and
-              React/TypeScript frontend."
-            features={[
-              "Real-time messaging between clients",
-              "Message history storage",
-              "Active user tracking",
-              "Express.js bridge between frontend and C++ server",
-              "User authentication",
-            ]}
-            highlights={[
-              "C++ TCP Server",
-              "React",
-              "Sockets",
-              "Multithreading",
-              "Express.js Bridge",
             ]}
           />
           <ProjectCard

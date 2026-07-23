@@ -1,15 +1,13 @@
 import { Link } from "react-router";
 import Navbar from "./components/Navbar";
+import GooBackground from "./components/GooBackground";
 import styles from "./App.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
 
 function shouldReduceMotion(): boolean {
-  // check localStorage first — user preference overrides everything
   const stored = localStorage.getItem("reduce-motion");
   if (stored !== null) return stored === "true";
-
-  // fall back to OS-level preference
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
@@ -23,33 +21,13 @@ function applyMotionPreference(reduce: boolean) {
 }
 
 function App() {
-  const bubbleRef = useRef<HTMLDivElement>(null);
   const [reduceMotion, setReduceMotion] = useState(shouldReduceMotion);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!bubbleRef.current) return;
-      const container = bubbleRef.current.parentElement;
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      bubbleRef.current.style.setProperty("--mouse-x", `${x}px`);
-      bubbleRef.current.style.setProperty("--mouse-y", `${y}px`);
-    };
-
     applyMotionPreference(reduceMotion);
-
-    if (!reduceMotion) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
-
-    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [reduceMotion]);
 
   useEffect(() => {
-    // sync with OS preference changes if user hasn't set a manual preference
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const handleChange = (e: MediaQueryListEvent) => {
       if (localStorage.getItem("reduce-motion") === null) {
@@ -68,34 +46,7 @@ function App() {
     <>
       <Navbar />
       <main className={styles.app}>
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur
-                in="SourceGraphic"
-                stdDeviation="100"
-                result="blur"
-              />
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0
-                        0 1 0 0 0
-                        0 0 1 0 0
-                        0 0 0 30 -12"
-                result="goo"
-              />
-              <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-          </defs>
-        </svg>
-        <div className={styles.gradientsContainer}>
-          <div className={styles.g1}></div>
-          <div className={styles.g2}></div>
-          <div className={styles.g3}></div>
-          <div className={styles.g4}></div>
-          <div ref={bubbleRef} className={styles.interactive}></div>
-        </div>
+        <GooBackground />
         <div className={styles.header}>
           <div className={styles.nameWrapper}>
             <h1 className="name">
@@ -117,16 +68,16 @@ function App() {
           <button
             className={styles.motionToggle}
             onClick={handleToggle}
-            aria-pressed={reduceMotion}
+            aria-pressed={!reduceMotion}
             aria-label={
-              reduceMotion ? "Enable animations" : "Disable animations"
+              reduceMotion ? "Enable high performance" : "Enable low performance"
             }
           >
             <span className={styles.motionIcon}>
               {reduceMotion ? <FaPlay /> : <FaPause />}
             </span>
             <span className={styles.motionLabel}>
-              {reduceMotion ? "Enable animations" : "Disable animations"}
+              {reduceMotion ? "High performance" : "Low performance"}
             </span>
           </button>
         </div>

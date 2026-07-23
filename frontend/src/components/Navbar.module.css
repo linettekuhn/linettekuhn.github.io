@@ -53,6 +53,11 @@ nav *:hover {
   width: 100%;
 }
 
+:global(.no-gpu) nav {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 @media (min-width: 700px) {
   nav {
     height: var(--space-4xl);

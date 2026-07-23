@@ -9,15 +9,13 @@ const ANIMATION_VARIANTS = [
   styles.lavaDrift,
 ] as const;
 
-const DOT_COUNT = 17;
-
 function getReduceMotion(): boolean {
   const stored = localStorage.getItem("reduce-motion");
   if (stored !== null) return stored === "true";
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function GooBackground() {
+function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
   const mouseRef = useRef<HTMLDivElement>(null);
   const [reduceMotion, setReduceMotion] = useState(getReduceMotion);
 
@@ -87,7 +85,7 @@ function GooBackground() {
           "rgba(232, 203, 139, 0.8)",
         ];
 
-    return Array.from({ length: DOT_COUNT }, (_, i) => ({
+    return Array.from({ length: dotCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -148,9 +146,7 @@ function GooBackground() {
           }
         />
       ))}
-      {!reduceMotion && (
-        <div ref={mouseRef} className={styles.interactive} />
-      )}
+      {!reduceMotion && <div ref={mouseRef} className={styles.interactive} />}
     </div>
   );
 }

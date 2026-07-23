@@ -1,9 +1,11 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
 import GooBackground from "./components/GooBackground";
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
+import { ThemedText } from "./components/ThemedText";
+import { ThemedButton } from "./components/ThemedButton";
 
 function shouldReduceMotion(): boolean {
   const stored = localStorage.getItem("reduce-motion");
@@ -21,6 +23,7 @@ function applyMotionPreference(reduce: boolean) {
 }
 
 function App() {
+  const navigate = useNavigate();
   const [reduceMotion, setReduceMotion] = useState(shouldReduceMotion);
 
   useEffect(() => {
@@ -46,31 +49,34 @@ function App() {
     <>
       <Navbar />
       <main className={styles.app}>
-        <GooBackground />
+        <GooBackground dotCount={8} />
         <div className={styles.header}>
-          <div className={styles.nameWrapper}>
-            <h1 className="name">
-              LINETTE <br /> KÜHN
-            </h1>
-          </div>
-          <div className={styles.subHeading}>
-            <h4>Full Stack Developer</h4>
-            <h5>Check out my work and what I learn along the way!</h5>
-          </div>
+          <ThemedText type="h1" weight="bold">
+            Full Stack Developer
+          </ThemedText>
+          <ThemedText>
+            I like building software that solves small, real problems and
+            actually gets used.
+          </ThemedText>
+          <ThemedText>
+            Check out my work and what I learn along the way!
+          </ThemedText>
           <div className={styles.links}>
-            <Link className="button" to={"/projects"}>
-              Projects
-            </Link>
-            <Link className="button" to={"/blog"}>
-              Blog
-            </Link>
+            <ThemedButton onClick={() => navigate("/projects")}>
+              View Projects
+            </ThemedButton>
+            <ThemedButton variant="outlined" onClick={() => navigate("/blog")}>
+              Read Blog
+            </ThemedButton>
           </div>
           <button
             className={styles.motionToggle}
             onClick={handleToggle}
             aria-pressed={!reduceMotion}
             aria-label={
-              reduceMotion ? "Enable high performance" : "Enable low performance"
+              reduceMotion
+                ? "Enable high performance"
+                : "Enable low performance"
             }
           >
             <span className={styles.motionIcon}>

@@ -1,0 +1,138 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: var(--space-s) var(--space-l);
+  border: 2px solid var(--btn-color, rgb(var(--color-primary-1)));
+  border-radius: var(--space-m);
+  background-color: var(--btn-bg, rgba(var(--color-primary-1), 0.7));
+  color: var(--btn-text, rgb(var(--color-btn-text)));
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-weight-600);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow 0.4s ease,
+    background-color 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.button:hover {
+  background-color: var(--btn-bg-hover, rgba(var(--color-primary-1), 0.9));
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
+}
+
+.button:active {
+  background-color: var(--btn-bg-active, rgba(var(--color-primary-1)));
+  box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-primary-1);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--btn-color, rgb(var(--color-primary-1)));
+  outline-offset: 2px;
+}
+
+/* Outlined variant */
+.outlined {
+  background-color: transparent;
+  color: var(--btn-color, rgb(var(--color-primary-1)));
+}
+
+.outlined:hover {
+  background-color: var(--btn-bg-hover, rgba(var(--color-primary-1), 0.1));
+}
+
+.outlined:active {
+  background-color: var(--btn-bg-active, rgba(var(--color-primary-1), 0.2));
+}
+
+/* Link variant */
+.link {
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+  color: var(--btn-color, rgb(var(--color-primary-1)));
+}
+
+.link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--btn-color, rgb(var(--color-primary-1)));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.link:hover {
+  background: none;
+  box-shadow: none;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+.link:active {
+  background: none;
+  box-shadow: none;
+}
+
+/* Sizes */
+.sm {
+  padding: var(--space-2xs) var(--space-m);
+  font-size: var(--caption-font-size);
+}
+
+.md {
+  padding: var(--space-s) var(--space-l);
+  font-size: var(--font-body);
+}
+
+.lg {
+  padding: var(--space-m) var(--space-xl);
+  font-size: var(--h6-font-size);
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading state */
+.loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.spinner {
+  position: absolute;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon spacing */
+.leftIcon {
+  display: inline-flex;
+  margin-right: var(--space-3xs);
+}
+
+.rightIcon {
+  display: inline-flex;
+  margin-left: var(--space-3xs);
+}

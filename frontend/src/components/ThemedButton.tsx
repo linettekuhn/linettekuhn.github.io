@@ -1,5 +1,6 @@
 import { type ElementType, type PropsWithChildren } from "react";
 import styles from "./ThemedButton.module.css";
+import { ThemedText, type ThemedTextType } from "./ThemedText";
 
 export type ThemedButtonVariant = "solid" | "outlined" | "link";
 export type ThemedButtonSize = "sm" | "md" | "lg";
@@ -9,6 +10,7 @@ type ThemedButtonProps<C extends ElementType = "button"> = PropsWithChildren<
     as?: C;
     variant?: ThemedButtonVariant;
     size?: ThemedButtonSize;
+    textType?: ThemedTextType;
     color?: string;
     disabled?: boolean;
     loading?: boolean;
@@ -26,6 +28,7 @@ export function ThemedButton<C extends ElementType = "button">({
   as,
   variant = "solid",
   size = "md",
+  textType = "body",
   color,
   disabled = false,
   loading = false,
@@ -70,7 +73,7 @@ export function ThemedButton<C extends ElementType = "button">({
       {leftIcon && !loading && (
         <span className={styles.leftIcon}>{leftIcon}</span>
       )}
-      {children}
+      <ThemedText type={textType}>{children}</ThemedText>
       {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
     </Component>
   );

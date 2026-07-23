@@ -50,17 +50,19 @@ function App() {
       <Navbar />
       <main className={styles.app}>
         <GooBackground dotCount={8} />
-        <div className={styles.header}>
+        <div className={styles.heroCard}>
           <ThemedText type="h1" weight="bold">
             Full Stack Developer
           </ThemedText>
-          <ThemedText>
-            I like building software that solves small, real problems and
-            actually gets used.
-          </ThemedText>
-          <ThemedText>
-            Check out my work and what I learn along the way!
-          </ThemedText>
+          <div>
+            <ThemedText>
+              I like building software that solves small, real problems and
+              actually gets used.
+            </ThemedText>
+            <ThemedText>
+              Check out my work and what I learn along the way!
+            </ThemedText>
+          </div>
           <div className={styles.links}>
             <ThemedButton onClick={() => navigate("/projects")}>
               View Projects

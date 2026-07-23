@@ -1,19 +1,67 @@
 import { useState } from "react";
-import { MdContactPhone } from "react-icons/md";
-import { Link } from "react-router";
+import { MdContactPhone, MdHomeFilled } from "react-icons/md";
+import { useLocation, useNavigate } from "react-router";
 import styles from "./Menu.module.css";
 import { createPortal } from "react-dom";
 import MenuIcon from "./icons/MenuIcon";
 import Caret from "./icons/Caret";
 import Code from "./icons/Code";
+import { ThemedButton } from "./ThemedButton";
+import { type ThemedTextType } from "./ThemedText";
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
-    const isOpen = !menuOpen;
-    setMenuOpen(isOpen);
+    setMenuOpen(!menuOpen);
   };
+
+  const isActive = (path: string) => location.pathname === path;
+
+  function renderLinks(showIcons: boolean, textType: ThemedTextType) {
+    return (
+      <>
+        <ThemedButton
+          variant="link"
+          textType={textType}
+          className={`${styles.link} ${isActive("/") ? styles.active : ""}`}
+          onClick={() => navigate("/")}
+        >
+          {showIcons && <MdHomeFilled />}
+          Home
+        </ThemedButton>
+        <ThemedButton
+          variant="link"
+          textType={textType}
+          className={`${styles.link} ${isActive("/blog") ? styles.active : ""}`}
+          onClick={() => navigate("/blog")}
+        >
+          {showIcons && <Caret className={styles.caret} />}
+          Blog
+        </ThemedButton>
+        <ThemedButton
+          variant="link"
+          textType={textType}
+          className={`${styles.link} ${isActive("/projects") ? styles.active : ""}`}
+          onClick={() => navigate("/projects")}
+        >
+          {showIcons && <Code className={styles.code} />}
+          Projects
+        </ThemedButton>
+        <ThemedButton
+          variant="link"
+          textType={textType}
+          className={`${styles.link} ${isActive("/contact") ? styles.active : ""}`}
+          onClick={() => navigate("/contact")}
+        >
+          {showIcons && <MdContactPhone />}
+          Contact
+        </ThemedButton>
+      </>
+    );
+  }
 
   return (
     <>
@@ -23,21 +71,12 @@ export default function Menu() {
 
       {createPortal(
         <div className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
-          <Link className={styles.link} to={"/blog"}>
-            <Caret className={styles.caret} />
-            Blog
-          </Link>
-          <Link className={styles.link} to={"/projects"}>
-            <Code className={styles.code} />
-            Projects
-          </Link>
-          <Link className={styles.link} to={"/contact"}>
-            <MdContactPhone />
-            Contact
-          </Link>
+          {renderLinks(true, "h4")}
         </div>,
-        document.body
+        document.body,
       )}
+
+      <div className={styles.desktopLinks}>{renderLinks(false, "body")}</div>
     </>
   );
 }

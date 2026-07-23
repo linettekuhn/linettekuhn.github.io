@@ -1,3 +1,8 @@
+.lampWrapper {
+  display: flex;
+  padding-bottom: calc(var(--space-2xl) * (11.5 / 37.05));
+}
+
 .lamp {
   height: var(--space-2xl);
   fill: currentColor;

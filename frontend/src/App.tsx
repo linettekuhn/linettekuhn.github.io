@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
 import { ThemedText } from "./components/ThemedText";
 import { ThemedButton } from "./components/ThemedButton";
+import TechScroller from "./components/TechScroller";
 
 function shouldReduceMotion(): boolean {
   const stored = localStorage.getItem("reduce-motion");
@@ -88,6 +89,10 @@ function App() {
               {reduceMotion ? "High performance" : "Low performance"}
             </span>
           </button>
+        </div>
+        <div className={styles.techStackWrapper}>
+          <ThemedText type="overline">crafting with modern tech</ThemedText>
+          <TechScroller />
         </div>
       </main>
     </>

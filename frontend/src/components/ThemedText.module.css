@@ -4,6 +4,19 @@
   color: rgb(var(--color-text));
 }
 
+/* Variants */
+.solid {
+  color: rgb(var(--color-btn-text));
+}
+
+.outlined {
+  color: var(--btn-color, rgb(var(--color-primary-1)));
+}
+
+.link {
+  color: rgb(var(--color-text));
+}
+
 .themedLight {
   color: var(--text-color-light);
 }

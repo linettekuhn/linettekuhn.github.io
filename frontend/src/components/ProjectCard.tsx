@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ProjectCard.module.css";
 import { FaGithub, FaLink } from "react-icons/fa";
-import { MdFlip } from "react-icons/md";
+import { ThemedText } from "./ThemedText";
 
 type Props = {
   name: string;
@@ -11,6 +11,9 @@ type Props = {
   image: string;
   githubLink: string;
   projectLink: string;
+  isMobile?: boolean;
+  measuredHeight?: number;
+  onMeasure?: (height: number) => void;
 };
 
 export default function ProjectCard({
@@ -21,11 +24,44 @@ export default function ProjectCard({
   image,
   githubLink,
   projectLink,
+  isMobile = false,
+  measuredHeight,
+  onMeasure,
 }: Props) {
   const [flipped, setFlipped] = useState(false);
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!onMeasure || !frontRef.current || !backRef.current) return;
+
+    const front = frontRef.current;
+    const back = backRef.current;
+
+    const prevFront = front.style.position;
+    const prevBack = back.style.position;
+    const prevBackHeight = back.style.height;
+    const prevFrontVis = front.style.visibility;
+    const prevBackVis = back.style.visibility;
+
+    front.style.position = "static";
+    back.style.position = "static";
+    back.style.height = "auto";
+    front.style.visibility = "hidden";
+    back.style.visibility = "hidden";
+
+    const backHeight = back.offsetHeight;
+
+    front.style.position = prevFront;
+    back.style.position = prevBack;
+    back.style.height = prevBackHeight;
+    front.style.visibility = prevFrontVis;
+    back.style.visibility = prevBackVis;
+
+    onMeasure(backHeight);
+  }, [onMeasure]);
 
   const handleClick = () => {
-    console.log("flip");
     if (window.matchMedia("(hover: none)").matches) {
       setFlipped((prev) => !prev);
     }
@@ -35,22 +71,59 @@ export default function ProjectCard({
     <div
       className={`${styles.projectPreview} ${flipped ? styles.flipped : ""}`}
       onClick={handleClick}
+      style={
+        measuredHeight
+          ? ({ "--card-height": `${measuredHeight}px` } as React.CSSProperties)
+          : undefined
+      }
     >
       <div className={styles.projectInner}>
-        <div className={styles.projectFront}>
-          <p className={styles.flipPrompt}>
-            <MdFlip /> Tap to flip!
-          </p>
-          <img src={image} />
+        <div
+          ref={frontRef}
+          className={styles.projectFront}
+          style={{
+            backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0) 90%), url(${image})`,
+          }}
+        >
           <div className={styles.projectDetails}>
-            <h4>{name}</h4>
-            <p>{description}</p>
+            <ThemedText
+              type="overline"
+              weight="bold"
+              style={{ color: "rgb(var(--color-primary-2))" }}
+            >
+              {isMobile ? "Mobile" : "Web"} Application
+            </ThemedText>
+            <ThemedText
+              style={{
+                lineHeight: "var(--space-xl)",
+                color: "rgb(var(--color-text-light))",
+              }}
+              type="h2"
+            >
+              {name}
+            </ThemedText>
+            <ThemedText style={{ color: "rgb(var(--color-text-light))" }}>
+              {description}
+            </ThemedText>
+            <div className={styles.topHighlights}>
+              {highlights.slice(0, 2).map((highlight) => (
+                <ThemedText
+                  style={{
+                    textTransform: "uppercase",
+                    color: "rgb(var(--color-text-light))",
+                  }}
+                  type="footnote"
+                >
+                  {highlight}
+                </ThemedText>
+              ))}
+            </div>
           </div>
         </div>
-        <div className={styles.projectBack}>
+        <div ref={backRef} className={styles.projectBack}>
           <div className={styles.projectDetails}>
             <div className={styles.projectHeader}>
-              <h4>{name}</h4>
+              <ThemedText type="h4">{name}</ThemedText>
               <div className={styles.projectLinks}>
                 <a
                   href={githubLink}
@@ -72,15 +145,21 @@ export default function ProjectCard({
             </div>
             <ul className={styles.projectFeatures}>
               {features.map((feature, i) => (
-                <li key={i}>{feature}</li>
+                <li key={i}>
+                  <ThemedText>{feature}</ThemedText>
+                </li>
               ))}
             </ul>
           </div>
           <div className={styles.projectHighlights}>
             {highlights.map((item, i) => (
-              <p className={styles.projectHighlight} key={i}>
+              <ThemedText
+                type="caption"
+                className={styles.projectHighlight}
+                key={i}
+              >
                 {item}
-              </p>
+              </ThemedText>
             ))}
           </div>
         </div>

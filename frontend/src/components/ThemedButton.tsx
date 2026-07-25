@@ -73,7 +73,9 @@ export function ThemedButton<C extends ElementType = "button">({
       {leftIcon && !loading && (
         <span className={styles.leftIcon}>{leftIcon}</span>
       )}
-      <ThemedText type={textType}>{children}</ThemedText>
+      <ThemedText variant={variant} type={textType}>
+        {children}
+      </ThemedText>
       {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
     </Component>
   );

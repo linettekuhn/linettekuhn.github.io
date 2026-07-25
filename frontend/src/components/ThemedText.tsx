@@ -28,6 +28,8 @@ export type ThemedTextWeight =
   | "extraBold"
   | "black";
 
+export type ThemedTextVariant = "solid" | "outlined" | "link";
+
 type PolymorphicAsProp<C extends ElementType> = {
   as?: C;
 };
@@ -38,10 +40,12 @@ type ThemedTextProps<C extends ElementType = "span"> = PropsWithChildren<
   {
     type?: ThemedTextType;
     weight?: ThemedTextWeight;
+    variant?: ThemedTextVariant;
     italic?: boolean;
     lightColor?: string;
     darkColor?: string;
     className?: string;
+    textAlign?: string;
   } & AsProp<C> &
     Omit<React.ComponentPropsWithoutRef<C>, "as" | "children" | "className">
 >;
@@ -98,15 +102,17 @@ export const ThemedText = forwardRef<ElementType, ThemedTextProps>(
       as,
       type = "body",
       weight,
+      variant,
       italic = false,
       lightColor,
       darkColor,
+      textAlign,
       className,
       children,
       style,
       ...rest
     },
-    ref
+    ref,
   ) {
     const Component = as || defaultElementMap[type];
 
@@ -116,12 +122,14 @@ export const ThemedText = forwardRef<ElementType, ThemedTextProps>(
     const colorStyles = {
       ...(lightColor && { "--text-color-light": lightColor }),
       ...(darkColor && { "--text-color-dark": darkColor }),
+      ...(textAlign && { textAlign }),
     } as React.CSSProperties;
 
     const classes = [
       styles.text,
       typeClass,
       weightClass,
+      variant && styles[variant],
       italic && styles.italic,
       lightColor && styles.themedLight,
       darkColor && styles.themedDark,
@@ -140,5 +148,5 @@ export const ThemedText = forwardRef<ElementType, ThemedTextProps>(
         {children}
       </Component>
     );
-  }
+  },
 );

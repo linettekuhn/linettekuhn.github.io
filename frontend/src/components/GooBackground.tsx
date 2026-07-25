@@ -27,6 +27,9 @@ function getReduceMotion(): boolean {
 function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
   const mouseRef = useRef<HTMLDivElement>(null);
   const [reduceMotion, setReduceMotion] = useState(getReduceMotion);
+  const [theme, setTheme] = useState(() =>
+    document.documentElement.getAttribute("data-theme") || "dark",
+  );
 
   useEffect(() => {
     applyMotionPreference(reduceMotion);
@@ -43,10 +46,11 @@ function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
     const html = document.documentElement;
     const observer = new MutationObserver(() => {
       setReduceMotion(html.classList.contains("no-gpu"));
+      setTheme(html.getAttribute("data-theme") || "dark");
     });
     observer.observe(html, {
       attributes: true,
-      attributeFilter: ["class"],
+      attributeFilter: ["class", "data-theme"],
     });
 
     return () => {
@@ -87,10 +91,7 @@ function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
   }, [reduceMotion]);
 
   const dotConfigs = useMemo(() => {
-    const isDark =
-      document.documentElement.getAttribute("data-theme") === "dark";
-
-    // TODO: fix color switch
+    const isDark = theme === "dark";
     const colors = isDark
       ? [
           "rgba(47, 247, 227, 0.8)",
@@ -117,7 +118,7 @@ function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
       color: colors[i % colors.length],
       animation: ANIMATION_VARIANTS[i % ANIMATION_VARIANTS.length],
     }));
-  }, [dotCount]);
+  }, [dotCount, theme]);
 
   return (
     <>

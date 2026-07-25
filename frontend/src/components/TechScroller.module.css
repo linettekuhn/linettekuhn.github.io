@@ -1,35 +1,6 @@
 .scroller {
   width: 100%;
   overflow: hidden;
-  position: relative;
-}
-
-.track {
-  display: flex;
-  width: max-content;
-  user-select: none;
-  -webkit-user-select: none;
-  will-change: transform;
-  animation: scroll 40s linear infinite;
-  gap: var(--space-s);
-}
-
-.set {
-  display: flex;
-  gap: var(--space-s);
-}
-
-.scroller:hover .track {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-1 * var(--scroll-distance)));
-  }
 }
 
 .pill {

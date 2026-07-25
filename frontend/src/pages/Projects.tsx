@@ -10,7 +10,7 @@ const projects = [
     name: "EasyCook",
     projectLink: "https://linettekuhn.github.io/easy-cook",
     githubLink: "https://github.com/linettekuhn/easy-cook",
-    image: "/images/easy-cook-project-preview.png",
+    image: "/previews/easycook.gif",
     description:
       "My first website! A recipe and meal planning web app built with React, TypeScript, and Node.js.",
     features: [
@@ -32,7 +32,7 @@ const projects = [
     name: "Piggy",
     projectLink: "https://github.com/linettekuhn/budget-app",
     githubLink: "https://github.com/linettekuhn/budget-app",
-    image: "/images/piggy-project-preview.png",
+    image: "/previews/piggy.png",
     description:
       "A mobile budgeting app for tracking expenses and visualizing financial built with React Native and Expo.",
     features: [
@@ -54,7 +54,7 @@ const projects = [
     name: "Contexto",
     projectLink: "https://contexto.linettekuhn.com",
     githubLink: "https://github.com/linettekuhn/contexto-frontend",
-    image: "/images/contexto-project-preview.png",
+    image: "/previews/contexto.png",
     description:
       "An AI-powered dialect-aware translation web app that generates culturally authentic translations with control over regional dialect and tone.",
     features: [
@@ -75,7 +75,7 @@ const projects = [
     name: "TCP Chat App",
     projectLink: "https://chat.linettekuhn.com",
     githubLink: "https://github.com/linettekuhn/tcp-chat",
-    image: "/gifs/tcp_redesign.gif",
+    image: "/previews/tcp.gif",
     description:
       "A real-time chat application with a custom C++ TCP server backend and React/TypeScript frontend.",
     features: [
@@ -92,7 +92,7 @@ const projects = [
     name: "ZeroLío",
     projectLink: "https://linettekuhn.github.io/zero-lio",
     githubLink: "https://github.com/linettekuhn/zero-lio",
-    image: "/images/zero-lio-project-preview.png",
+    image: "/previews/zerolio.png",
     description:
       "A location-based sports field reservation platform built with React, TypeScript, and Node.js.",
     features: [
@@ -112,7 +112,7 @@ const projects = [
     name: "Game of Life",
     projectLink: "https://linettekuhn.github.io/game-of-life/",
     githubLink: "https://github.com/linettekuhn/game-of-life",
-    image: "/gifs/game_of_life_preview.gif",
+    image: "/previews/gol.gif",
     description:
       "An interactive simulation of Conway's Game of Life with a React + Vite frontend and a C++ core compiled to WebAssembly.",
     features: [

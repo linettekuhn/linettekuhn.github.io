@@ -23,10 +23,6 @@
   animation-play-state: paused;
 }
 
-.track.reduceMotion {
-  animation: none;
-}
-
 @keyframes scroll {
   0% {
     transform: translateX(0);

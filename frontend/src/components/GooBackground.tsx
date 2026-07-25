@@ -9,15 +9,9 @@ const ANIMATION_VARIANTS = [
   styles.lavaDrift,
 ] as const;
 
-function getReduceMotion(): boolean {
-  const stored = localStorage.getItem("reduce-motion");
-  if (stored !== null) return stored === "true";
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
   const mouseRef = useRef<HTMLDivElement>(null);
-  const [reduceMotion, setReduceMotion] = useState(getReduceMotion);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
@@ -95,7 +89,7 @@ function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
       color: colors[i % colors.length],
       animation: ANIMATION_VARIANTS[i % ANIMATION_VARIANTS.length],
     }));
-  }, []);
+  }, [dotCount]);
 
   return (
     <div

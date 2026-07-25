@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./TechScroller.module.css";
 import { ThemedText } from "./ThemedText";
 
@@ -24,14 +24,7 @@ const TECH_ITEMS = [
   "GitHub Actions",
 ];
 
-function getReduceMotion(): boolean {
-  const stored = localStorage.getItem("reduce-motion");
-  if (stored !== null) return stored === "true";
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 export default function TechScroller() {
-  const [reduceMotion, setReduceMotion] = useState(getReduceMotion);
   const [copies, setCopies] = useState(2);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -66,31 +59,6 @@ export default function TechScroller() {
     return () => window.removeEventListener("resize", recalculate);
   }, []);
 
-  useEffect(() => {
-    const handleStorage = (e: StorageEvent) => {
-      if (e.key === "reduce-motion") {
-        setReduceMotion(e.newValue === "true");
-      }
-    };
-    window.addEventListener("storage", handleStorage);
-
-    const html = document.documentElement;
-    const observer = new MutationObserver(() => {
-      setReduceMotion(html.classList.contains("no-gpu"));
-    });
-    observer.observe(html, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => {
-      window.removeEventListener("storage", handleStorage);
-      observer.disconnect();
-    };
-  }, []);
-
-  const trackClass = `${styles.track} ${reduceMotion ? styles.reduceMotion : ""}`;
-
   return (
     <div ref={scrollerRef} className={styles.scroller}>
       <div
@@ -111,7 +79,7 @@ export default function TechScroller() {
           </span>
         ))}
       </div>
-      <div ref={trackRef} className={trackClass}>
+      <div ref={trackRef} className={styles.track}>
         {Array.from({ length: copies }).map((_, setIndex) => (
           <div className={styles.set} key={setIndex}>
             {TECH_ITEMS.map((tech) => (

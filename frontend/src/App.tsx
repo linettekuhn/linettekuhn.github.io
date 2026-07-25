@@ -4,15 +4,11 @@ import GooBackground from "./components/GooBackground";
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa6";
+import { detectPerformance } from "./utils/detectPerformance";
 import { ThemedText } from "./components/ThemedText";
 import { ThemedButton } from "./components/ThemedButton";
 import TechScroller from "./components/TechScroller";
-
-function shouldReduceMotion(): boolean {
-  const stored = localStorage.getItem("reduce-motion");
-  if (stored !== null) return stored === "true";
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
+import { LoadingOverlay } from "./components/LoadingOverlay";
 
 function applyMotionPreference(reduce: boolean) {
   if (reduce) {
@@ -20,12 +16,27 @@ function applyMotionPreference(reduce: boolean) {
   } else {
     document.documentElement.classList.remove("no-gpu");
   }
-  localStorage.setItem("reduce-motion", String(reduce));
 }
 
 function App() {
   const navigate = useNavigate();
-  const [reduceMotion, setReduceMotion] = useState(shouldReduceMotion);
+  const [reduceMotion, setReduceMotion] = useState(() => {
+    const stored = localStorage.getItem("reduce-motion");
+    return stored !== null ? stored === "true" : false;
+  });
+  const [loading, setLoading] = useState(() => localStorage.getItem("fps") === null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("reduce-motion");
+    if (stored !== null) {
+      setReduceMotion(stored === "true");
+    }
+    detectPerformance()
+      .then((result) => {
+        if (stored === null) setReduceMotion(result);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   useEffect(() => {
     applyMotionPreference(reduceMotion);
@@ -43,11 +54,16 @@ function App() {
   }, []);
 
   function handleToggle() {
-    setReduceMotion((prev) => !prev);
+    setReduceMotion((prev) => {
+      const next = !prev;
+      localStorage.setItem("reduce-motion", String(next));
+      return next;
+    });
   }
 
   return (
     <>
+      <LoadingOverlay visible={loading} />
       <Navbar />
       <main className={styles.app}>
         <GooBackground dotCount={8} />

@@ -25,13 +25,14 @@
   overflow: clip;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   width: 100%;
 }
 
 .featuredHeader {
   padding: 0 var(--space-4xl);
+  align-self: flex-start;
 }
 
 :global(.no-gpu) .nameWrapper::after {
@@ -54,7 +55,7 @@
   padding: var(--space-xl) var(--space-2xl);
   gap: var(--space-m);
 
-  max-width: 75vw;
+  max-width: 80vw;
   background: rgba(var(--color-glass), 0.5);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -96,6 +97,7 @@
 .links {
   display: flex;
   flex-direction: column;
+  gap: var(--space-s);
 }
 
 .techStackWrapper {
@@ -114,10 +116,23 @@
   width: 12px;
   height: 4px;
   transition: width 250ms ease;
+  background-color: rgb(var(--color-primary-1));
 
   &[data-active] {
     width: 40px;
   }
+}
+
+.control {
+  &[data-inactive] {
+    opacity: 0;
+    cursor: default;
+  }
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
 }
 
 .controls {
@@ -166,9 +181,14 @@
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 850px) {
   .links {
     flex-direction: row;
     gap: var(--space-xl);
+  }
+
+  .carousel {
+    width: auto;
+    align-self: center;
   }
 }

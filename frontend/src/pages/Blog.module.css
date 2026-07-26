@@ -3,14 +3,11 @@
   align-items: flex-start;
   padding: var(--space-4xl) 0;
   padding-bottom: 0;
+  gap: var(--space-xl);
 }
 
-.postTimeline {
+.carousel {
   width: 100%;
-  padding: var(--space-s) var(--space-s);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .postPreview {
@@ -19,14 +16,20 @@
   border: 2px solid rgb(var(--color-primary-3));
   border-radius: var(--space-s);
   background-color: rgb(var(--color-primary-3), 0.1);
-  margin: var(--space-s);
   text-decoration: none;
-  color: rgb(var(--color-btn-text));
+  color: var(--text-color);
   transition:
     box-shadow 0.4s ease,
     background-color 0.35s ease;
-  width: calc(5 * var(--space-4xl));
-  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.timeline {
+  width: 100%;
 }
 
 .echelonHeader {
@@ -70,6 +73,45 @@
   margin: var(--space-xs) 0;
 }
 
+.slide {
+  padding: var(--space-xl) 0;
+}
+
+.progress {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  margin: var(--space-s) 0;
+  width: 100%;
+  padding: 0 var(--space-3xl);
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--space-xl);
+  height: var(--space-xl);
+  border: 2px solid rgb(var(--color-primary-3));
+  border-radius: 50%;
+  background-color: rgba(var(--color-primary-3), 0.1);
+  color: var(--text-color);
+  cursor: pointer;
+  transition:
+    background-color 0.35s ease,
+    box-shadow 0.4s ease;
+}
+
+.controlButton:hover {
+  background-color: rgba(var(--color-primary-3), 0.9);
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-3);
+}
+
 .postPreview:hover {
   background-color: rgba(var(--color-primary-3), 0.9);
   cursor: pointer;
@@ -79,75 +121,4 @@
 .postPreview:active {
   background-color: rgba(var(--color-primary-3));
   box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-3);
-}
-
-@media (min-width: 700px) {
-  .postTimeline {
-    padding: var(--space-s) var(--space-4xl);
-    overflow-x: scroll;
-    display: grid;
-    grid-template-rows: [top] 1fr [line] var(--space-3xs) [bottom] 1fr;
-  }
-
-  .timelineLine {
-    grid-row: line;
-    grid-column: 1 / -1;
-    height: var(--space-3xs);
-    background-color: rgb(var(--color-primary-3));
-    border-radius: var(--space-s);
-  }
-
-  .postPreview {
-    position: relative;
-    margin: var(--space-s) 0;
-    text-align: left;
-  }
-
-  .postPreview p {
-    white-space: nowrap;
-  }
-
-  .postPreview .description {
-    white-space: normal;
-  }
-
-  .postPreview:nth-child(odd) {
-    grid-row: top;
-    align-self: flex-end;
-  }
-
-  .postPreview:nth-child(even) {
-    grid-row: bottom;
-    align-self: flex-start;
-  }
-
-  .postPreview:nth-child(odd)::after {
-    content: "";
-    position: absolute;
-    width: var(--space-s);
-    height: var(--space-s);
-    border-radius: 50%;
-    background-color: rgb(var(--color-primary-3));
-    z-index: 2;
-    left: 50%;
-    transform: translateX(-50%);
-    /* from the top: full card height + margin + line height - half of the height of the dot*/
-    top: calc(100% + var(--space-s) + var(--space-3xs) - (var(--space-s) / 2));
-  }
-
-  .postPreview:nth-child(even)::before {
-    content: "";
-    position: absolute;
-    width: var(--space-s);
-    height: var(--space-s);
-    border-radius: 50%;
-    background-color: rgb(var(--color-primary-3));
-    z-index: 2;
-    left: 50%;
-    transform: translateX(-50%);
-    /* from the bottom: full card height + margin + line height - half of the height of the dot*/
-    bottom: calc(
-      100% + var(--space-s) + var(--space-3xs) - (var(--space-s) / 2)
-    );
-  }
 }

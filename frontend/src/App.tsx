@@ -102,12 +102,11 @@ function App() {
           </div>
           <Carousel
             classNames={styles}
-            slideSize={{ base: "100%", sm: "50%", lg: "33.3333%" }}
+            slideSize={{ base: "100%", sm: "50%", lg: "25%" }}
             slideGap={{ base: "xl", sm: "md", lg: "sm" }}
-            emblaOptions={{ align: "center", loop: true }}
+            emblaOptions={{ align: "start", loop: true, dragFree: false }}
             className={styles.carousel}
             withIndicators
-            draggable={false}
           >
             {slides}
           </Carousel>

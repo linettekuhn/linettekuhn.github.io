@@ -17,11 +17,12 @@
   width: 12px;
   height: 4px;
   transition: width 250ms ease;
-
+  background-color: rgb(var(--color-primary-2));
   &[data-active] {
     width: 40px;
   }
 }
+
 .controls {
   transition: opacity 150ms ease;
   opacity: 0;
@@ -37,4 +38,6 @@
 
 .slide {
   padding: var(--space-xl) 0;
+  display: flex;
+  justify-content: center;
 }

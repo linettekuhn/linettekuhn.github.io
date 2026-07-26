@@ -2,6 +2,9 @@ import { Link } from "react-router";
 import Navbar from "../components/Navbar";
 import styles from "./Blog.module.css";
 import { useEffect, useRef } from "react";
+import { ThemedText } from "../components/ThemedText";
+import { ThemedButton } from "../components/ThemedButton";
+import { MdArrowForward } from "react-icons/md";
 
 // import all posts using vite as components and metadata
 const posts = import.meta.glob("../posts/*.mdx", { eager: true }) as Record<
@@ -13,7 +16,9 @@ const posts = import.meta.glob("../posts/*.mdx", { eager: true }) as Record<
       date: string;
       wordCount: number;
       tags?: string[];
+      thumbnail?: string;
     };
+    excerpt: string;
   }
 >;
 
@@ -27,6 +32,8 @@ export default function Blog() {
       date: module.frontmatter.date,
       wordCount: module.frontmatter.wordCount,
       tags: module.frontmatter.tags,
+      thumbnail: module.frontmatter.thumbnail,
+      excerpt: module.excerpt,
     }))
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
@@ -55,10 +62,16 @@ export default function Blog() {
 
   useEffect(() => {
     if (timelineRef.current) {
-      timelineRef.current.scrollTo({
-        left: timelineRef.current.scrollWidth,
-        behavior: "smooth",
-      });
+      timelineRef.current.scrollLeft = timelineRef.current.scrollWidth;
+
+      const timeout = setTimeout(() => {
+        timelineRef.current?.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      }, 200);
+
+      return () => clearTimeout(timeout);
     }
   }, [postList]);
 
@@ -68,7 +81,13 @@ export default function Blog() {
     <>
       <Navbar />
       <main className={styles.postsWrapper}>
-        <h1>My Blog Posts</h1>
+        <div className={styles.echelonHeader}>
+          <ThemedText type="h1">Echelon: 5 Months of Growth.</ThemedText>
+          <ThemedText>
+            Walk through how a student capstone turned into real production work
+            on the Echelon Fit team
+          </ThemedText>
+        </div>
         <div
           className={styles.postTimeline}
           style={{
@@ -78,8 +97,6 @@ export default function Blog() {
         >
           <div className={styles.timelineLine}></div>
           {postList.map((post, i) => {
-            const formattedDate = new Date(post.date);
-
             return (
               <Link
                 key={post.date}
@@ -87,10 +104,33 @@ export default function Blog() {
                 to={`/blog/${post.slug}`}
                 style={{ gridColumn: i + 1 }}
               >
-                <h5>{post.title}</h5>
-                <p>
-                  {formattedDate.toDateString()} - {post.wordCount} words
-                </p>
+                {post.thumbnail && (
+                  <div className={styles.thumbnailWrapper}>
+                    <img
+                      src={post.thumbnail}
+                      alt={post.title}
+                      className={styles.thumbnail}
+                    />
+                    <ThemedText type="caption" className={styles.dateBadge}>
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </ThemedText>
+                  </div>
+                )}
+                <ThemedText type="h6">{post.title}</ThemedText>
+                <ThemedText className={styles.description}>
+                  {post.excerpt}
+                </ThemedText>
+                <ThemedButton
+                  rightIcon={<MdArrowForward />}
+                  variant="link"
+                  textType="overline"
+                >
+                  read chapter
+                </ThemedButton>
               </Link>
             );
           })}

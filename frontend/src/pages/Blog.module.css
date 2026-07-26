@@ -1,5 +1,8 @@
 .postsWrapper {
   justify-content: center;
+  align-items: flex-start;
+  padding: var(--space-4xl) 0;
+  padding-bottom: 0;
 }
 
 .postTimeline {
@@ -15,13 +18,56 @@
   text-align: center;
   border: 2px solid rgb(var(--color-primary-3));
   border-radius: var(--space-s);
-  background-color: rgb(var(--color-primary-3), 0.3);
+  background-color: rgb(var(--color-primary-3), 0.1);
   margin: var(--space-s);
   text-decoration: none;
   color: rgb(var(--color-btn-text));
-  transition: box-shadow 0.4s ease, background-color 0.35s ease;
-  min-width: 100%;
+  transition:
+    box-shadow 0.4s ease,
+    background-color 0.35s ease;
+  width: calc(5 * var(--space-4xl));
   color: var(--text-color);
+}
+
+.echelonHeader {
+  padding: 0 var(--space-3xl);
+}
+
+.thumbnailWrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--space-xs);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--space-xs);
+}
+
+.dateBadge {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  background-color: rgba(var(--color-glass), 0.9);
+  padding: 2px var(--space-xs);
+  border-radius: 999px;
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-3);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.85rem;
+  text-align: left;
+  margin: var(--space-xs) 0;
 }
 
 .postPreview:hover {
@@ -59,6 +105,10 @@
 
   .postPreview p {
     white-space: nowrap;
+  }
+
+  .postPreview .description {
+    white-space: normal;
   }
 
   .postPreview:nth-child(odd) {

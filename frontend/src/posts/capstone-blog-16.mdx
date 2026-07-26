@@ -2,6 +2,7 @@
 title: "Adding Badges and Recurring Transactions"
 date: 11/23/2025
 wordCount: 448
+thumbnail: "/images/budget-app-badges-light.png"
 ---
 
 Continuing from last week, I spent time implementing badges in the Piggy app. Since this is a major feature that requires checking many requirements across different points in the app, I needed to figure out a solid approach. I wanted a central way to store the completed badges, badge definitions, and check functions for each badge. That’s when I remembered how I used the singleton pattern in a similar way when making my calculator app. So, I created the BadgeService class, a place that holds everything needed to implement the badges throughout the app.

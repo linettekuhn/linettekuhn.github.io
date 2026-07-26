@@ -2,6 +2,7 @@
 title: "Profile Page Functionality in Piggy"
 date: 12/14/2025
 wordCount: 300
+thumbnail: "/gifs/edit_name_setting_piggy.gif"
 ---
 
 This past few days, I worked on implementing the profile page settings functionality, where I left off last week. The first section of settings is for the account, which all involved the Firebase authentication I had in place. At this point, all the user could do was log in or create an account, but the local storage was never synced with the Firestore cloud storage, so I figured now’s the time to do it. This was a multiple-day process, as I had to basically recreate Git while building my SyncService, which pushed local changes and pulled remote changes. I also had to refactor the DatabaseService so all tables had at least one unique ID column to use as document names in Firestore.

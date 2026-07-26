@@ -12,6 +12,7 @@ const posts = import.meta.glob("../posts/*.mdx", { eager: true }) as Record<
       date: string;
       wordCount: number;
       tags?: string[];
+      thumbnail?: string;
     };
   }
 >;

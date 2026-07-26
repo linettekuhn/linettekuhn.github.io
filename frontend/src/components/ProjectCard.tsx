@@ -106,8 +106,9 @@ export default function ProjectCard({
               {description}
             </ThemedText>
             <div className={styles.topHighlights}>
-              {highlights.slice(0, 2).map((highlight) => (
+              {highlights.slice(0, 2).map((highlight, i) => (
                 <ThemedText
+                  key={i}
                   style={{
                     textTransform: "uppercase",
                     color: "rgb(var(--color-text-light))",

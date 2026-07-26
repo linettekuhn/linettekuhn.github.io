@@ -27,8 +27,8 @@ function getReduceMotion(): boolean {
 function GooBackground({ dotCount = 17 }: { dotCount?: number }) {
   const mouseRef = useRef<HTMLDivElement>(null);
   const [reduceMotion, setReduceMotion] = useState(getReduceMotion);
-  const [theme, setTheme] = useState(() =>
-    document.documentElement.getAttribute("data-theme") || "dark",
+  const [theme, setTheme] = useState(
+    () => document.documentElement.getAttribute("data-theme") || "dark",
   );
 
   useEffect(() => {

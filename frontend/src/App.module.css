@@ -1,12 +1,37 @@
 .app {
   overflow-x: hidden;
-  padding: 0 var(--space-xl);
+  padding: var(--space-4xl) 0;
+  padding-bottom: 0;
   justify-content: center;
-  position: relative;
-  height: 100vh;
-  overflow: clip;
+  overflow-y: scroll;
   display: flex;
+  flex-direction: column;
+}
+
+.heroSection {
+  height: 100vh;
+  display: flex;
+  overflow: clip;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.featuredSection {
+  background-color: rgba(var(--color-glass), 0.5);
+  padding: var(--space-xl) 0;
+  display: flex;
+  overflow: clip;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+}
+
+.featuredHeader {
+  padding: 0 var(--space-4xl);
 }
 
 :global(.no-gpu) .nameWrapper::after {
@@ -79,6 +104,66 @@
   align-items: center;
   gap: var(--space-m);
   margin-top: var(--space-xl);
+}
+
+.carousel {
+  width: 100%;
+}
+
+.indicator {
+  width: 12px;
+  height: 4px;
+  transition: width 250ms ease;
+
+  &[data-active] {
+    width: 40px;
+  }
+}
+
+.controls {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+
+.root {
+  &:hover {
+    .controls {
+      opacity: 1;
+    }
+  }
+}
+
+.slide {
+  padding: var(--space-xl) 0;
+}
+
+.scrollArrow {
+  font-size: var(--space-xl);
+  color: rgb(var(--color-text));
+  opacity: 0.6;
+  cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+  transition: opacity 0.2s ease;
+}
+
+.scrollArrow:hover {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollArrow {
+    animation: none;
+  }
 }
 
 @media (min-width: 700px) {

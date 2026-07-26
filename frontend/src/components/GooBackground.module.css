@@ -122,13 +122,13 @@
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(0%);
   }
   25% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-30%) translateX(5%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-10%) translateX(3%);
   }
   50% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-10%) translateX(-3%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-4%) translateX(-2%);
   }
   75% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-40%) translateX(-5%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-12%) translateX(-3%);
   }
   100% {
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(0%);
@@ -141,13 +141,13 @@
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
   }
   25% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(20%, -10%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(8%, -4%);
   }
   50% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-5%, -20%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-2%, -8%);
   }
   75% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-20%, -5%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-8%, -2%);
   }
   100% {
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
@@ -160,13 +160,13 @@
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
   }
   25% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(15%, -25%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(6%, -10%);
   }
   50% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-5%, -40%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-2%, -12%);
   }
   75% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-20%, -15%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-8%, -6%);
   }
   100% {
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
@@ -179,16 +179,16 @@
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
   }
   20% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(12%, -18%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(5%, -8%);
   }
   40% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-8%, -35%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-3%, -10%);
   }
   60% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-18%, -22%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-7%, -6%);
   }
   80% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(5%, -8%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(2%, -3%);
   }
   100% {
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
@@ -201,10 +201,10 @@
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
   }
   33% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(8%, -15%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(4%, -6%);
   }
   66% {
-    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-12%, -8%);
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-5%, -3%);
   }
   100% {
     transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);

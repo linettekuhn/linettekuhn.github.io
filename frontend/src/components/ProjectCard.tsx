@@ -37,6 +37,7 @@ export default function ProjectCard({
 
     const front = frontRef.current;
     const back = backRef.current;
+    const onMeasureRef = onMeasure;
 
     function measure() {
       const prevFront = front.style.position;
@@ -59,7 +60,7 @@ export default function ProjectCard({
       front.style.visibility = prevFrontVis;
       back.style.visibility = prevBackVis;
 
-      onMeasure(backHeight);
+      onMeasureRef(backHeight);
     }
 
     measure();

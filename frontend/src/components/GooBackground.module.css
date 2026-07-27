@@ -1,0 +1,235 @@
+.container {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+}
+
+.dot {
+  position: absolute;
+  width: var(--gradient-size);
+  height: var(--gradient-size);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--dot-color) 0%,
+    transparent 50%
+  );
+  mix-blend-mode: hard-light;
+  will-change: transform, opacity;
+  pointer-events: none;
+
+  left: var(--dot-x, 50%);
+  top: var(--dot-y, 50%);
+  transform: translate(-50%, -50%) scale(var(--dot-scale, 1));
+
+  animation-name: var(--dot-animation);
+  animation-duration: var(--dot-duration, 20s);
+  animation-delay: var(--dot-delay, 0s);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.interactive {
+  position: absolute;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--color-secondary-2), 0.4) 0%,
+    transparent 50%
+  );
+  mix-blend-mode: hard-light;
+  width: calc(var(--gradient-size) / 1.5);
+  height: calc(var(--gradient-size) / 1.5);
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+  transform: translate(-50%, -50%);
+  transition:
+    left 0.1s ease,
+    top 0.1s ease;
+  pointer-events: none;
+}
+
+.toggle {
+  position: fixed;
+  top: calc(var(--space-4xl) + var(--space-m));
+  right: var(--space-m);
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+
+  padding: var(--space-xs);
+  border: 1px solid rgba(var(--color-primary-1), 0.4);
+  border-radius: var(--space-m);
+  background: rgba(var(--color-bg-1), 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgb(var(--color-text));
+  cursor: pointer;
+
+  max-width: var(--space-2xl);
+  transition:
+    max-width 0.4s ease,
+    gap 0.4s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.toggle:hover {
+  max-width: 280px;
+  gap: var(--space-xs);
+  background: rgba(var(--color-bg-1), 0.95);
+  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
+}
+
+.toggleIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: var(--space-xs);
+}
+
+.toggleLabel {
+  white-space: nowrap;
+  font-size: var(--space-xs);
+  overflow: hidden;
+  opacity: 0;
+  max-width: 0;
+  transition:
+    opacity 0.3s ease 0.1s,
+    max-width 0.4s ease;
+}
+
+.toggle:hover .toggleLabel {
+  opacity: 1;
+  max-width: 200px;
+}
+
+:global(.no-gpu) .toggle {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* --- Keyframe Variants --- */
+
+/* 1. Vertical lava rise — slow up, pause, slow down */
+@keyframes lavaVertical {
+  0% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(0%);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-10%) translateX(3%);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-4%) translateX(-2%);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(-12%) translateX(-3%);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translateY(0%);
+  }
+}
+
+/* 2. Horizontal sway — side to side with vertical drift */
+@keyframes lavaHorizontal {
+  0% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(8%, -4%);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-2%, -8%);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-8%, -2%);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+}
+
+/* 3. Elliptical orbit — circular with slight wobble */
+@keyframes lavaCircular {
+  0% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(6%, -10%);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-2%, -12%);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-8%, -6%);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+}
+
+/* 4. Diagonal wander — drifts diagonally with organic curves */
+@keyframes lavaDiagonal {
+  0% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(5%, -8%);
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-3%, -10%);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-7%, -6%);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(2%, -3%);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+}
+
+/* 5. Slow drift — wide, lazy float for background filler */
+@keyframes lavaDrift {
+  0% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+  33% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(4%, -6%);
+  }
+  66% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(-5%, -3%);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(var(--dot-scale, 1)) translate(0%, 0%);
+  }
+}
+
+/* --- Reduced Motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+    will-change: auto;
+    mix-blend-mode: normal;
+  }
+  .interactive {
+    transition: none;
+  }
+}
+
+:global(.no-gpu) .dot {
+  animation: none;
+  will-change: auto;
+  mix-blend-mode: normal;
+}
+
+:global(.no-gpu) .interactive {
+  transition: none;
+}

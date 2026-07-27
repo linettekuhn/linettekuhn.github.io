@@ -1,134 +1,115 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import Navbar from "./components/Navbar";
+import GooBackground from "./components/GooBackground";
 import styles from "./App.module.css";
-import { useEffect, useRef, useState } from "react";
-import { FaPause, FaPlay } from "react-icons/fa6";
-
-function shouldReduceMotion(): boolean {
-  // check localStorage first — user preference overrides everything
-  const stored = localStorage.getItem("reduce-motion");
-  if (stored !== null) return stored === "true";
-
-  // fall back to OS-level preference
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-function applyMotionPreference(reduce: boolean) {
-  if (reduce) {
-    document.documentElement.classList.add("no-gpu");
-  } else {
-    document.documentElement.classList.remove("no-gpu");
-  }
-  localStorage.setItem("reduce-motion", String(reduce));
-}
+import { useCallback, useEffect, useRef, useState } from "react";
+import { detectPerformance } from "./utils/detectPerformance";
+import { ThemedText } from "./components/ThemedText";
+import { ThemedButton } from "./components/ThemedButton";
+import TechScroller from "./components/TechScroller";
+import { LoadingOverlay } from "./components/LoadingOverlay";
+import projects from "./utils/projects";
+import ProjectCard from "./components/ProjectCard";
+import { Carousel } from "@mantine/carousel";
+import { FaChevronDown } from "react-icons/fa";
 
 function App() {
-  const bubbleRef = useRef<HTMLDivElement>(null);
-  const [reduceMotion, setReduceMotion] = useState(shouldReduceMotion);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(
+    () => localStorage.getItem("fps") === null,
+  );
+  const [cardHeight, setCardHeight] = useState<number | undefined>();
+  const heightsRef = useRef<Map<string, number>>(new Map());
+  const featuredRef = useRef<HTMLDivElement>(null);
+  const featuredProjects = projects.slice(0, 3);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!bubbleRef.current) return;
-      const container = bubbleRef.current.parentElement;
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      bubbleRef.current.style.setProperty("--mouse-x", `${x}px`);
-      bubbleRef.current.style.setProperty("--mouse-y", `${y}px`);
-    };
-
-    applyMotionPreference(reduceMotion);
-
-    if (!reduceMotion) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
-
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [reduceMotion]);
-
-  useEffect(() => {
-    // sync with OS preference changes if user hasn't set a manual preference
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handleChange = (e: MediaQueryListEvent) => {
-      if (localStorage.getItem("reduce-motion") === null) {
-        setReduceMotion(e.matches);
-      }
-    };
-    mq.addEventListener("change", handleChange);
-    return () => mq.removeEventListener("change", handleChange);
+    detectPerformance().finally(() => setLoading(false));
   }, []);
 
-  function handleToggle() {
-    setReduceMotion((prev) => !prev);
-  }
+  const handleMeasure = useCallback(
+    (name: string, height: number) => {
+      heightsRef.current.set(name, height);
+      if (heightsRef.current.size === featuredProjects.length) {
+        setCardHeight(Math.max(...heightsRef.current.values()));
+      }
+    },
+    [featuredProjects],
+  );
 
+  const slides = featuredProjects.map((project) => (
+    <Carousel.Slide key={project.name}>
+      <ProjectCard
+        key={project.name}
+        {...project}
+        isMobile={project.isMobile}
+        measuredHeight={cardHeight}
+        onMeasure={(h) => handleMeasure(project.name, h)}
+      />
+    </Carousel.Slide>
+  ));
   return (
     <>
+      <LoadingOverlay visible={loading} />
       <Navbar />
       <main className={styles.app}>
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur
-                in="SourceGraphic"
-                stdDeviation="100"
-                result="blur"
-              />
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0
-                        0 1 0 0 0
-                        0 0 1 0 0
-                        0 0 0 30 -12"
-                result="goo"
-              />
-              <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-          </defs>
-        </svg>
-        <div className={styles.gradientsContainer}>
-          <div className={styles.g1}></div>
-          <div className={styles.g2}></div>
-          <div className={styles.g3}></div>
-          <div className={styles.g4}></div>
-          <div ref={bubbleRef} className={styles.interactive}></div>
+        <GooBackground dotCount={8} />
+        <div className={styles.heroSection}>
+          <div className={styles.heroCard}>
+            <ThemedText type="h1" weight="bold">
+              Full Stack Developer
+            </ThemedText>
+            <div>
+              <ThemedText>
+                I like building software that solves small, real problems and
+                actually gets used.
+              </ThemedText>
+              <ThemedText>
+                Check out my work and what I learn along the way!
+              </ThemedText>
+            </div>
+            <div className={styles.links}>
+              <ThemedButton onClick={() => navigate("/projects")}>
+                View Projects
+              </ThemedButton>
+              <ThemedButton
+                variant="outlined"
+                onClick={() => navigate("/blog")}
+              >
+                Read Blog
+              </ThemedButton>
+            </div>
+          </div>
+          <div className={styles.techStackWrapper}>
+            <ThemedText type="overline">crafting with modern tech</ThemedText>
+            <TechScroller />
+            <FaChevronDown
+              className={styles.scrollArrow}
+              onClick={() =>
+                featuredRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
+            />
+          </div>
         </div>
-        <div className={styles.header}>
-          <div className={styles.nameWrapper}>
-            <h1 className="name">
-              LINETTE <br /> KÜHN
-            </h1>
+        <div ref={featuredRef} className={styles.featuredSection}>
+          <div className={styles.featuredHeader}>
+            <ThemedText type="h2" weight="semiBold">
+              Featured Creations
+            </ThemedText>
+            <ThemedText>
+              Some of my favorite work. Built from concept to deployment
+            </ThemedText>
           </div>
-          <div className={styles.subHeading}>
-            <h4>Full Stack Developer</h4>
-            <h5>Check out my work and what I learn along the way!</h5>
-          </div>
-          <div className={styles.links}>
-            <Link className="button" to={"/projects"}>
-              Projects
-            </Link>
-            <Link className="button" to={"/blog"}>
-              Blog
-            </Link>
-          </div>
-          <button
-            className={styles.motionToggle}
-            onClick={handleToggle}
-            aria-pressed={reduceMotion}
-            aria-label={
-              reduceMotion ? "Enable animations" : "Disable animations"
-            }
+          <Carousel
+            classNames={styles}
+            slideSize={{ base: "100%", sm: "50%", lg: "25%" }}
+            slideGap={{ base: "xl", sm: "md", lg: "sm" }}
+            emblaOptions={{ align: "start", loop: true, dragFree: false }}
+            className={styles.carousel}
+            withIndicators
           >
-            <span className={styles.motionIcon}>
-              {reduceMotion ? <FaPlay /> : <FaPause />}
-            </span>
-            <span className={styles.motionLabel}>
-              {reduceMotion ? "Enable animations" : "Disable animations"}
-            </span>
-          </button>
+            {slides}
+          </Carousel>
         </div>
       </main>
     </>

@@ -1,0 +1,15 @@
+.scroller {
+  width: 100%;
+  overflow: hidden;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: var(--space-2xs) var(--space-m);
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--color-primary-1), 0.4);
+  background: rgba(var(--color-glass), 0.5);
+  flex-shrink: 0;
+}

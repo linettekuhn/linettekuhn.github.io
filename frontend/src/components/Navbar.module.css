@@ -10,11 +10,9 @@ nav {
   padding: var(--space-s) var(--space-xl);
   position: fixed;
   z-index: 99;
-  background-color: rgba(var(--color-secondary-2), 0.4);
-  border-bottom: 1px solid rgba(var(--color-secondary-2), 0.4);
+  background-color: rgba(var(--color-glass), 0.4);
+  border-bottom: 1px solid rgba(var(--color-glass), 0.2);
   backdrop-filter: blur(16px);
-  /*horizontal-offset vertical-offset blur-radius spread-radius color;*/
-  box-shadow: var(--box-shadow-pressed) var(--box-shadow-color-secondary-2);
 }
 
 nav * {
@@ -34,7 +32,6 @@ nav *:hover {
 .logo {
   display: inline-block;
   font-size: var(--space-xl);
-  padding: var(--space-3xs);
   z-index: 100;
 }
 
@@ -51,6 +48,17 @@ nav *:hover {
 
 .logo:hover::after {
   width: 100%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+:global(.no-gpu) nav {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 @media (min-width: 700px) {

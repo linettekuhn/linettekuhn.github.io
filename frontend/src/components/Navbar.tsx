@@ -8,12 +8,14 @@ export default function Navbar() {
   const navigate = useNavigate();
   return (
     <nav>
-      <Menu />
-      <div onClick={() => navigate("/")} className={styles.logo}>
-        Linette K<Smiley />
-        hn
+      <div className={styles.left}>
+        <div onClick={() => navigate("/")} className={styles.logo}>
+          Linette K<Smiley />
+          hn
+        </div>
+        <ThemeToggle />
       </div>
-      <ThemeToggle />
+      <Menu />
     </nav>
   );
 }

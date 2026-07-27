@@ -4,14 +4,19 @@ import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import remarkGfm from "remark-gfm";
+import remarkExcerpt from "./plugins/remark-excerpt";
 
 export default defineConfig({
   base: "/",
   plugins: [
     react(),
     mdx({
-      // remark plugins to parse and export frontmatter from mdx files
-      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
+      remarkPlugins: [
+        remarkFrontmatter,
+        remarkMdxFrontmatter,
+        remarkGfm,
+        remarkExcerpt,
+      ],
     }),
   ],
 });

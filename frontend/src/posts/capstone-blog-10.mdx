@@ -2,6 +2,7 @@
 title: "More work on my EasyCook Website"
 date: 10/13/2025
 wordCount: 427
+thumbnail: "/images/easycook-recipe-card-grid.png"
 ---
 
 This week continued my journey redesigning my EasyCook website. For the first half of the week, I worked on the layout and spacing of the meal planner page. On this page, there is a week selection, then a day selection within the week that outputs the planned meals for that day. The problem was that the output varied in width depending on its content, which, as a consequence, scaled the day selection and made it look unpolished. I quickly fixed this layout issue by forcing stricter constraints on the width of the paper behind the output. I also wanted this output to look more handmade than the rest of the site, to mimic writing down your plans on a piece of paper. To achieve this look, I started by changing the fonts, picking two handwritten fonts: one for the date, which is in print, and another for the meal headers (breakfast, lunch, dinner), which is in cursive. The rest of the content I left with the default font so it is easily readable. I also jagged the edges of the paper using the clip-path CSS property to make it look more realistic. Here is the final result of the meal planner page:

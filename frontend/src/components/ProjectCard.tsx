@@ -38,27 +38,36 @@ export default function ProjectCard({
     const front = frontRef.current;
     const back = backRef.current;
 
-    const prevFront = front.style.position;
-    const prevBack = back.style.position;
-    const prevBackHeight = back.style.height;
-    const prevFrontVis = front.style.visibility;
-    const prevBackVis = back.style.visibility;
+    function measure() {
+      const prevFront = front.style.position;
+      const prevBack = back.style.position;
+      const prevBackHeight = back.style.height;
+      const prevFrontVis = front.style.visibility;
+      const prevBackVis = back.style.visibility;
 
-    front.style.position = "static";
-    back.style.position = "static";
-    back.style.height = "auto";
-    front.style.visibility = "hidden";
-    back.style.visibility = "hidden";
+      front.style.position = "static";
+      back.style.position = "static";
+      back.style.height = "auto";
+      front.style.visibility = "hidden";
+      back.style.visibility = "hidden";
 
-    const backHeight = back.offsetHeight;
+      const backHeight = back.offsetHeight;
 
-    front.style.position = prevFront;
-    back.style.position = prevBack;
-    back.style.height = prevBackHeight;
-    front.style.visibility = prevFrontVis;
-    back.style.visibility = prevBackVis;
+      front.style.position = prevFront;
+      back.style.position = prevBack;
+      back.style.height = prevBackHeight;
+      front.style.visibility = prevFrontVis;
+      back.style.visibility = prevBackVis;
 
-    onMeasure(backHeight);
+      onMeasure(backHeight);
+    }
+
+    measure();
+
+    const observer = new ResizeObserver(() => measure());
+    observer.observe(back);
+
+    return () => observer.disconnect();
   }, [onMeasure]);
 
   const handleClick = () => {

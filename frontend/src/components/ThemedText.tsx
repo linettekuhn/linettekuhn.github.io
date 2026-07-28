@@ -42,6 +42,7 @@ type ThemedTextProps<C extends ElementType = "span"> = PropsWithChildren<
     weight?: ThemedTextWeight;
     variant?: ThemedTextVariant;
     italic?: boolean;
+    altColor?: boolean;
     lightColor?: string;
     darkColor?: string;
     className?: string;
@@ -104,6 +105,7 @@ export const ThemedText = forwardRef<ElementType, ThemedTextProps>(
       weight,
       variant,
       italic = false,
+      altColor,
       lightColor,
       darkColor,
       textAlign,
@@ -131,6 +133,7 @@ export const ThemedText = forwardRef<ElementType, ThemedTextProps>(
       weightClass,
       variant && styles[variant],
       italic && styles.italic,
+      altColor && styles.altColor,
       lightColor && styles.themedLight,
       darkColor && styles.themedDark,
       className,

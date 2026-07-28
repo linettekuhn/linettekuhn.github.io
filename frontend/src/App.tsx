@@ -53,11 +53,11 @@ function App() {
       <LoadingOverlay visible={loading} />
       <Navbar />
       <main className={styles.app}>
-        <GooBackground dotCount={8} />
+        <GooBackground dotCount={12} />
         <div className={styles.heroSection}>
           <div className={styles.heroCard}>
             <ThemedText type="h1" weight="bold">
-              Full Stack Developer
+              Full Stack Engineer
             </ThemedText>
             <div>
               <ThemedText>
@@ -81,14 +81,24 @@ function App() {
             </div>
           </div>
           <div className={styles.techStackWrapper}>
-            <ThemedText type="overline">crafting with modern tech</ThemedText>
+            <ThemedText
+              type="overline"
+              style={{
+                textShadow: "0 2px 8px rgba(0, 0, 0, 0.8)",
+              }}
+              weight="medium"
+            >
+              crafting with modern tech
+            </ThemedText>
             <TechScroller />
-            <FaChevronDown
-              className={styles.scrollArrow}
-              onClick={() =>
-                featuredRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-            />
+            <div className={styles.scrollArrowWrapper}>
+              <FaChevronDown
+                className={styles.scrollArrow}
+                onClick={() =>
+                  featuredRef.current?.scrollIntoView({ behavior: "smooth" })
+                }
+              />
+            </div>
           </div>
         </div>
         <div ref={featuredRef} className={styles.featuredSection}>

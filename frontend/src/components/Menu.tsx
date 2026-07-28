@@ -27,6 +27,7 @@ export default function Menu() {
           variant="link"
           textType={textType}
           className={`${styles.link} ${isActive("/") ? styles.active : ""}`}
+          altColor={!isActive("/")}
           onClick={() => navigate("/")}
         >
           {showIcons && <MdHomeFilled />}
@@ -36,6 +37,7 @@ export default function Menu() {
           variant="link"
           textType={textType}
           className={`${styles.link} ${isActive("/blog") ? styles.active : ""}`}
+          altColor={!isActive("/blog")}
           onClick={() => navigate("/blog")}
         >
           {showIcons && <Caret className={styles.caret} />}
@@ -45,6 +47,7 @@ export default function Menu() {
           variant="link"
           textType={textType}
           className={`${styles.link} ${isActive("/projects") ? styles.active : ""}`}
+          altColor={!isActive("/projects")}
           onClick={() => navigate("/projects")}
         >
           {showIcons && <Code className={styles.code} />}
@@ -54,6 +57,7 @@ export default function Menu() {
           variant="link"
           textType={textType}
           className={`${styles.link} ${isActive("/contact") ? styles.active : ""}`}
+          altColor={!isActive("/contact")}
           onClick={() => navigate("/contact")}
         >
           {showIcons && <MdContactPhone />}

@@ -1,5 +1,6 @@
 .contactPage {
   justify-content: space-evenly;
+  position: relative;
 }
 
 .aboutCard,
@@ -60,7 +61,7 @@
 .contactForm {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   background-color: rgba(var(--color-glass), 0.5);
   border: 2px solid rgba(var(--color-secondary-2), 0.3);
   border-radius: var(--space-s);
@@ -229,6 +230,7 @@
   .content {
     flex-direction: row;
     justify-content: space-between;
+    overflow-y: hidden;
   }
 }
 

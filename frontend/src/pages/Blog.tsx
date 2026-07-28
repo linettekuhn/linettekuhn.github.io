@@ -65,7 +65,15 @@ export default function Blog() {
       <Navbar />
       <main className={styles.postsWrapper}>
         <div className={styles.echelonHeader}>
-          <ThemedText type="h1">Echelon: 5 Months of Growth.</ThemedText>
+          <ThemedText type="h1">
+            Echelon:{" "}
+            <ThemedText
+              type="h1"
+              style={{ color: "rgb(var(--color-text-alt))" }}
+            >
+              5 Months of Growth.
+            </ThemedText>
+          </ThemedText>
           <ThemedText>
             Walk through how a student capstone turned into real production work
             on the Echelon Fit team

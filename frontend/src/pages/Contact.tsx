@@ -162,7 +162,7 @@ export default function Contact() {
             </div>
           </div>
           <form className={styles.contactForm} onSubmit={onFormSubmit}>
-            <ThemedText type="h6">Got an idea? Let's build it.</ThemedText>
+            <ThemedText type="h5">Got an idea? Let's build it.</ThemedText>
             <ThemedText type="caption">
               Whether you've got a project in mind or just want to say hi, I'd
               love to hear from you. I'll get back to you within 24 hours.

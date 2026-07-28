@@ -287,6 +287,7 @@ textarea:not([rows]) {
 
 [data-theme="light"] {
   --color-text: 43, 43, 43;
+  --color-text-alt: 109, 29, 87;
   --color-text-light: 234, 234, 234;
   --color-btn-text: 43, 43, 43;
   --color-bg-1: 242, 242, 237;
@@ -310,6 +311,7 @@ textarea:not([rows]) {
 /* Dark Theme */
 [data-theme="dark"] {
   --color-text: 234, 234, 234;
+  --color-text-alt: 236, 159, 214;
   --color-text-light: 234, 234, 234;
   --color-btn-text: 27, 31, 47;
   --color-bg-1: 27, 31, 47;

@@ -4,6 +4,10 @@ import { FaLinkedin } from "react-icons/fa6";
 import { FaGithubSquare } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
+import { ThemedText } from "../components/ThemedText";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { TbFileSmileFilled } from "react-icons/tb";
+import GooBackground from "../components/GooBackground";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -37,8 +41,124 @@ export default function Contact() {
     <>
       <Navbar />
       <main className={styles.contactPage}>
-        <h2>Contact Me</h2>
+        <GooBackground dotCount={8} />
         <div className={styles.content}>
+          <div className={styles.info}>
+            <div className={styles.aboutCard}>
+              <div className={styles.aboutHeader}>
+                <div className={styles.aboutPhoto}>
+                  <img
+                    src="/images/professionalphoto.jpg"
+                    alt="professional photo"
+                  />
+                </div>
+                <div className={styles.name}>
+                  <ThemedText type="h3" weight="semiBold">
+                    Linette Kühn
+                  </ThemedText>
+                  <ThemedText
+                    type="overline"
+                    style={{ letterSpacing: "var(--space-3xs)" }}
+                  >
+                    software engineer
+                  </ThemedText>
+                </div>
+              </div>
+              <ThemedText>
+                I'm a full-stack software developer with hands-on experience
+                across web, mobile, and AI/ML, focused on building clean,
+                user-centered products. I love turning complex ideas into
+                simple, intuitive interfaces, whether that's a mobile app, a
+                backend API, or an AI agent under the hood. I'm always learning,
+                always building, and always excited for the next challenge.
+              </ThemedText>
+              <div className={styles.pills}>
+                <ThemedText type="footnote" className={styles.pill}>
+                  Full-Stack
+                </ThemedText>
+                <ThemedText type="footnote" className={styles.pill}>
+                  Web &amp; Mobile
+                </ThemedText>
+                <ThemedText type="footnote" className={styles.pill}>
+                  AI/ML
+                </ThemedText>
+                <ThemedText type="footnote" className={styles.pill}>
+                  Cloud &amp; DevOps
+                </ThemedText>
+                <ThemedText type="footnote" className={styles.pill}>
+                  Clean UI/UX
+                </ThemedText>
+              </div>
+            </div>
+            <a
+              href="/files/KuhnLinette_Resume.pdf"
+              download
+              className={`${styles.resume} ${styles.card}`}
+            >
+              <div className={styles.resumeHeader}>
+                <div className={styles.icon}>
+                  <TbFileSmileFilled />
+                </div>
+                <div>
+                  <ThemedText type="h6">Curriculum Vitae</ThemedText>
+                  {/*update when replacing resume file*/}
+                  <ThemedText
+                    type="caption"
+                    style={{ color: "rgb(var(--color-text-alt))" }}
+                  >
+                    Download Resumé (PDF, 205 KB)
+                  </ThemedText>
+                </div>
+              </div>
+              <MdOutlineFileDownload />
+            </a>
+            <div className={styles.linksWrapper}>
+              <a
+                className={`${styles.github} ${styles.card}`}
+                href="https://github.com/linettekuhn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={styles.resumeHeader}>
+                  <div className={styles.icon}>
+                    <FaGithubSquare />
+                  </div>
+                  <div>
+                    <ThemedText type="h6">GitHub</ThemedText>
+                    <ThemedText
+                      className={styles.cardCaption}
+                      type="caption"
+                      style={{ color: "rgb(var(--color-text-alt))" }}
+                    >
+                      Check out my projects in depth
+                    </ThemedText>
+                  </div>
+                </div>
+              </a>
+              <a
+                className={`${styles.linkedin} ${styles.card}`}
+                href="https://www.linkedin.com/in/linettekuhn/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={styles.resumeHeader}>
+                  <div className={styles.icon}>
+                    <FaLinkedin />
+                  </div>
+                  <div>
+                    <ThemedText type="h6">Linkedin</ThemedText>
+                    <ThemedText
+                      className={styles.cardCaption}
+                      type="caption"
+                      style={{ color: "rgb(var(--color-text-alt))" }}
+                    >
+                      Connect with me!
+                    </ThemedText>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
           <form className={styles.contactForm} onSubmit={onFormSubmit}>
             <label htmlFor="name">
               Name:
@@ -66,46 +186,6 @@ export default function Contact() {
             </label>
             <button className="button">Send Message</button>
           </form>
-          <div className={styles.info}>
-            <div className={styles.about}>
-              <h3>About Me</h3>
-              <p>
-                I’m a software developer with hands-on experience in web and
-                mobile development, focused on creating clean, user-centered
-                designs. I love turning complex ideas into simple, intuitive
-                interfaces and constantly improving my work. I’m always
-                learning, always building, and always excited for the next
-                challenge.
-              </p>
-            </div>
-            <div className={styles.resume}>
-              <h3>My Resumé</h3>
-              <a href="/files/resume.pdf" download>
-                <button className="button">Download PDF</button>
-              </a>
-            </div>
-            <div className={styles.socialLinks}>
-              <h3>Social</h3>
-              <div className={styles.linksWrapper}>
-                <a
-                  className={styles.github}
-                  href="https://github.com/linettekuhn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaGithubSquare /> GitHub
-                </a>
-                <a
-                  className={styles.linkedin}
-                  href="https://www.linkedin.com/in/linette-k%C3%BChn-63b176324"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaLinkedin /> LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
         <ToastContainer />
       </main>

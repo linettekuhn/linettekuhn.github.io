@@ -5,9 +5,11 @@ import { FaGithubSquare } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 import { ThemedText } from "../components/ThemedText";
-import { MdOutlineFileDownload } from "react-icons/md";
+import { MdOutlineFileDownload, MdSend } from "react-icons/md";
 import { TbFileSmileFilled } from "react-icons/tb";
 import GooBackground from "../components/GooBackground";
+import { ThemedInput } from "../components/ThemedInput";
+import { ThemedButton } from "../components/ThemedButton";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -160,31 +162,38 @@ export default function Contact() {
             </div>
           </div>
           <form className={styles.contactForm} onSubmit={onFormSubmit}>
-            <label htmlFor="name">
-              Name:
-              <input
-                className={styles.input}
-                type="text"
+            <ThemedText type="h6">Got an idea? Let's build it.</ThemedText>
+            <ThemedText type="caption">
+              Whether you've got a project in mind or just want to say hi, I'd
+              love to hear from you. I'll get back to you within 24 hours.
+            </ThemedText>
+            <div style={{ display: "flex", gap: "var(--space-s)" }}>
+              <ThemedInput
+                label="full name"
+                placeholder="Your name"
                 name="name"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
               />
-            </label>
-            <label htmlFor="email">
-              Email:
-              <input className={styles.input} type="email" name="email" />
-            </label>
-            <label htmlFor="message" className={styles.message}>
-              Message:
-              <textarea
-                className={styles.input}
-                name="message"
-                id="message"
-              ></textarea>
-            </label>
-            <button className="button">Send Message</button>
+              <ThemedInput
+                label="email address"
+                placeholder="you@example.com"
+                name="email"
+                type="email"
+              />
+            </div>
+            <ThemedInput
+              label="message"
+              placeholder="Tell me a bit about your project or idea..."
+              name="message"
+              id="message"
+              multiline
+            />
+            <ThemedButton textType="overline" rightIcon={<MdSend />}>
+              Send Message
+            </ThemedButton>
           </form>
         </div>
         <ToastContainer />

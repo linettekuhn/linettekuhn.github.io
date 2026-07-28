@@ -60,44 +60,13 @@
 .contactForm {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   background-color: rgba(var(--color-glass), 0.5);
   border: 2px solid rgba(var(--color-secondary-2), 0.3);
   border-radius: var(--space-s);
   padding: var(--space-m) var(--space-s) var(--space-2xs) var(--space-s);
   gap: var(--space-s);
-  flex: 0 1 50%;
-}
-
-.input {
-  transition: box-shadow 0.3s ease;
-  background-color: rgba(var(--color-secondary-2), 0.25);
-  border: 1px solid rgba(var(--color-primary-1));
-  border-radius: var(--space-m);
-  padding: var(--space-xs) var(--space-s);
-  color: rgb(var(--text-color));
-}
-.input:focus {
-  outline: none;
-  border-radius: var(--space-m);
-  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
-}
-
-.contactForm label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.contactForm .message {
-  flex-direction: column;
-  align-items: start;
-  gap: var(--space-xs);
-}
-
-.contactForm textarea {
-  width: 100%;
-  resize: none;
+  flex: 0 1 100%;
 }
 
 .socialLinks,
@@ -116,6 +85,7 @@
   color: rgb(var(--color-text-alt));
   flex-grow: 1;
   flex-shrink: 0;
+  transition: background-color 0.3s ease;
 }
 
 .card:hover {
@@ -178,18 +148,27 @@
 
 .linkedin svg {
   fill: rgb(var(--color-primary-1));
-  transition: filter 0.3s ease;
+  transition:
+    filter 0.3s ease,
+    scale 0.3s ease;
 }
 
 .github svg {
   fill: rgb(var(--color-primary-2));
-  transition: filter 0.3s ease;
+  transition:
+    filter 0.3s ease,
+    scale 0.3s ease;
 }
 
 .resume:hover svg {
   filter: drop-shadow(
     var(--box-shadow-hover) var(--box-shadow-color-primary-3)
   );
+}
+
+.linkedin:hover,
+.github:hover {
+  animation-play-state: paused;
 }
 
 .linkedin:hover svg {

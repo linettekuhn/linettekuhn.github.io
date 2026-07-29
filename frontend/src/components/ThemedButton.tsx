@@ -12,6 +12,7 @@ type ThemedButtonProps<C extends ElementType = "button"> = PropsWithChildren<
     size?: ThemedButtonSize;
     textType?: ThemedTextType;
     color?: string;
+    altColor?: boolean;
     disabled?: boolean;
     loading?: boolean;
     leftIcon?: React.ReactNode;
@@ -30,6 +31,7 @@ export function ThemedButton<C extends ElementType = "button">({
   size = "md",
   textType = "body",
   color,
+  altColor,
   disabled = false,
   loading = false,
   leftIcon,
@@ -73,7 +75,7 @@ export function ThemedButton<C extends ElementType = "button">({
       {leftIcon && !loading && (
         <span className={styles.leftIcon}>{leftIcon}</span>
       )}
-      <ThemedText variant={variant} type={textType}>
+      <ThemedText variant={variant} type={textType} altColor={altColor}>
         {children}
       </ThemedText>
       {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}

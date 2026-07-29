@@ -1,47 +1,73 @@
 .contactPage {
   justify-content: space-evenly;
+  position: relative;
+}
+
+.aboutCard,
+.name {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutCard,
+.card {
+  gap: var(--space-m);
+  background-color: rgba(var(--color-glass), 0.6);
+  backdrop-filter: blur(12px);
+  padding: var(--space-s) var(--space-m);
+  border-radius: var(--space-s);
+  border: 2px solid rgba(var(--color-secondary-2), 0.3);
+  text-decoration: none;
+}
+
+.aboutHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-m);
+}
+
+.aboutPhoto {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.aboutPhoto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  justify-content: center;
+}
+
+.pill {
+  background-color: rgba(var(--color-secondary-2), 0.2);
+  border: 1px solid rgb(var(--color-secondary-2));
+  border-radius: 999px;
+  padding: var(--space-3xs) var(--space-xs);
+  text-transform: uppercase;
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
-  background-color: rgba(var(--color-secondary-2), 0.3);
-  border: 2px solid rgba(var(--color-secondary-2));
+  justify-content: center;
+  background-color: rgba(var(--color-glass), 0.5);
+  border: 2px solid rgba(var(--color-secondary-2), 0.3);
   border-radius: var(--space-s);
   padding: var(--space-m) var(--space-s) var(--space-2xs) var(--space-s);
   gap: var(--space-s);
-}
-
-.input {
-  transition: box-shadow 0.3s ease;
-  background-color: rgba(var(--color-secondary-2), 0.25);
-  border: 1px solid rgba(var(--color-primary-1));
-  border-radius: var(--space-m);
-  padding: var(--space-xs) var(--space-s);
-  color: rgb(var(--text-color));
-}
-.input:focus {
-  outline: none;
-  border-radius: var(--space-m);
-  box-shadow: var(--box-shadow-hover) var(--box-shadow-color-primary-1);
-}
-
-.contactForm label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.contactForm .message {
-  flex-direction: column;
-  align-items: start;
-  gap: var(--space-xs);
-}
-
-.contactForm textarea {
-  width: 100%;
-  resize: none;
+  flex: 0 1 100%;
 }
 
 .socialLinks,
@@ -53,18 +79,44 @@
   justify-content: center;
 }
 
-.resume {
+.card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  color: rgb(var(--color-text-alt));
+  flex-grow: 1;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: rgba(var(--color-glass), 0.8);
+}
+
+.card:hover svg {
+  scale: 1.1;
+}
+
+.resumeHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+}
+
+.icon {
+  background-color: rgba(var(--color-glass));
+  display: flex;
+  place-content: center;
+  padding: var(--space-m);
+  border-radius: var(--space-s);
+  align-self: center;
 }
 
 .linkedin,
-.github {
+.github,
+.resume {
   font-size: var(--space-m);
   display: flex;
-  flex-direction: column;
   gap: var(--space-xs);
   align-items: center;
   text-decoration: none;
@@ -73,8 +125,13 @@
 }
 
 .linkedin svg,
-.github svg {
-  font-size: var(--space-3xl);
+.github svg,
+.resume svg {
+  font-size: var(--space-xl);
+}
+
+.resume {
+  animation: hueAnimation 5s 2s infinite;
 }
 
 .linkedin {
@@ -85,14 +142,34 @@
   animation: hueAnimation 5s infinite;
 }
 
+.resume svg {
+  fill: rgb(var(--color-primary-3));
+  transition: filter 0.3s ease;
+}
+
 .linkedin svg {
   fill: rgb(var(--color-primary-1));
-  transition: filter 0.3s ease;
+  transition:
+    filter 0.3s ease,
+    scale 0.3s ease;
 }
 
 .github svg {
   fill: rgb(var(--color-primary-2));
-  transition: filter 0.3s ease;
+  transition:
+    filter 0.3s ease,
+    scale 0.3s ease;
+}
+
+.resume:hover svg {
+  filter: drop-shadow(
+    var(--box-shadow-hover) var(--box-shadow-color-primary-3)
+  );
+}
+
+.linkedin:hover,
+.github:hover {
+  animation-play-state: paused;
 }
 
 .linkedin:hover svg {
@@ -107,6 +184,7 @@
   );
 }
 
+.resume:visited,
 .linkedin:visited,
 .github:visited {
   color: rgb(var(--text-color));
@@ -115,7 +193,8 @@
 .linksWrapper {
   display: flex;
   width: 100%;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: stretch;
   gap: var(--space-m);
 }
 
@@ -133,6 +212,7 @@
   flex-direction: column;
   gap: var(--space-l);
   padding: 0 var(--space-l);
+  width: 100%;
 }
 
 .info {
@@ -142,10 +222,32 @@
   gap: var(--space-m);
 }
 
-@media (min-width: 1000px) {
+.cardCaption {
+  display: none;
+}
+
+@media (min-width: 1300px) {
   .content {
     flex-direction: row;
     justify-content: space-between;
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 1750px) {
+  .content {
     max-width: 80%;
+  }
+}
+
+@media (min-width: 850px) {
+  .cardCaption {
+    display: block;
+  }
+}
+
+@media (min-width: 450px) {
+  .linksWrapper {
+    flex-direction: row;
   }
 }

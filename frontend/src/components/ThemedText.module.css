@@ -17,6 +17,10 @@
   color: rgb(var(--color-text));
 }
 
+.altColor {
+  color: rgb(var(--color-text-alt));
+}
+
 .themedLight {
   color: var(--text-color-light);
 }
@@ -94,7 +98,7 @@
 /* Body */
 .body {
   font-family: var(--font-family-secondary);
-  font-size: var(--font-body);
+  font-size: var(--body-font-size);
   line-height: 1.5;
   font-weight: var(--font-weight-400);
 }

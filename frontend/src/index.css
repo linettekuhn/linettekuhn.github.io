@@ -235,47 +235,48 @@ textarea:not([rows]) {
   --font-family-base: "Onest";
   --font-family-secondary: "Montserrat";
 
-  /* Typography Scale - Peppercorn (18px base, 1.25 ratio, fluid) */
-  --font-body: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+  /* Typography Scale - Fluid (mobile 18px base → desktop 16px base, 1.25 ratio) */
+  --body-font-size: clamp(1rem, 1.1429rem - 0.0056vw, 1.125rem);
+  --body-line-height: clamp(1.5rem, 1.7143rem - 0.0084vw, 1.6875rem);
 
-  --h1-font-size: clamp(3.83rem, 3.5564rem + 1.3679vw, 5.745rem);
-  --h1-line-height: clamp(5.78rem, 5.3646rem + 2.0519vw, 8.67rem);
+  --h1-font-size: clamp(3.81rem, 4.38rem - 0.0223vw, 4.3088rem);
+  --h1-line-height: clamp(5.75rem, 6.61rem - 0.0336vw, 6.5025rem);
 
-  --h2-font-size: clamp(2.44rem, 2.2657rem + 0.8714vw, 3.66rem);
-  --h2-line-height: clamp(3.67rem, 3.4086rem + 1.3071vw, 5.505rem);
+  --h2-font-size: clamp(2.44rem, 2.7886rem - 0.0136vw, 2.745rem);
+  --h2-line-height: clamp(3.69rem, 4.1914rem - 0.0196vw, 4.1288rem);
 
-  --h3-font-size: clamp(1.94rem, 1.8014rem + 0.6929vw, 2.91rem);
-  --h3-line-height: clamp(2.94rem, 2.7279rem + 1.0436vw, 4.41rem);
+  --h3-font-size: clamp(1.94rem, 2.2171rem - 0.0108vw, 2.1825rem);
+  --h3-line-height: clamp(2.94rem, 3.36rem - 0.0164vw, 3.3075rem);
 
-  --h4-font-size: clamp(1.56rem, 1.4486rem + 0.5571vw, 2.34rem);
-  --h4-line-height: clamp(2.33rem, 2.1629rem + 0.8358vw, 3.495rem);
+  --h4-font-size: clamp(1.56rem, 1.7829rem - 0.0087vw, 1.755rem);
+  --h4-line-height: clamp(2.38rem, 2.6557rem - 0.0108vw, 2.6213rem);
 
-  --h5-font-size: clamp(1.28rem, 1.1886rem + 0.4571vw, 1.92rem);
-  --h5-line-height: clamp(1.94rem, 1.8014rem + 0.6929vw, 2.91rem);
+  --h5-font-size: clamp(1.25rem, 1.4671rem - 0.0085vw, 1.44rem);
+  --h5-line-height: clamp(1.88rem, 2.2257rem - 0.0135vw, 2.1825rem);
 
-  --h6-font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
-  --h6-line-height: clamp(1.5rem, 1.3929rem + 0.5357vw, 2.25rem);
+  --h6-font-size: clamp(1rem, 1.1429rem - 0.0056vw, 1.125rem);
+  --h6-line-height: clamp(1.5rem, 1.7143rem - 0.0084vw, 1.6875rem);
 
-  --blockquote-font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
-  --blockquote-line-height: clamp(1.5rem, 1.3929rem + 0.5357vw, 2.25rem);
+  --blockquote-font-size: clamp(1rem, 1.1429rem - 0.0056vw, 1.125rem);
+  --blockquote-line-height: clamp(1.5rem, 1.7143rem - 0.0084vw, 1.6875rem);
 
-  --caption-font-size: clamp(0.78rem, 0.7243rem + 0.2786vw, 1.17rem);
-  --caption-line-height: clamp(1.17rem, 1.0864rem + 0.4179vw, 1.755rem);
+  --caption-font-size: clamp(0.81rem, 0.8871rem - 0.003vw, 0.8775rem);
+  --caption-line-height: clamp(1.25rem, 1.3257rem - 0.003vw, 1.3163rem);
 
-  --endnote-font-size: clamp(0.78rem, 0.7243rem + 0.2786vw, 1.17rem);
-  --endnote-line-height: clamp(1.17rem, 1.0864rem + 0.4179vw, 1.755rem);
+  --endnote-font-size: clamp(0.81rem, 0.8871rem - 0.003vw, 0.8775rem);
+  --endnote-line-height: clamp(1.25rem, 1.3257rem - 0.003vw, 1.3163rem);
 
-  --footnote-font-size: clamp(0.67rem, 0.6221rem + 0.2393vw, 1.005rem);
-  --footnote-line-height: clamp(1rem, 0.9286rem + 0.3571vw, 1.5rem);
+  --footnote-font-size: clamp(0.63rem, 0.7714rem - 0.0055vw, 0.7538rem);
+  --footnote-line-height: clamp(0.94rem, 1.1514rem - 0.0083vw, 1.125rem);
 
-  --displaymedium-font-size: clamp(4.78rem, 4.4386rem + 1.7071vw, 7.17rem);
-  --displaymedium-line-height: clamp(7.17rem, 6.6579rem + 2.5607vw, 10.755rem);
+  --displaymedium-font-size: clamp(4.75rem, 5.4671rem - 0.028vw, 5.3775rem);
+  --displaymedium-line-height: clamp(7.13rem, 8.2rem - 0.0418vw, 8.0663rem);
 
-  --displaylarge-font-size: clamp(5.94rem, 5.5157rem + 2.1214vw, 8.91rem);
-  --displaylarge-line-height: clamp(8.94rem, 8.3043rem + 3.1786vw, 13.41rem);
+  --displaylarge-font-size: clamp(5.94rem, 6.7886rem - 0.0331vw, 6.6825rem);
+  --displaylarge-line-height: clamp(8.94rem, 10.2171rem - 0.0499vw, 10.0575rem);
 
-  --overline-font-size: clamp(0.78rem, 0.7243rem + 0.2786vw, 1.17rem);
-  --overline-line-height: clamp(1.17rem, 1.0864rem + 0.4179vw, 1.755rem);
+  --overline-font-size: clamp(0.81rem, 0.8871rem - 0.003vw, 0.8775rem);
+  --overline-line-height: clamp(1.25rem, 1.3257rem - 0.003vw, 1.3163rem);
 
   /* Font Weights */
   --font-weight-400: 400;
@@ -287,6 +288,7 @@ textarea:not([rows]) {
 
 [data-theme="light"] {
   --color-text: 43, 43, 43;
+  --color-text-alt: 162, 91, 47;
   --color-text-light: 234, 234, 234;
   --color-btn-text: 43, 43, 43;
   --color-bg-1: 242, 242, 237;
@@ -310,6 +312,7 @@ textarea:not([rows]) {
 /* Dark Theme */
 [data-theme="dark"] {
   --color-text: 234, 234, 234;
+  --color-text-alt: 205, 253, 165;
   --color-text-light: 234, 234, 234;
   --color-btn-text: 27, 31, 47;
   --color-bg-1: 27, 31, 47;
@@ -337,7 +340,7 @@ li,
 input,
 label,
 button {
-  font-size: var(--font-body);
+  font-size: var(--body-font-size);
   font-family: var(--font-family-secondary);
 }
 

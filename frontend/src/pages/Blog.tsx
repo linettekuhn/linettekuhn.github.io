@@ -58,6 +58,24 @@ export default function Blog() {
     }))
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
+  const monthGroups = postList.reduce<{ label: string; startIndex: number }[]>(
+    (acc, post, i) => {
+      const month = new Date(post.date).toLocaleDateString("en-US", {
+        month: "short",
+      });
+      if (i === 0 || month !== acc[acc.length - 1].label) {
+        acc.push({ label: month, startIndex: i });
+      }
+      return acc;
+    },
+    [],
+  );
+
+  const monthBoundaries = monthGroups.map((g) => ({
+    label: g.label,
+    position: (g.startIndex / postList.length) * 100,
+  }));
+
   console.log("Imported posts:", Object.keys(posts));
 
   return (
@@ -125,15 +143,38 @@ export default function Blog() {
             ))}
           </Carousel>
           <div className={styles.controls}>
-            <ThemedText type="overline">AUG</ThemedText>
-            <Progress
-              value={scrollProgress}
-              className={styles.progress}
-              color="rgb(var(--color-primary-3))"
-              bg="rgba(var(--color-primary-3), 0.2)"
-              size="sm"
-            />
-            <ThemedText type="overline">dec</ThemedText>
+            <div className={styles.progressColumn}>
+              <div className={styles.progressWrapper}>
+                <Progress
+                  value={scrollProgress}
+                  className={styles.progress}
+                  color="rgb(var(--color-primary-3))"
+                  bg="rgba(var(--color-primary-3), 0.2)"
+                  size="sm"
+                />
+                <div className={styles.markers}>
+                  {monthBoundaries.map((b) => (
+                    <div
+                      key={b.label}
+                      className={styles.marker}
+                      style={{ left: `${b.position}%` }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className={styles.labelsRow}>
+                {monthBoundaries.map((b) => (
+                  <ThemedText
+                    key={b.label}
+                    type="overline"
+                    className={styles.monthLabel}
+                    style={{ left: `${b.position}%` }}
+                  >
+                    {b.label}
+                  </ThemedText>
+                ))}
+              </div>
+            </div>
             <button className={styles.controlButton} onClick={scrollPrev}>
               <MdChevronLeft size={20} />
             </button>

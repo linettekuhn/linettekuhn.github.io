@@ -81,6 +81,48 @@
   width: 100%;
 }
 
+.progressColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.progressWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.markers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgb(var(--color-primary-3));
+  transform: translateX(-50%);
+}
+
+.labelsRow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + var(--space-3xs));
+}
+
+.monthLabel {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.7rem;
+}
+
 .controls {
   display: flex;
   align-items: center;
@@ -95,8 +137,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: var(--space-xl);
-  height: var(--space-xl);
+  width: var(--space-2xl);
+  height: var(--space-2xl);
   border: 2px solid rgb(var(--color-primary-3));
   border-radius: 50%;
   background-color: rgba(var(--color-primary-3), 0.1);

@@ -61,7 +61,7 @@ export default function Menu() {
           onClick={() => navigate("/contact")}
         >
           {showIcons && <MdContactPhone />}
-          Contact
+          about me
         </ThemedButton>
       </>
     );

@@ -1,5 +1,27 @@
 const projects = [
   {
+    name: "Glasskyn",
+    projectLink: "https://www.glasskyn.app/",
+    githubLink: "https://github.com/linettekuhn/glasskyn",
+    image: "/previews/glasskyn.png",
+    description:
+      "An AI skincare companion app that helps users track ingredient safety, cosmetic expiry dates, and personalized routines, built with React Native and FastAPI.",
+    features: [
+      "AI chat assistant for ingredient safety, product lookups, and routine help",
+      "OCR-driven product scanning with automatic expiry date extraction",
+      "Ingredient safety analysis via RAG pipeline over ChromaDB",
+      "Computer vision product classification with a fine-tuned ResNet-50 model",
+    ],
+    highlights: [
+      "React Native",
+      "FastAPI",
+      "PostgreSQL",
+      "LangChain",
+      "PyTorch",
+    ],
+    isMobile: true,
+  },
+  {
     name: "EasyCook",
     projectLink: "https://linettekuhn.github.io/easy-cook",
     githubLink: "https://github.com/linettekuhn/easy-cook",
